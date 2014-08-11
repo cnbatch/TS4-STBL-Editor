@@ -1,0 +1,27 @@
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\bin\Release\TS4 STBL Editor.exe.config
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\bin\Release\TS4 STBL Editor.exe
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\bin\Release\TS4 STBL Editor.pdb
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.Editor.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.MainUI.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.Properties.Resources.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4 STBL Editor.csproj.GenerateResource.Cache
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4 STBL Editor.exe
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4 STBL Editor.pdb
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AddString.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AboutEditorForm.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\bin\Release\en\TS4 STBL Editor.resources.dll
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AddString.en.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\en\TS4 STBL Editor.resources.dll
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\bin\Release\zh-Hans\TS4 STBL Editor.resources.dll
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\bin\Release\zh-Hant\TS4 STBL Editor.resources.dll
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AboutEditorForm.zh-Hans.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AboutEditorForm.zh-Hant.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AddString.zh-Hans.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.AddString.zh-Hant.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.Editor.zh-Hans.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.Editor.zh-Hant.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.MainUI.en.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.MainUI.zh-Hans.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\TS4_STBL_Editor.MainUI.zh-Hant.resources
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\zh-Hans\TS4 STBL Editor.resources.dll
+C:\Users\thebatch\Documents\Visual Studio 2013\Projects\TS4 STBL Editor\obj\Release\zh-Hant\TS4 STBL Editor.resources.dll

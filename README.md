@@ -1,6 +1,6 @@
 TS4 STBL Editor
 ===============
-It&#39;s a tool that let you edit the STBL file for translate the strings.
+You can translate the strings in STBL file with this tool.
 
 
 License

@@ -365,11 +365,8 @@ namespace TS4_STBL_Editor
 				return;
 			}
 
-			dataGridView1.Rows.Clear();
-
 			ArrayList textResourceID = (ArrayList)tempList[0];
 			ArrayList textString = (ArrayList)tempList[1];
-			dataGridView1.Rows.Add(textString.Count);
 
 			DataTable dataTable = new DataTable();
 			DataColumn dc;

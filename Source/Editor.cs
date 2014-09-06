@@ -12,73 +12,138 @@ using System.Threading;
 
 namespace TS4_STBL_Editor
 {
-    public partial class Editor : Form
-    {
-        public DataGridView tempDataGridView;
+	public partial class Editor : Form
+	{
+		private DataGridViewSettings settings0 = new DataGridViewSettings();
+		private DataGridViewSettings settings1 = new DataGridViewSettings();
+		private DataGridViewSettings settings2 = new DataGridViewSettings();
 
-        public Editor()
-        {
-            InitializeComponent();
-            tempDataGridView = new DataGridView();
-            tempDataGridView.Columns.Add("Column1", "Text ID");
-            tempDataGridView.Columns.Add("Column2", "Display Text");
-            tempDataGridView.AllowUserToAddRows = false;
-            tempDataGridView.AllowUserToDeleteRows = false;
-            tempDataGridView.AllowUserToOrderColumns = false;
-        }
+		public DataGridView tempDataGridView;
+		public delegate void UpdateProgressBar(double num);
+		public UpdateProgressBar updateProgressBar;
+		public DataTable dataTable;
 
-        public void InitialDataGridView(DataGridView mainDataGridView)
-        {
-            if (mainDataGridView.Rows.Count != 0)
-            {
-                dataGridView1.Rows.Add(mainDataGridView.Rows.Count);
+		public Editor()
+		{
+			InitializeComponent();
+			tempDataGridView = new DataGridView();
+			tempDataGridView.Columns.Add("Column1", "Text ID");
+			tempDataGridView.Columns.Add("Column2", "Display Text");
+			tempDataGridView.AllowUserToAddRows = false;
+			tempDataGridView.AllowUserToDeleteRows = false;
+			tempDataGridView.AllowUserToOrderColumns = false;
+		}
+		private void Editor_Load(object sender, EventArgs e)
+		{
+			DataTable mainDataTable = new DataTable();
 
-                for (int i = 0; i < mainDataGridView.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Cells[0].Value = mainDataGridView.Rows[i].Cells[0].Value;
-                    dataGridView1.Rows[i].Cells[1].Value = mainDataGridView.Rows[i].Cells[1].Value;
-                    dataGridView1.Rows[i].Cells[2].Value = mainDataGridView.Rows[i].Cells[1].Value;
-                }
+			DataColumn dc;
+			dc = new DataColumn(dataGridView1.Columns[0].HeaderText);
+			mainDataTable.Columns.Add(dc);
+			dc = new DataColumn(dataGridView1.Columns[1].HeaderText);
+			mainDataTable.Columns.Add(dc);
+			dc = new DataColumn(dataGridView1.Columns[2].HeaderText);
+			mainDataTable.Columns.Add(dc);
+			DataRow dr;
+			for (int i = 0; i < dataTable.Rows.Count; i++)
+			{
+				dr = mainDataTable.NewRow();
+				dr[0] = dataTable.Rows[i][0];
+				dr[1] = dataTable.Rows[i][1];
+				dr[2] = dataTable.Rows[i][1];
+				mainDataTable.Rows.Add(dr);
+			}
 
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    row.HeaderCell.Value = (row.Index + 1).ToString();
-                }
-            }
-        }
+			settings0.StoreSettings(dataGridView1, 0);
+			settings1.StoreSettings(dataGridView1, 1);
+			settings2.StoreSettings(dataGridView1, 2);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.Rows.Count != 0)
-            {
-                tempDataGridView.Rows.Add(dataGridView1.Rows.Count);
 
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    tempDataGridView.Rows[i].Cells[0].Value = dataGridView1.Rows[i].Cells[0].Value;
-                    tempDataGridView.Rows[i].Cells[1].Value = dataGridView1.Rows[i].Cells[2].Value;
-                }
-            }
-            Close();
-        }
+			dataGridView1.Columns.Clear();
+			dataGridView1.DataSource = mainDataTable;
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+			RestoreDataGridViewSettings();
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AddString addString = new AddString();
-            addString.ShowDialog();
-            if (addString.isOK)
-            {
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0].Value = addString.textID;
-                dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[2].Value = addString.dataGridText;
-                dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
-            }
-            addString.Dispose();
-        }
-    }
+			foreach (DataGridViewRow row in dataGridView1.Rows)
+			{
+				row.HeaderCell.Value = (row.Index + 1).ToString();
+				updateProgressBar((double)row.Index / (double)dataTable.Rows.Count);
+			}
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			if (dataGridView1.Rows.Count != 0)
+			{
+				DataTable dt = (DataTable)dataGridView1.DataSource;
+
+				for (int i = 0; i < dataTable.Rows.Count; i++)
+				{
+					dataTable.Rows[i][1] = dt.Rows[i][2];
+				}
+			}
+			Close();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			AddString addString = new AddString();
+			addString.ShowDialog();
+			if (addString.isOK)
+			{
+				DataTable dt = (DataTable)dataGridView1.DataSource;
+				DataRow dr;
+				dr = dt.NewRow();
+				dr[0] = addString.textID;
+				dr[2] = addString.dataGridText;
+				dt.Rows.Add(dr);
+				dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+			}
+			addString.Dispose();
+		}
+
+		private void RestoreDataGridViewSettings()
+		{
+			dataGridView1.Columns[0].AutoSizeMode = settings0.autoSizeColumnMode;
+			dataGridView1.Columns[0].DefaultCellStyle = settings0.cellStyle;
+			dataGridView1.Columns[0].DefaultHeaderCellType = settings0.defaultHeaderCellType;
+			dataGridView1.Columns[0].Frozen = settings0.frozen;
+			dataGridView1.Columns[0].HeaderText = settings0.headerText;
+			dataGridView1.Columns[0].MinimumWidth = settings0.minimumWidth;
+			dataGridView1.Columns[0].Name = settings0.name;
+			dataGridView1.Columns[0].ReadOnly = settings0.readOnly;
+			dataGridView1.Columns[0].Resizable = settings0.resizable;
+			dataGridView1.Columns[0].SortMode = settings0.sortMode;
+			dataGridView1.Columns[0].Width = settings0.width;
+
+			dataGridView1.Columns[1].AutoSizeMode = settings1.autoSizeColumnMode;
+			dataGridView1.Columns[1].DefaultCellStyle = settings1.cellStyle;
+			dataGridView1.Columns[1].DefaultHeaderCellType = settings1.defaultHeaderCellType;
+			dataGridView1.Columns[1].Frozen = settings1.frozen;
+			dataGridView1.Columns[1].HeaderText = settings1.headerText;
+			dataGridView1.Columns[1].MinimumWidth = settings1.minimumWidth;
+			dataGridView1.Columns[1].Name = settings1.name;
+			dataGridView1.Columns[1].ReadOnly = settings1.readOnly;
+			dataGridView1.Columns[1].Resizable = settings1.resizable;
+			dataGridView1.Columns[1].SortMode = settings1.sortMode;
+			dataGridView1.Columns[1].Width = settings1.width;
+
+			dataGridView1.Columns[2].AutoSizeMode = settings2.autoSizeColumnMode;
+			dataGridView1.Columns[2].DefaultCellStyle = settings2.cellStyle;
+			dataGridView1.Columns[2].DefaultHeaderCellType = settings2.defaultHeaderCellType;
+			dataGridView1.Columns[2].Frozen = settings2.frozen;
+			dataGridView1.Columns[2].HeaderText = settings2.headerText;
+			dataGridView1.Columns[2].MinimumWidth = settings2.minimumWidth;
+			dataGridView1.Columns[2].Name = settings2.name;
+			dataGridView1.Columns[2].ReadOnly = settings2.readOnly;
+			dataGridView1.Columns[2].Resizable = settings2.resizable;
+			dataGridView1.Columns[2].SortMode = settings2.sortMode;
+			dataGridView1.Columns[2].Width = settings2.width;
+		}
+	}
 }

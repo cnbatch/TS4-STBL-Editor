@@ -15,7 +15,7 @@ Windows Vista and Windows 7: <a href="http://msdn.microsoft.com/en-us/expression
 Windows 8 and above: None<br/>
 (.NET Framework 4.5 is already a component of Windows 8.x)<br/>
 
-Development Requirement
+Development Tool
 ----
 Visual Studio 2013, or Visual Studio Express 2013 for Windows Desktop
 

@@ -20,7 +20,7 @@ Development Tool
 Visual Studio 2013, or Visual Studio Express 2013 for Windows Desktop
 
 
-Available Languages
+Available GUI Languages
 ----
 <ul>
   <li>English</li>

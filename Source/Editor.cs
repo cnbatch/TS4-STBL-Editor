@@ -26,12 +26,6 @@ namespace TS4_STBL_Editor
 		public Editor()
 		{
 			InitializeComponent();
-			tempDataGridView = new DataGridView();
-			tempDataGridView.Columns.Add("Column1", "Text ID");
-			tempDataGridView.Columns.Add("Column2", "Display Text");
-			tempDataGridView.AllowUserToAddRows = false;
-			tempDataGridView.AllowUserToDeleteRows = false;
-			tempDataGridView.AllowUserToOrderColumns = false;
 		}
 		private void Editor_Load(object sender, EventArgs e)
 		{
@@ -58,7 +52,6 @@ namespace TS4_STBL_Editor
 			settings1.StoreSettings(dataGridView1, 1);
 			settings2.StoreSettings(dataGridView1, 2);
 
-
 			dataGridView1.Columns.Clear();
 			dataGridView1.DataSource = mainDataTable;
 
@@ -76,11 +69,17 @@ namespace TS4_STBL_Editor
 			if (dataGridView1.Rows.Count != 0)
 			{
 				DataTable dt = (DataTable)dataGridView1.DataSource;
-
-				for (int i = 0; i < dataTable.Rows.Count; i++)
+				DataTable tempDataTable = dataTable.Clone();
+				
+				for (int i = 0; i < dt.Rows.Count; i++)
 				{
-					dataTable.Rows[i][1] = dt.Rows[i][2];
+					tempDataTable.Rows.Add();
+					tempDataTable.Rows[i][0] = dt.Rows[i][0];
+					tempDataTable.Rows[i][1] = dt.Rows[i][2];
 				}
+
+				dataTable.Rows.Clear();
+				dataTable = tempDataTable.Copy();
 			}
 			Close();
 		}

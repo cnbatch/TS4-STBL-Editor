@@ -164,6 +164,13 @@ namespace TS4_STBL_Editor
 				progressBar1.Visible = false;
 			}
 			stblEditor.ShowDialog();
+			dataGridView1.DataSource = stblEditor.dataTable;
+
+			for (int k = 0; k < dataGridView1.Rows.Count; k++)
+			{
+				dataGridView1.Rows[k].HeaderCell.Value = (k + 1).ToString();
+			}
+
 			stblEditor.Dispose();
 		}
 

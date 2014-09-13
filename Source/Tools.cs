@@ -144,11 +144,8 @@ namespace TS4_STBL_Editor
 			return useForReturn;
 		}
 
-		public string WriteSTBLFile(ArrayList mainArrayList, bool isSaveAs, string stblFilePath, bool pathIsOpened)
+		public string WriteSTBLFile(ArrayList mainArrayList, bool isSaveAs, string stblFilePath)
 		{
-			if (!pathIsOpened)
-				return stblFilePath;
-
 			ArrayList textResourceID = (ArrayList)mainArrayList[0];
 			ArrayList textString = (ArrayList)mainArrayList[1];
 
@@ -194,7 +191,7 @@ namespace TS4_STBL_Editor
 				binaryWriter.Write(((string)textString[i]).ToCharArray());
 			}
 
-			if (isSaveAs | !pathIsOpened)
+			if (isSaveAs)
 			{
 				SaveFileDialog SaveFile = new SaveFileDialog();
 				switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
@@ -222,13 +219,15 @@ namespace TS4_STBL_Editor
 						break;
 				}
 				if (SaveFile.ShowDialog() == DialogResult.OK)
+				{
 					stblFilePath = SaveFile.FileName;
+					FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+					BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
+					stblFileWriter.Write(stblMemoryStream.ToArray());
+					stblStream.Dispose();
+				}
 			}
 
-			FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-			BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
-			stblFileWriter.Write(stblMemoryStream.ToArray());
-			stblStream.Dispose();
 			stblMemoryStream.Dispose();
 
 			return stblFilePath;
@@ -332,7 +331,6 @@ namespace TS4_STBL_Editor
 		public void SaveSTBLFile(bool isSaveAs)
 		{
 			if (dataGridView1.Rows.Count == 0) return;
-			if (!pathOpened) return;
 
 			ArrayList textResourceID = new ArrayList();
 			ArrayList textString = new ArrayList();
@@ -352,7 +350,7 @@ namespace TS4_STBL_Editor
 			tempList.Add(textResourceID);
 			tempList.Add(textString);
 
-			publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath, pathOpened);
+			publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
 			toolStripStatusLabel2.Text = publicPath;
 		}
 

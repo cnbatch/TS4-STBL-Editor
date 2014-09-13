@@ -130,7 +130,10 @@ namespace TS4_STBL_Editor
 
 		private void savePackageToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SaveSTBLFile(false);
+			if (pathOpened)
+				SaveSTBLFile(false);
+			else if (!pathOpened && dataGridView1.Rows.Count > 0)
+				SaveSTBLFile(true);
 		}
 
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,31 +150,31 @@ namespace TS4_STBL_Editor
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Editor stblEditor = new Editor();
-			progressBar1.Visible = true;
-			progressBar1.Value = 0;
-
-			stblEditor.updateProgressBar = delegate(double i)
+			if (dataGridView1.Rows.Count > 0)
 			{
-				progressBar1.Value = (int)(progressBar1.Maximum * i);
-			};
+				Editor stblEditor = new Editor();
+				progressBar1.Visible = true;
+				progressBar1.Value = 0;
 
-			DataTable dataTable = (DataTable)dataGridView1.DataSource;
+				stblEditor.updateProgressBar = delegate(double i)
+				{
+					progressBar1.Value = (int)(progressBar1.Maximum * i);
+				};
 
-			if (dataGridView1.Rows.Count != 0)
-			{
+				DataTable dataTable = (DataTable)dataGridView1.DataSource;
+
 				stblEditor.dataTable = dataTable;
 				progressBar1.Visible = false;
-			}
-			stblEditor.ShowDialog();
-			dataGridView1.DataSource = stblEditor.dataTable;
+				stblEditor.ShowDialog();
+				dataGridView1.DataSource = stblEditor.dataTable;
 
-			for (int k = 0; k < dataGridView1.Rows.Count; k++)
-			{
-				dataGridView1.Rows[k].HeaderCell.Value = (k + 1).ToString();
-			}
+				for (int k = 0; k < dataGridView1.Rows.Count; k++)
+				{
+					dataGridView1.Rows[k].HeaderCell.Value = (k + 1).ToString();
+				}
 
-			stblEditor.Dispose();
+				stblEditor.Dispose();
+			}
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -310,7 +313,11 @@ namespace TS4_STBL_Editor
 
 		private void closeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//dataGridView1.Rows.Clear();
+			if (pathOpened)
+				SaveSTBLFile(false);
+			else if (dataGridView1.Rows.Count > 0)
+				SaveSTBLFile(true);
+
 			dataGridView1.DataSource = null;
 			dataGridView1.Columns.Add("Column1", "");
 			dataGridView1.Columns.Add("Column2", "");

@@ -52,6 +52,8 @@ namespace TS4_STBL_Editor
 
 		private string publicPath = string.Empty;
 		private bool pathOpened = false;
+		private bool canAlsoSave = false;
+		private bool isTextChanged = false;
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -132,13 +134,15 @@ namespace TS4_STBL_Editor
 		{
 			if (pathOpened)
 				SaveSTBLFile(false);
-			else if (!pathOpened && dataGridView1.Rows.Count > 0)
+			else if (canAlsoSave)
 				SaveSTBLFile(true);
+			isTextChanged = false;
 		}
 
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveSTBLFile(true);
+			isTextChanged = false;
 		}
 
 		private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -291,31 +295,18 @@ namespace TS4_STBL_Editor
 
 			XMLToDataGridView(tempList, xmlFilePath);
 
-			switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
-			{
-				case "CHS":
-				case "ZHI":
-					MessageBox.Show("导入成功！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					break;
-				case "CHT":
-				case "ZHH":
-				case "ZHM":
-					MessageBox.Show("匯入成功！", "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					break;
-				default:
-					MessageBox.Show("Successfully Imported!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					break;
-			}
-
 			UseWaitCursor = false;
 			progressBar1.Visible = false;
+			if (!pathOpened)
+				canAlsoSave = true;
+			isTextChanged = true;
 		}
 
 		private void closeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (pathOpened)
+			if (isTextChanged && pathOpened)
 				SaveSTBLFile(false);
-			else if (dataGridView1.Rows.Count > 0)
+			else if (isTextChanged && dataGridView1.Rows.Count > 0)
 				SaveSTBLFile(true);
 
 			dataGridView1.DataSource = null;
@@ -340,6 +331,8 @@ namespace TS4_STBL_Editor
 			}
 			publicPath = string.Empty;
 			pathOpened = false;
+			canAlsoSave = false;
+			isTextChanged = false;
 		}
 	}
 }

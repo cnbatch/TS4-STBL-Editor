@@ -191,7 +191,7 @@ namespace TS4_STBL_Editor
 				binaryWriter.Write(((string)textString[i]).ToCharArray());
 			}
 
-			if (isSaveAs)
+			if (isSaveAs || canAlsoSave)
 			{
 				SaveFileDialog SaveFile = new SaveFileDialog();
 				switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
@@ -221,13 +221,18 @@ namespace TS4_STBL_Editor
 				if (SaveFile.ShowDialog() == DialogResult.OK)
 				{
 					stblFilePath = SaveFile.FileName;
-					FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-					BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
-					stblFileWriter.Write(stblMemoryStream.ToArray());
-					stblStream.Dispose();
+				}
+				else
+				{
+					stblMemoryStream.Dispose();
+					return stblFilePath;
 				}
 			}
 
+			FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+			BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
+			stblFileWriter.Write(stblMemoryStream.ToArray());
+			stblStream.Dispose();
 			stblMemoryStream.Dispose();
 
 			return stblFilePath;
@@ -352,6 +357,7 @@ namespace TS4_STBL_Editor
 
 			publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
 			toolStripStatusLabel2.Text = publicPath;
+			pathOpened = true;
 		}
 
 		public void STBLToDataGridView(ArrayList tempList)
@@ -426,14 +432,6 @@ namespace TS4_STBL_Editor
 				dataGridView1.Columns.Clear();
 				dataGridView1.DataSource = dataTable;
 				RestoreDataGridViewSettings();
-
-				//dataGridView1.Rows.Add(textString.Count);
-				/*for (int i = 0; i < textString.Count; i++)
-				{
-					dataGridView1.Rows[i].Cells[0].Value = "0x" + ((uint)textResourceID[i]).ToString("X8");
-					dataGridView1.Rows[i].Cells[1].Value = textString[i];
-					progressBar1.Value = progressBar1.Maximum * i / textString.Count;
-				}*/
 			}
 			else
 			{
@@ -488,8 +486,6 @@ namespace TS4_STBL_Editor
 				tempDataGridView.Rows[0].Cells[2].Selected = true;
 				tempDataGridView.Sort(tempDataGridView.Columns[2], ListSortDirection.Ascending);
 
-				//dataGridView1.Rows.Clear();
-				//dataGridView1.Rows.Add(tempDataGridView.Rows.Count);
 				DataTable dataTable = new DataTable();
 				DataColumn dc;
 				DataRow dr;
@@ -510,14 +506,6 @@ namespace TS4_STBL_Editor
 				dataGridView1.Columns.Clear();
 				dataGridView1.DataSource = dataTable;
 				RestoreDataGridViewSettings();
-
-
-				/*for (int i = 0; i < tempDataGridView.Rows.Count; i++)
-				{
-					dataGridView1.Rows[i].Cells[0].Value = "0x" + tempDataGridView.Rows[i].Cells[0].Value;
-					dataGridView1.Rows[i].Cells[1].Value = tempDataGridView.Rows[i].Cells[1].Value;
-					progressBar1.Value = lastProgressBarValue + progressBar1.Maximum / 4 * i / tempDataGridView.Rows.Count;
-				}*/
 			}
 
 			foreach (DataGridViewRow row in dataGridView1.Rows)

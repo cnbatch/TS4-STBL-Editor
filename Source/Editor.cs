@@ -22,6 +22,7 @@ namespace TS4_STBL_Editor
 		public delegate void UpdateProgressBar(double num);
 		public UpdateProgressBar updateProgressBar;
 		public DataTable dataTable;
+		public bool isTextChanged = false;
 
 		public Editor()
 		{
@@ -81,6 +82,7 @@ namespace TS4_STBL_Editor
 				dataTable.Rows.Clear();
 				dataTable = tempDataTable.Copy();
 			}
+			isTextChanged = true;
 			Close();
 		}
 

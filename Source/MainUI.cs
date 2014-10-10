@@ -299,6 +299,7 @@ namespace TS4_STBL_Editor
 			progressBar1.Visible = false;
 			if (!pathOpened)
 				canAlsoSave = true;
+			else canAlsoSave = false;
 			isTextChanged = true;
 		}
 

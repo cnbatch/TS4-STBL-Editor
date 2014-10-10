@@ -494,7 +494,7 @@ namespace TS4_STBL_Editor
 				dc = new DataColumn(dataGridView1.Columns[1].HeaderText);
 				dataTable.Columns.Add(dc);
 
-				for (int i = 0; i < textResourceID.Count; i++)
+				for (int i = 0; i < tempDataGridView.Rows.Count; i++)
 				{
 					dr = dataTable.NewRow();
 					dr[0] = "0x" + tempDataGridView.Rows[i].Cells[0].Value;

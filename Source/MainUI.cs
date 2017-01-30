@@ -157,7 +157,8 @@ namespace TS4_STBL_Editor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            //if (dataGridView1.Rows.Count > 0)
+            if (dataGridView1.DataSource != null)
             {
                 Editor stblEditor = new Editor();
                 progressBar1.Visible = true;

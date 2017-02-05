@@ -130,13 +130,13 @@
     <value>280, 9</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 19</value>
+    <value>176, 19</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Version 1.2.2</value>
+    <value>Version 2.1 by ArtUrlWWW</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -202,7 +202,7 @@
     <value>2</value>
   </data>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>Copyright (c) 2014, cnbatch &amp; C major
+    <value>Copyright (c) 2017, ArtUrlWWW, cnbatch &amp; C major
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

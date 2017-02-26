@@ -22,9 +22,13 @@ namespace TS4_STBL_Editor
 
         private void StringPicker_Load(object sender, EventArgs e)
         {
+            reloadListView();
+        }
+
+        private void reloadListView()
+        {
             listView1.Items.Clear();
             listView1.View = View.List;
-            //listView1.View = View.Details;
             for (int x = 0; x < MainUI.strHolders.Count; x++)
             {
                 StringHolder sh = MainUI.strHolders[x];
@@ -33,17 +37,31 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void listView1_Click(object sender, EventArgs e)
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
             if (listView1.SelectedIndices.Count > 0)
             {
-                addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (addstr != null)
+                    {
+                        addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+                    }
+                }
+                else
+                {
+                    MainUI.strHolders.RemoveAt(listView1.SelectedIndices[0]);
+                    reloadListView();
+                }
             }
         }
 
-        private void listView1_DoubleClick(object sender, EventArgs e)
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+            if (addstr != null)
+            {
+                addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+            }
 
             this.Close();
         }

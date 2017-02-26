@@ -163,5 +163,30 @@ namespace TS4_STBL_Editor
                 MainUI.strHolders.Add(sh);
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            for (int x = 0; x < MainUI.strHolders.Count; x++)
+            {
+                StringHolder sh = MainUI.strHolders[x];
+
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                DataRow dr;
+                dr = dt.NewRow();
+                dr[0] = sh.textIDFld;
+                dr[2] = sh.displayTextFld;
+                dt.Rows.Add(dr);
+                dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+
+            }
+
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            StringPicker sp = new StringPicker(null);
+            sp.Show();
+        }
     }
 }

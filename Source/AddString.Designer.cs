@@ -35,8 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textIDFld = new System.Windows.Forms.MaskedTextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.copyStrFldsValues = new System.Windows.Forms.Button();
+            this.pasteStrFldsValues = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -57,7 +57,7 @@
             // 
             resources.ApplyResources(this.displayTextFld, "displayTextFld");
             this.displayTextFld.Name = "displayTextFld";
-            this.displayTextFld.TextChanged += new System.EventHandler(this.calculateTextIDOfDisplayText);
+            this.displayTextFld.KeyUp += new System.Windows.Forms.KeyEventHandler(this.calculateTextIDOfDisplayText);
             // 
             // label1
             // 
@@ -81,26 +81,26 @@
             this.textIDFld.ResetOnSpace = false;
             this.textIDFld.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // button3
+            // copyStrFldsValues
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.copyStrFldsValues, "copyStrFldsValues");
+            this.copyStrFldsValues.Name = "copyStrFldsValues";
+            this.copyStrFldsValues.UseVisualStyleBackColor = true;
+            this.copyStrFldsValues.Click += new System.EventHandler(this.copyStrFldsValues_Click);
             // 
-            // button4
+            // pasteStrFldsValues
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            resources.ApplyResources(this.pasteStrFldsValues, "pasteStrFldsValues");
+            this.pasteStrFldsValues.Name = "pasteStrFldsValues";
+            this.pasteStrFldsValues.UseVisualStyleBackColor = true;
+            this.pasteStrFldsValues.Click += new System.EventHandler(this.pasteStrFldsValues_Click);
             // 
             // AddString
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.pasteStrFldsValues);
+            this.Controls.Add(this.copyStrFldsValues);
             this.Controls.Add(this.textIDFld);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -121,7 +121,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox textIDFld;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button copyStrFldsValues;
+        private System.Windows.Forms.Button pasteStrFldsValues;
     }
 }

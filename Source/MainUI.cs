@@ -18,8 +18,7 @@ namespace TS4_STBL_Editor
         private DataGridViewSettings settings0 = new DataGridViewSettings();
         private DataGridViewSettings settings1 = new DataGridViewSettings();
 
-        public static String textIDFld = "";
-        public static String displayTextFld = "";
+        public static List<StringHolder> strHolders = new List<StringHolder>();
 
         public MainUI()
         {
@@ -64,6 +63,11 @@ namespace TS4_STBL_Editor
         }
 
         private void openPackageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openPackageToolStripMenuItemMethod();
+        }
+
+        private void openPackageToolStripMenuItemMethod()
         {
             string stblFilePath = string.Empty;
             bool fileIsOpened = false;
@@ -182,6 +186,9 @@ namespace TS4_STBL_Editor
                 }
 
                 stblEditor.Dispose();
+            } else
+            {
+                openPackageToolStripMenuItemMethod();
             }
         }
 

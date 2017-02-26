@@ -23,6 +23,7 @@ namespace TS4_STBL_Editor
         public string textID;
         public string dataGridText;
         public bool isOK = false;
+        public bool stopOnChangeEvent = false;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -126,19 +127,38 @@ namespace TS4_STBL_Editor
 
         private void calculateTextIDOfDisplayText(object sender, EventArgs e)
         {
-            textIDFld.Text = FNVHasherStrFunctions.fnv32HexString(displayTextFld.Text).Replace("0x", "");
+            if (!stopOnChangeEvent)
+            {
+                textIDFld.Text = FNVHasherStrFunctions.fnv32HexString(displayTextFld.Text).Replace("0x", "");
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void copyStrFldsValues_Click(object sender, EventArgs e)
         {
-            MainUI.textIDFld = textIDFld.Text;
-            MainUI.displayTextFld = displayTextFld.Text;
+            StringHolder sh = new StringHolder();
+            sh.textIDFld = textIDFld.Text;
+            sh.displayTextFld = displayTextFld.Text;
+
+            MainUI.strHolders.Add(sh);
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void pasteStrFldsValues_Click(object sender, EventArgs e)
         {
-            textIDFld.Text= MainUI.textIDFld;
-            displayTextFld.Text = MainUI.displayTextFld;
+            StringPicker sp = new StringPicker(this);
+            sp.Show();
         }
+
+        public void setFldsValues(StringHolder sh)
+        {
+            stopOnChangeEvent = true;
+
+            displayTextFld.Text = sh.displayTextFld;
+
+            stopOnChangeEvent = false;
+
+            textIDFld.Text = sh.textIDFld.Replace("0x", "");
+            
+        }
+        
     }
 }

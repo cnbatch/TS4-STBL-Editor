@@ -108,6 +108,13 @@
     <Compile Include="AboutEditorForm.Designer.cs">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StringHolder.cs" />
+    <Compile Include="StringPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StringPicker.Designer.cs">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +178,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StringPicker.resx">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

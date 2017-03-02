@@ -1,6 +1,7 @@
 TS4 STBL Editor
 ===============
 You can translate the strings in STBL file with this tool.
+Home page: http://www.modthesims.info/download.php?t=588625
 
 
 License

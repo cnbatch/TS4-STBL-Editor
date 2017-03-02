@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 221</value>
+    <value>285, 221</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 29</value>
@@ -151,7 +151,7 @@
     <value>Bottom</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 221</value>
+    <value>420, 221</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 29</value>
@@ -184,7 +184,7 @@
     <value>True</value>
   </data>
   <data name="displayTextFld.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 125</value>
+    <value>641, 125</value>
   </data>
   <data name="displayTextFld.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -282,52 +282,52 @@
   <data name="&gt;&gt;textIDFld.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="copyStrFldsValues.Location" type="System.Drawing.Point, System.Drawing">
     <value>206, 18</value>
   </data>
-  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="copyStrFldsValues.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 37</value>
   </data>
-  <data name="button3.TabIndex" type="System.Int32, mscorlib">
+  <data name="copyStrFldsValues.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
+  <data name="copyStrFldsValues.Text" xml:space="preserve">
     <value>Copy this values</value>
   </data>
-  <data name="&gt;&gt;button3.Name" xml:space="preserve">
-    <value>button3</value>
+  <data name="&gt;&gt;copyStrFldsValues.Name" xml:space="preserve">
+    <value>copyStrFldsValues</value>
   </data>
-  <data name="&gt;&gt;button3.Type" xml:space="preserve">
+  <data name="&gt;&gt;copyStrFldsValues.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;copyStrFldsValues.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;copyStrFldsValues.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="pasteStrFldsValues.Location" type="System.Drawing.Point, System.Drawing">
     <value>346, 18</value>
   </data>
-  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pasteStrFldsValues.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 37</value>
   </data>
-  <data name="button4.TabIndex" type="System.Int32, mscorlib">
+  <data name="pasteStrFldsValues.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="button4.Text" xml:space="preserve">
+  <data name="pasteStrFldsValues.Text" xml:space="preserve">
     <value>Paste copied values</value>
   </data>
-  <data name="&gt;&gt;button4.Name" xml:space="preserve">
-    <value>button4</value>
+  <data name="&gt;&gt;pasteStrFldsValues.Name" xml:space="preserve">
+    <value>pasteStrFldsValues</value>
   </data>
-  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+  <data name="&gt;&gt;pasteStrFldsValues.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pasteStrFldsValues.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;pasteStrFldsValues.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -337,7 +337,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>524, 262</value>
+    <value>765, 262</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>

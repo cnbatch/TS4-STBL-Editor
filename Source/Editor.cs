@@ -188,5 +188,38 @@ namespace TS4_STBL_Editor
             StringPicker sp = new StringPicker(null);
             sp.Show();
         }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    //if (addstr != null)
+                    //{
+                    //    addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+                    //}
+                }
+                else
+                {
+                    for (int x =0; x< dataGridView1.SelectedRows.Count; x++)
+                    {
+                        StringHolder sh = new StringHolder();
+                        sh.textIDFld = dataGridView1.SelectedRows[x].Cells[0].Value.ToString();
+                        sh.displayTextFld = dataGridView1.SelectedRows[x].Cells[1].Value.ToString();
+
+                        MainUI.strHolders.Add(sh);
+                    }
+
+                    MessageBox.Show(dataGridView1.SelectedRows.Count+" rows copied!");
+                }
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            HowToCopyMultipleRows a = new HowToCopyMultipleRows();
+            a.ShowDialog();
+        }
     }
 }

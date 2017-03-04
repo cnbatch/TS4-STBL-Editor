@@ -108,6 +108,12 @@
     <Compile Include="AboutEditorForm.Designer.cs">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HowToCopyMultipleRows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HowToCopyMultipleRows.Designer.cs">
+      <DependentUpon>HowToCopyMultipleRows.cs</DependentUpon>
+    </Compile>
     <Compile Include="StringHolder.cs" />
     <Compile Include="StringPicker.cs">
       <SubType>Form</SubType>
@@ -156,6 +162,9 @@
     <EmbeddedResource Include="Editor.zh-Hant.resx">
       <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HowToCopyMultipleRows.resx">
+      <DependentUpon>HowToCopyMultipleRows.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUI.en.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +209,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Imgs\howToCopyMultipleRows.gif" />
     <Content Include="TS4Editor.ico" />
   </ItemGroup>
   <ItemGroup>

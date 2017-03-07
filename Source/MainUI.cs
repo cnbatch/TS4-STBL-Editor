@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Globalization;
 using System.Threading;
+using System.IO;
+using System.Xml;
+using System.Reflection;
 
 namespace TS4_STBL_Editor
 {
@@ -69,7 +72,7 @@ namespace TS4_STBL_Editor
             openPackageToolStripMenuItemMethod();
         }
 
-        private void openPackageToolStripMenuItemMethod(string pathToFile = null)
+        private void openPackageToolStripMenuItemMethod(string pathToFileDragNDrop = null)
         {
             string stblFilePath = string.Empty;
             bool fileIsOpened = false;
@@ -98,7 +101,7 @@ namespace TS4_STBL_Editor
                     break;
             }
 
-            if (pathToFile == null)
+            if (pathToFileDragNDrop == null)
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -128,9 +131,9 @@ namespace TS4_STBL_Editor
                 }
             }
 
-            if (pathToFile!=null)
+            if (pathToFileDragNDrop != null)
             {
-                stblFilePath = pathToFile;
+                stblFilePath = pathToFileDragNDrop;
                 toolStripStatusLabel2.Text = stblFilePath;
                 publicPath = stblFilePath;
                 pathOpened = fileIsOpened = true;
@@ -138,6 +141,34 @@ namespace TS4_STBL_Editor
 
             if (fileIsOpened)
             {
+                fileNameLbl.Text = stblFilePath;
+
+                if (stblFilePath.IndexOf("220557DA") > 0)
+                {
+
+                    var assembly = Assembly.GetExecutingAssembly();
+                    var resourceName = "TS4_STBL_Editor.LangCodesList.xml";
+
+                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string result = reader.ReadToEnd();
+
+                        string langId = stblFilePath.Substring(stblFilePath.IndexOf("220557DA") + 18, 2);
+
+                        XmlDocument doc = new XmlDocument();
+                        doc.LoadXml(result);
+                        XmlNode root = doc.DocumentElement;
+
+                        XmlNode node = root.SelectSingleNode("lang[id= \"0x" + langId + "\"]");
+
+                        LanguageLbl.Text = node["name"].InnerXml;
+                    }
+                } else
+                {
+                    LanguageLbl.Text = "Unknown, file name is not like S4_220557DA_80000000_0B84CB2FC430848A%%+STBL.stbl ";
+                }
+
                 UseWaitCursor = true;
                 progressBar1.Visible = true;
                 progressBar1.Value = 0;
@@ -372,5 +403,12 @@ namespace TS4_STBL_Editor
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
         }
+
+        private void showLangCodesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new LangCodesHelp()).ShowDialog();
+        }
+
+        
     }
 }

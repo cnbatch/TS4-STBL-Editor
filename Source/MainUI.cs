@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Globalization;
 using System.Threading;
+using System.IO;
+using System.Xml;
+using System.Reflection;
 
 namespace TS4_STBL_Editor
 {
@@ -28,6 +31,8 @@ namespace TS4_STBL_Editor
             toolTip1.InitialDelay = 500;
             toolTip1.ReshowDelay = 500;
             toolTip1.ShowAlways = true;
+
+            this.AllowDrop = true;
 
             switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
             {
@@ -67,7 +72,7 @@ namespace TS4_STBL_Editor
             openPackageToolStripMenuItemMethod();
         }
 
-        private void openPackageToolStripMenuItemMethod()
+        private void openPackageToolStripMenuItemMethod(string pathToFileDragNDrop = null)
         {
             string stblFilePath = string.Empty;
             bool fileIsOpened = false;
@@ -96,35 +101,74 @@ namespace TS4_STBL_Editor
                     break;
             }
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (pathToFileDragNDrop == null)
             {
-                stblFilePath = openFileDialog1.FileName;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    stblFilePath = openFileDialog1.FileName;
+                    toolStripStatusLabel2.Text = stblFilePath;
+                    publicPath = stblFilePath;
+                    pathOpened = fileIsOpened = true;
+                }
+                else
+                {
+                    switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                    {
+                        case "CHS":
+                        case "ZHI":
+                            toolStripStatusLabel2.Text = "未打开任何文件。";
+                            break;
+                        case "CHT":
+                        case "ZHH":
+                        case "ZHM":
+                            toolStripStatusLabel2.Text = "未開啟任何檔案。";
+                            break;
+                        default:
+                            toolStripStatusLabel2.Text = "No file is opened.";
+                            break;
+                    }
+                    pathOpened = false;
+                }
+            }
+
+            if (pathToFileDragNDrop != null)
+            {
+                stblFilePath = pathToFileDragNDrop;
                 toolStripStatusLabel2.Text = stblFilePath;
                 publicPath = stblFilePath;
                 pathOpened = fileIsOpened = true;
             }
-            else
-            {
-                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
-                {
-                    case "CHS":
-                    case "ZHI":
-                        toolStripStatusLabel2.Text = "未打开任何文件。";
-                        break;
-                    case "CHT":
-                    case "ZHH":
-                    case "ZHM":
-                        toolStripStatusLabel2.Text = "未開啟任何檔案。";
-                        break;
-                    default:
-                        toolStripStatusLabel2.Text = "No file is opened.";
-                        break;
-                }
-                pathOpened = false;
-            }
 
             if (fileIsOpened)
             {
+                fileNameLbl.Text = stblFilePath;
+
+                if (stblFilePath.IndexOf("220557DA") > 0)
+                {
+
+                    var assembly = Assembly.GetExecutingAssembly();
+                    var resourceName = "TS4_STBL_Editor.LangCodesList.xml";
+
+                    using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string result = reader.ReadToEnd();
+
+                        string langId = stblFilePath.Substring(stblFilePath.IndexOf("220557DA") + 18, 2);
+
+                        XmlDocument doc = new XmlDocument();
+                        doc.LoadXml(result);
+                        XmlNode root = doc.DocumentElement;
+
+                        XmlNode node = root.SelectSingleNode("lang[id= \"0x" + langId + "\"]");
+
+                        LanguageLbl.Text = node["name"].InnerXml;
+                    }
+                } else
+                {
+                    LanguageLbl.Text = "Unknown, file name is not like S4_220557DA_80000000_0B84CB2FC430848A%%+STBL.stbl ";
+                }
+
                 UseWaitCursor = true;
                 progressBar1.Visible = true;
                 progressBar1.Value = 0;
@@ -186,7 +230,8 @@ namespace TS4_STBL_Editor
                 }
 
                 stblEditor.Dispose();
-            } else
+            }
+            else
             {
                 openPackageToolStripMenuItemMethod();
             }
@@ -346,5 +391,24 @@ namespace TS4_STBL_Editor
             canAlsoSave = false;
             isTextChanged = false;
         }
+
+        private void MainUI_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files) Console.WriteLine(file);
+            openPackageToolStripMenuItemMethod(files[0]);
+        }
+
+        private void MainUI_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void showLangCodesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            (new LangCodesHelp()).ShowDialog();
+        }
+
+        
     }
 }

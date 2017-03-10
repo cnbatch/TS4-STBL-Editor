@@ -80,6 +80,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -107,6 +108,18 @@
     </Compile>
     <Compile Include="AboutEditorForm.Designer.cs">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HowToCopyMultipleRows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HowToCopyMultipleRows.Designer.cs">
+      <DependentUpon>HowToCopyMultipleRows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LangCodesHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LangCodesHelp.Designer.cs">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
     </Compile>
     <Compile Include="StringHolder.cs" />
     <Compile Include="StringPicker.cs">
@@ -156,6 +169,12 @@
     <EmbeddedResource Include="Editor.zh-Hant.resx">
       <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HowToCopyMultipleRows.resx">
+      <DependentUpon>HowToCopyMultipleRows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangCodesHelp.resx">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUI.en.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +219,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Imgs\howToCopyMultipleRows.gif" />
+    <EmbeddedResource Include="LangCodesList.xml" />
     <Content Include="TS4Editor.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using FNVHasherDLL;
+using System.Numerics;
 
 namespace TS4_STBL_Editor
 {
@@ -65,7 +67,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OKBtn_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count != 0)
             {
@@ -86,12 +88,12 @@ namespace TS4_STBL_Editor
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Add_New_String_Click(object sender, EventArgs e)
         {
             AddString addString = new AddString();
             addString.ShowDialog();
@@ -164,7 +166,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Paste_ALL_copied_values_Click(object sender, EventArgs e)
         {
             for (int x = 0; x < MainUI.strHolders.Count; x++)
             {
@@ -180,13 +182,133 @@ namespace TS4_STBL_Editor
 
             }
 
-            
+
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Show_copied_values_Click(object sender, EventArgs e)
         {
             StringPicker sp = new StringPicker(null);
             sp.Show();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    //if (addstr != null)
+                    //{
+                    //    addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+                    //}
+                }
+                else
+                {
+                    CopySelectedRows();
+                }
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            HowToCopyMultipleRows a = new HowToCopyMultipleRows();
+            a.ShowDialog();
+        }
+
+        private void Copy_Values_By_IDs_Click(object sender, EventArgs e)
+        {
+            string idsStr = "";
+            if (ShowInputDialog(ref idsStr) == DialogResult.OK)
+            {
+                string[] idsArray = idsStr.Split(new string[] { "," }, StringSplitOptions.None);
+                for (int x = 0; x < idsArray.Length; x++)
+                {
+                    string id = idsArray[x];
+                    if (id.Length > 3)
+                    {
+
+                        if (id.StartsWith("0x") || id.StartsWith("0X"))
+                        {
+                            id = id.Replace("0X", "0x");
+                        }
+                        else
+                        {
+                            id = FNVHasherStrFunctions.decimalToHex(id);
+                        }
+
+                        if (dataGridView1.Rows.Count != 0)
+                        {
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                if (dataGridView1.Rows[i].Cells[0].Value.ToString().Equals(id))
+                                {
+                                    dataGridView1.Rows[i].Selected = true;
+                                }
+                            }
+
+                        }
+                    }
+                }
+                CopySelectedRows();
+            }
+        }
+
+        private static DialogResult ShowInputDialog(ref string input)
+        {
+            System.Drawing.Size size = new System.Drawing.Size(400, 70);
+            Form inputBox = new Form();
+
+            inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            inputBox.ClientSize = size;
+            inputBox.Text = "Enter ids, comma separated";
+
+            System.Windows.Forms.TextBox textBox = new TextBox();
+            textBox.Size = new System.Drawing.Size(size.Width - 10, 23);
+            textBox.Location = new System.Drawing.Point(5, 5);
+            textBox.Text = input;
+            inputBox.Controls.Add(textBox);
+
+            Button okButton = new Button();
+            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            okButton.Name = "okButton";
+            okButton.Size = new System.Drawing.Size(75, 23);
+            okButton.Text = "&OK";
+            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+            inputBox.Controls.Add(okButton);
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Text = "&Cancel";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+            inputBox.Controls.Add(cancelButton);
+
+            inputBox.AcceptButton = okButton;
+            inputBox.CancelButton = cancelButton;
+
+            DialogResult result = inputBox.ShowDialog();
+            input = textBox.Text;
+            return result;
+        }
+
+        private void Copy_selected_rows_Click(object sender, EventArgs e)
+        {
+            CopySelectedRows();
+        }
+
+        private void CopySelectedRows()
+        {
+            for (int x = 0; x < dataGridView1.SelectedRows.Count; x++)
+            {
+                StringHolder sh = new StringHolder();
+                sh.textIDFld = dataGridView1.SelectedRows[x].Cells[0].Value.ToString();
+                sh.displayTextFld = dataGridView1.SelectedRows[x].Cells[1].Value.ToString();
+
+                MainUI.strHolders.Add(sh);
+            }
+
+            MessageBox.Show(dataGridView1.SelectedRows.Count + " rows copied!");
         }
     }
 }

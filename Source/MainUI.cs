@@ -229,6 +229,8 @@ namespace TS4_STBL_Editor
                     dataGridView1.Rows[k].HeaderCell.Value = (k + 1).ToString();
                 }
 
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+
                 stblEditor.Dispose();
             }
             else

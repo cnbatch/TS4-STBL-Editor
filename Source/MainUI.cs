@@ -37,19 +37,19 @@ namespace TS4_STBL_Editor
             switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
             {
                 case "CHS":
-                    toolTip1.SetToolTip(this.button1, "在新窗口中编辑");
-                    toolTip1.SetToolTip(this.button2, "导出到XML文件");
-                    toolTip1.SetToolTip(this.button3, "从XML文件导入");
+                    toolTip1.SetToolTip(this.editBtn, "在新窗口中编辑");
+                    toolTip1.SetToolTip(this.exportBtn, "导出到XML文件");
+                    toolTip1.SetToolTip(this.importBtn, "从XML文件导入");
                     break;
                 case "CHT":
-                    toolTip1.SetToolTip(this.button1, "在新視窗中編輯");
-                    toolTip1.SetToolTip(this.button2, "匯出到XML檔案");
-                    toolTip1.SetToolTip(this.button3, "從XML檔案匯入");
+                    toolTip1.SetToolTip(this.editBtn, "在新視窗中編輯");
+                    toolTip1.SetToolTip(this.exportBtn, "匯出到XML檔案");
+                    toolTip1.SetToolTip(this.importBtn, "從XML檔案匯入");
                     break;
                 default:
-                    toolTip1.SetToolTip(this.button1, "Edit in a new Window");
-                    toolTip1.SetToolTip(this.button2, "Export to XML file");
-                    toolTip1.SetToolTip(this.button3, "Import from XML file");
+                    toolTip1.SetToolTip(this.editBtn, "Edit in a new Window");
+                    toolTip1.SetToolTip(this.exportBtn, "Export to XML file");
+                    toolTip1.SetToolTip(this.importBtn, "Import from XML file");
                     break;
             }
 
@@ -69,14 +69,11 @@ namespace TS4_STBL_Editor
 
         private void openPackageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openPackageToolStripMenuItemMethod();
+            openPackageFromOpenFileDialog();
         }
 
-        private void openPackageToolStripMenuItemMethod(string pathToFileDragNDrop = null)
+        private void openPackageFromOpenFileDialog()
         {
-            string stblFilePath = string.Empty;
-            bool fileIsOpened = false;
-
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
@@ -101,39 +98,39 @@ namespace TS4_STBL_Editor
                     break;
             }
 
-            if (pathToFileDragNDrop == null)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    stblFilePath = openFileDialog1.FileName;
-                    toolStripStatusLabel2.Text = stblFilePath;
-                    publicPath = stblFilePath;
-                    pathOpened = fileIsOpened = true;
-                }
-                else
-                {
-                    switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
-                    {
-                        case "CHS":
-                        case "ZHI":
-                            toolStripStatusLabel2.Text = "未打开任何文件。";
-                            break;
-                        case "CHT":
-                        case "ZHH":
-                        case "ZHM":
-                            toolStripStatusLabel2.Text = "未開啟任何檔案。";
-                            break;
-                        default:
-                            toolStripStatusLabel2.Text = "No file is opened.";
-                            break;
-                    }
-                    pathOpened = false;
-                }
+                openPackage(openFileDialog1.FileName);
             }
-
-            if (pathToFileDragNDrop != null)
+            else
             {
-                stblFilePath = pathToFileDragNDrop;
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        toolStripStatusLabel2.Text = "未打开任何文件。";
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        toolStripStatusLabel2.Text = "未開啟任何檔案。";
+                        break;
+                    default:
+                        toolStripStatusLabel2.Text = "No file is opened.";
+                        break;
+                }
+                pathOpened = false;
+            }
+        }
+
+        private void openPackage(string pathToFile)
+        {
+            string stblFilePath = string.Empty;
+            bool fileIsOpened = false;
+
+            if (pathToFile != null)
+            {
+                stblFilePath = pathToFile;
                 toolStripStatusLabel2.Text = stblFilePath;
                 publicPath = stblFilePath;
                 pathOpened = fileIsOpened = true;
@@ -164,7 +161,8 @@ namespace TS4_STBL_Editor
 
                         LanguageLbl.Text = node["name"].InnerXml;
                     }
-                } else
+                }
+                else
                 {
                     LanguageLbl.Text = "Unknown, file name is not like S4_220557DA_80000000_0B84CB2FC430848A%%+STBL.stbl ";
                 }
@@ -203,9 +201,8 @@ namespace TS4_STBL_Editor
             about.Dispose();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void editBtn_Click(object sender, EventArgs e)
         {
-            //if (dataGridView1.Rows.Count > 0)
             if (dataGridView1.DataSource != null)
             {
                 Editor stblEditor = new Editor();
@@ -232,14 +229,16 @@ namespace TS4_STBL_Editor
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
 
                 stblEditor.Dispose();
+
+                isTextChanged = true;
             }
             else
             {
-                openPackageToolStripMenuItemMethod();
+                openPackageFromOpenFileDialog();
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void exportBtn_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -307,7 +306,7 @@ namespace TS4_STBL_Editor
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void importBtn_Click(object sender, EventArgs e)
         {
             string xmlFilePath;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -363,10 +362,19 @@ namespace TS4_STBL_Editor
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (isTextChanged && pathOpened)
-                SaveSTBLFile(false);
-            else if (isTextChanged && dataGridView1.Rows.Count > 0)
-                SaveSTBLFile(true);
+            closeAndSavePackage();
+        }
+
+        private void closeAndSavePackage(bool save = true)
+        {
+            if (save)
+            {
+                if (isTextChanged && pathOpened)
+                    SaveSTBLFile(false);
+                else if (isTextChanged && dataGridView1.Rows.Count > 0)
+                    SaveSTBLFile(true);
+            }
+
 
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Add("Column1", "");
@@ -398,7 +406,7 @@ namespace TS4_STBL_Editor
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files) Console.WriteLine(file);
-            openPackageToolStripMenuItemMethod(files[0]);
+            openPackage(files[0]);
         }
 
         private void MainUI_DragEnter(object sender, DragEventArgs e)
@@ -411,6 +419,75 @@ namespace TS4_STBL_Editor
             (new LangCodesHelp()).ShowDialog();
         }
 
-        
+        private void multyInsertIntoFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MainUI.strHolders.Count > 0)
+            {
+
+                isTextChanged = false;
+                closeAndSavePackage(false);
+
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                openFileDialog1.Multiselect = true;
+
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        openFileDialog1.Filter = "STBL文件 (*.stbl)|*.stbl|所有文件 (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "选择STBL文件";
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        openFileDialog1.Filter = "STBL檔案 (*.stbl)|*.stbl|所有檔案 (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "選取STBL檔案";
+                        break;
+                    default:
+                        openFileDialog1.Filter = "STBL Files (*.stbl)|*.stbl|All Files (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "Choose STBL File";
+                        break;
+                }
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+
+                    foreach (string fileName in openFileDialog1.FileNames)
+                    {
+                        openPackage(fileName);
+
+                        isTextChanged = true;
+
+                        for (int x = 0; x < MainUI.strHolders.Count; x++)
+                        {
+                            StringHolder sh = MainUI.strHolders[x];
+
+                            DataTable dt = (DataTable)dataGridView1.DataSource;
+                            DataRow dr;
+                            dr = dt.NewRow();
+                            dr[0] = sh.textIDFld;
+                            dr[1] = sh.displayTextFld;
+                            dt.Rows.Add(dr);
+                            dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+
+                        }
+
+                        //break;
+
+
+                        closeAndSavePackage();
+                    }
+                    isTextChanged = false;
+
+                }
+            } else
+            {
+                MessageBox.Show("You have not copied any string. \r\nCopy strings and use this option for mass insert of copied strings into STBL files!");
+            }
+        }
     }
 }

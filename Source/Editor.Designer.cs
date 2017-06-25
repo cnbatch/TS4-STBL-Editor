@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Paste_ALL_copied_values = new System.Windows.Forms.Button();
             this.Show_copied_values = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.Copy_Values_By_IDs = new System.Windows.Forms.Button();
             this.Copy_selected_rows = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -50,6 +49,8 @@
             this.copyThisRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.copySelectedRowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,8 +67,8 @@
             this.Column2,
             this.Column3});
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -139,12 +140,6 @@
             this.Show_copied_values.UseVisualStyleBackColor = true;
             this.Show_copied_values.Click += new System.EventHandler(this.Show_copied_values_Click);
             // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // Copy_Values_By_IDs
             // 
             resources.ApplyResources(this.Copy_Values_By_IDs, "Copy_Values_By_IDs");
@@ -163,7 +158,8 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteThisElementToolStripMenuItem,
-            this.copyThisRowToolStripMenuItem});
+            this.copyThisRowToolStripMenuItem,
+            this.copySelectedRowsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
@@ -189,15 +185,26 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
+            // copySelectedRowsToolStripMenuItem
+            // 
+            this.copySelectedRowsToolStripMenuItem.Name = "copySelectedRowsToolStripMenuItem";
+            resources.ApplyResources(this.copySelectedRowsToolStripMenuItem, "copySelectedRowsToolStripMenuItem");
+            this.copySelectedRowsToolStripMenuItem.Click += new System.EventHandler(this.copySelectedRowsToolStripMenuItem_Click);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
             // Editor
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Copy_selected_rows);
             this.Controls.Add(this.Copy_Values_By_IDs);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.Show_copied_values);
             this.Controls.Add(this.Paste_ALL_copied_values);
             this.Controls.Add(this.label2);
@@ -228,7 +235,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Paste_ALL_copied_values;
         private System.Windows.Forms.Button Show_copied_values;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Copy_Values_By_IDs;
         private System.Windows.Forms.Button Copy_selected_rows;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -236,5 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem copyThisRowToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolStripMenuItem copySelectedRowsToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
     }
 }

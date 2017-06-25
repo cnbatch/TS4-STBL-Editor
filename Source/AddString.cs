@@ -139,7 +139,7 @@ namespace TS4_STBL_Editor
             sh.textIDFld = textIDFld.Text;
             sh.displayTextFld = displayTextFld.Text;
 
-            MainUI.strHolders.Add(sh);
+            MainUI.copiedValuesStrHolders.Add(sh);
         }
 
         private void pasteStrFldsValues_Click(object sender, EventArgs e)

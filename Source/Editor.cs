@@ -167,15 +167,15 @@ namespace TS4_STBL_Editor
                 sh.textIDFld = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                 sh.displayTextFld = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
 
-                MainUI.strHolders.Add(sh);
+                MainUI.copiedValuesStrHolders.Add(sh);
             }
         }
 
         private void Paste_ALL_copied_values_Click(object sender, EventArgs e)
         {
-            for (int x = 0; x < MainUI.strHolders.Count; x++)
+            for (int x = 0; x < MainUI.copiedValuesStrHolders.Count; x++)
             {
-                StringHolder sh = MainUI.strHolders[x];
+                StringHolder sh = MainUI.copiedValuesStrHolders[x];
 
                 DataTable dt = (DataTable)dataGridView1.DataSource;
                 DataRow dr;
@@ -311,7 +311,7 @@ namespace TS4_STBL_Editor
                 sh.textIDFld = dataGridView1.SelectedRows[x].Cells[0].Value.ToString();
                 sh.displayTextFld = dataGridView1.SelectedRows[x].Cells[1].Value.ToString();
 
-                MainUI.strHolders.Add(sh);
+                MainUI.copiedValuesStrHolders.Add(sh);
             }
 
             MessageBox.Show(dataGridView1.SelectedRows.Count + " rows copied!");
@@ -354,7 +354,7 @@ namespace TS4_STBL_Editor
             sh.textIDFld = row.Cells[0].Value.ToString();
             sh.displayTextFld = row.Cells[1].Value.ToString();
 
-            MainUI.strHolders.Add(sh);
+            MainUI.copiedValuesStrHolders.Add(sh);
         }
 
 

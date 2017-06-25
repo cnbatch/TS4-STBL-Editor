@@ -21,7 +21,7 @@ namespace TS4_STBL_Editor
         private DataGridViewSettings settings0 = new DataGridViewSettings();
         private DataGridViewSettings settings1 = new DataGridViewSettings();
 
-        public static List<StringHolder> strHolders = new List<StringHolder>();
+        public static List<StringHolder> copiedValuesStrHolders = new List<StringHolder>();
 
         public MainUI()
         {
@@ -375,6 +375,8 @@ namespace TS4_STBL_Editor
                     SaveSTBLFile(true);
             }
 
+            fileNameLbl.Text = "";
+            LanguageLbl.Text = "";
 
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Add("Column1", "");
@@ -421,7 +423,7 @@ namespace TS4_STBL_Editor
 
         private void multyInsertIntoFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MainUI.strHolders.Count > 0)
+            if (MainUI.copiedValuesStrHolders.Count > 0)
             {
 
                 isTextChanged = false;
@@ -462,17 +464,31 @@ namespace TS4_STBL_Editor
 
                         isTextChanged = true;
 
-                        for (int x = 0; x < MainUI.strHolders.Count; x++)
+                        for (int x = 0; x < MainUI.copiedValuesStrHolders.Count; x++)
                         {
-                            StringHolder sh = MainUI.strHolders[x];
+                            StringHolder copiedStrElement = MainUI.copiedValuesStrHolders[x];
 
                             DataTable dt = (DataTable)dataGridView1.DataSource;
-                            DataRow dr;
-                            dr = dt.NewRow();
-                            dr[0] = sh.textIDFld;
-                            dr[1] = sh.displayTextFld;
-                            dt.Rows.Add(dr);
-                            dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+
+                            var drArr = (from rowEl in dt.AsEnumerable()
+                                         where rowEl.Field<string>(0) == copiedStrElement.textIDFld
+                                         select rowEl);
+
+                            if (drArr.Count() == 0)
+                            {
+                                DataRow dr = dt.NewRow();
+                                dr[0] = copiedStrElement.textIDFld;
+                                dr[1] = copiedStrElement.displayTextFld;
+                                dt.Rows.Add(dr);
+                                dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+
+                            }
+                            else
+                            {
+                                DataRow dr = drArr.First();
+                                dr[1] = copiedStrElement.displayTextFld;
+                            }
+
 
                         }
 
@@ -484,7 +500,8 @@ namespace TS4_STBL_Editor
                     isTextChanged = false;
 
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("You have not copied any string. \r\nCopy strings and use this option for mass insert of copied strings into STBL files!");
             }

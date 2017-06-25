@@ -6,7 +6,7 @@ Home page: http://www.modthesims.info/download.php?t=588625
 
 License
 ----
-BSD 3-clause license
+You can refer to the LICENSE file.
 
 
 System Requrements

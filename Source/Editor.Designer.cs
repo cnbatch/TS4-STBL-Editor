@@ -57,9 +57,9 @@
             // 
             // dataGridView1
             // 
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -156,23 +156,23 @@
             // 
             // contextMenuStrip1
             // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteThisElementToolStripMenuItem,
             this.copyThisRowToolStripMenuItem,
             this.copySelectedRowsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // deleteThisElementToolStripMenuItem
             // 
-            this.deleteThisElementToolStripMenuItem.Name = "deleteThisElementToolStripMenuItem";
             resources.ApplyResources(this.deleteThisElementToolStripMenuItem, "deleteThisElementToolStripMenuItem");
+            this.deleteThisElementToolStripMenuItem.Name = "deleteThisElementToolStripMenuItem";
             this.deleteThisElementToolStripMenuItem.Click += new System.EventHandler(this.deleteThisElementToolStripMenuItem_Click);
             // 
             // copyThisRowToolStripMenuItem
             // 
-            this.copyThisRowToolStripMenuItem.Name = "copyThisRowToolStripMenuItem";
             resources.ApplyResources(this.copyThisRowToolStripMenuItem, "copyThisRowToolStripMenuItem");
+            this.copyThisRowToolStripMenuItem.Name = "copyThisRowToolStripMenuItem";
             this.copyThisRowToolStripMenuItem.Click += new System.EventHandler(this.copyThisRowToolStripMenuItem_Click);
             // 
             // label4

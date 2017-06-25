@@ -356,7 +356,7 @@ namespace TS4_STBL_Editor
 			tempList.Add(textString);
 
 			publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
-			toolStripStatusLabel2.Text = publicPath;
+			filenameLabel.Text = publicPath;
 			pathOpened = true;
 		}
 

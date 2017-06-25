@@ -45,7 +45,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.filenameLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -56,8 +56,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.importBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.fileNameLbl = new System.Windows.Forms.Label();
-            this.LanguageLbl = new System.Windows.Forms.Label();
             this.languageLable = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -148,7 +146,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
+            this.filenameLabel,
             this.toolStripStatusLabel3,
             this.progressBar1});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
@@ -159,10 +157,10 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
-            // toolStripStatusLabel2
+            // filenameLabel
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            resources.ApplyResources(this.toolStripStatusLabel2, "toolStripStatusLabel2");
+            this.filenameLabel.Name = "filenameLabel";
+            resources.ApplyResources(this.filenameLabel, "filenameLabel");
             // 
             // toolStripStatusLabel3
             // 
@@ -237,16 +235,6 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // fileNameLbl
-            // 
-            resources.ApplyResources(this.fileNameLbl, "fileNameLbl");
-            this.fileNameLbl.Name = "fileNameLbl";
-            // 
-            // LanguageLbl
-            // 
-            resources.ApplyResources(this.LanguageLbl, "LanguageLbl");
-            this.LanguageLbl.Name = "LanguageLbl";
-            // 
             // languageLable
             // 
             resources.ApplyResources(this.languageLable, "languageLable");
@@ -256,8 +244,6 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.LanguageLbl);
-            this.Controls.Add(this.fileNameLbl);
             this.Controls.Add(this.languageLable);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.importBtn);
@@ -293,7 +279,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel filenameLabel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button exportBtn;
@@ -307,8 +293,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label fileNameLbl;
-        private System.Windows.Forms.Label LanguageLbl;
         private System.Windows.Forms.Label languageLable;
     }
 }

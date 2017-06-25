@@ -126,15 +126,15 @@
   <data name="Column3.HeaderText" xml:space="preserve">
     <value>翻译译文</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>确定(&amp;O)</value>
+  <data name="OKBtn.Text" xml:space="preserve">
+    <value>确定 (&amp;O)</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>取消(&amp;C)</value>
+  <data name="CancelBtn.Text" xml:space="preserve">
+    <value>取消 (&amp;C)</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>689, 533</value>
+    <value>779, 610</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>243, 19</value>
@@ -142,8 +142,50 @@
   <data name="label1.Text" xml:space="preserve">
     <value>双击“翻译译文”单元格之后即可编辑。</value>
   </data>
-  <data name="button3.Text" xml:space="preserve">
-    <value>增加新字串(&amp;A)</value>
+  <data name="Add_New_String.Text" xml:space="preserve">
+    <value>增加新字串 (&amp;A)</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>873, 572</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 19</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>双击行号可以整行复制</value>
+  </data>
+  <data name="Paste_ALL_copied_values.Text" xml:space="preserve">
+    <value>粘贴已复制的全部字串</value>
+  </data>
+  <data name="Show_copied_values.Text" xml:space="preserve">
+    <value>显示已复制的行</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>607, 591</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 19</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>选择多行并右键单击可以复制选中的单元格。点击此处显示帮助。</value>
+  </data>
+  <data name="Copy_Values_By_IDs.Text" xml:space="preserve">
+    <value>透过索引值复制行</value>
+  </data>
+  <data name="Copy_selected_rows.Text" xml:space="preserve">
+    <value>复制选中的行</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 19</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>按下ESC不存档并关闭编辑窗口</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 19</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>按下CTRL+S保存更改并关闭编辑器</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

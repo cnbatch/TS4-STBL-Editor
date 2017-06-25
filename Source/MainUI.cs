@@ -138,7 +138,7 @@ namespace TS4_STBL_Editor
 
             if (fileIsOpened)
             {
-                fileNameLbl.Text = stblFilePath;
+                //fileNameLbl.Text = stblFilePath;
 
                 if (stblFilePath.IndexOf("220557DA") > 0)
                 {
@@ -159,12 +159,27 @@ namespace TS4_STBL_Editor
 
                         XmlNode node = root.SelectSingleNode("lang[id= \"0x" + langId + "\"]");
 
-                        LanguageLbl.Text = node["name"].InnerXml;
+                        languageLable.Text = node["name"].InnerXml;
                     }
                 }
                 else
                 {
-                    LanguageLbl.Text = "Unknown, file name is not like S4_220557DA_80000000_0B84CB2FC430848A%%+STBL.stbl ";
+                    string standardFileName = "S4_220557DA_80000000_0B84CB2FC430848A%%+STBL.stbl";
+                    switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                    {
+                        case "CHS":
+                        case "ZHI":
+                            languageLable.Text = "语言类型不明确，文件名格式应类似" + standardFileName;
+                            break;
+                        case "CHT":
+                        case "ZHH":
+                        case "ZHM":
+                            languageLable.Text = "語言類型不明確，檔案名格式應類似" + standardFileName;
+                            break;
+                        default:
+                            languageLable.Text = "Unknown, file name is not like " + standardFileName;
+                            break;
+                    }
                 }
 
                 UseWaitCursor = true;
@@ -486,7 +501,21 @@ namespace TS4_STBL_Editor
                 }
             } else
             {
-                MessageBox.Show("You have not copied any string. \r\nCopy strings and use this option for mass insert of copied strings into STBL files!");
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        MessageBox.Show("您未复制任何字串。\r\n请先复制字串，然后再使用该选项向STBL文件大量插入已复制的字串！");
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        MessageBox.Show("您未複製任何字串。\r\n請先複製字串，然後再使用該選項向STBL文件大量插入已複製的字串！");
+                        break;
+                    default:
+                        MessageBox.Show("You have not copied any string. \r\nCopy strings and use this option for mass insert of copied strings into STBL files!");
+                        break;
+                }
             }
         }
     }

@@ -46,6 +46,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,11 +55,10 @@
             this.exportBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.importBtn = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.fileNameLbl = new System.Windows.Forms.Label();
             this.LanguageLbl = new System.Windows.Forms.Label();
+            this.languageLable = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -147,7 +148,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.progressBar1});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
@@ -160,6 +163,17 @@
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             resources.ApplyResources(this.toolStripStatusLabel2, "toolStripStatusLabel2");
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            resources.ApplyResources(this.toolStripStatusLabel3, "toolStripStatusLabel3");
+            this.toolStripStatusLabel3.Spring = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Name = "progressBar1";
+            resources.ApplyResources(this.progressBar1, "progressBar1");
             // 
             // dataGridView1
             // 
@@ -218,20 +232,10 @@
             this.importBtn.UseVisualStyleBackColor = true;
             this.importBtn.Click += new System.EventHandler(this.importBtn_Click);
             // 
-            // progressBar1
-            // 
-            resources.ApplyResources(this.progressBar1, "progressBar1");
-            this.progressBar1.Name = "progressBar1";
-            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
             // 
             // fileNameLbl
             // 
@@ -243,15 +247,19 @@
             resources.ApplyResources(this.LanguageLbl, "LanguageLbl");
             this.LanguageLbl.Name = "LanguageLbl";
             // 
+            // languageLable
+            // 
+            resources.ApplyResources(this.languageLable, "languageLable");
+            this.languageLable.Name = "languageLable";
+            // 
             // MainUI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.LanguageLbl);
             this.Controls.Add(this.fileNameLbl);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.languageLable);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.importBtn);
             this.Controls.Add(this.exportBtn);
             this.Controls.Add(this.editBtn);
@@ -292,15 +300,16 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button importBtn;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ToolStripMenuItem showLangCodesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem multyInsertIntoFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label fileNameLbl;
         private System.Windows.Forms.Label LanguageLbl;
-        private System.Windows.Forms.ToolStripMenuItem multyInsertIntoFilesToolStripMenuItem;
+        private System.Windows.Forms.Label languageLable;
     }
 }
 

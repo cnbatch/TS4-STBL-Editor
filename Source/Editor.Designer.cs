@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Editor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +56,9 @@
             // 
             // dataGridView1
             // 
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -66,8 +66,8 @@
             this.Column2,
             this.Column3});
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
@@ -161,22 +161,22 @@
             // 
             // contextMenuStrip1
             // 
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteThisElementToolStripMenuItem,
             this.copyThisRowToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // deleteThisElementToolStripMenuItem
             // 
-            this.deleteThisElementToolStripMenuItem.Name = "deleteThisElementToolStripMenuItem";
             resources.ApplyResources(this.deleteThisElementToolStripMenuItem, "deleteThisElementToolStripMenuItem");
+            this.deleteThisElementToolStripMenuItem.Name = "deleteThisElementToolStripMenuItem";
             this.deleteThisElementToolStripMenuItem.Click += new System.EventHandler(this.deleteThisElementToolStripMenuItem_Click);
             // 
             // copyThisRowToolStripMenuItem
             // 
-            this.copyThisRowToolStripMenuItem.Name = "copyThisRowToolStripMenuItem";
             resources.ApplyResources(this.copyThisRowToolStripMenuItem, "copyThisRowToolStripMenuItem");
+            this.copyThisRowToolStripMenuItem.Name = "copyThisRowToolStripMenuItem";
             this.copyThisRowToolStripMenuItem.Click += new System.EventHandler(this.copyThisRowToolStripMenuItem_Click);
             // 
             // label4

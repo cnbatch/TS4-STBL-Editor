@@ -71,11 +71,11 @@
             // 
             // textIDFld
             // 
+            resources.ApplyResources(this.textIDFld, "textIDFld");
             this.textIDFld.AsciiOnly = true;
             this.textIDFld.Culture = new System.Globalization.CultureInfo("");
             this.textIDFld.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.textIDFld.HidePromptOnLeave = true;
-            resources.ApplyResources(this.textIDFld, "textIDFld");
             this.textIDFld.Name = "textIDFld";
             this.textIDFld.ResetOnPrompt = false;
             this.textIDFld.ResetOnSpace = false;

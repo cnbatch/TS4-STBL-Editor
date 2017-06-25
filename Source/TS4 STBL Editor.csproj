@@ -71,7 +71,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MTS_ArtUrlWWW_FNVHasherDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -139,6 +139,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutEditorForm.en.resx">
+      <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AboutEditorForm.zh-Hans.resx">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +201,12 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="StringPicker.resx">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringPicker.zh-Hans.resx">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringPicker.zh-Hant.resx">
       <DependentUpon>StringPicker.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />

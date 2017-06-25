@@ -29,9 +29,9 @@ namespace TS4_STBL_Editor
         {
             listView1.Items.Clear();
             listView1.View = View.List;
-            for (int x = 0; x < MainUI.strHolders.Count; x++)
+            for (int x = 0; x < MainUI.copiedValuesStrHolders.Count; x++)
             {
-                StringHolder sh = MainUI.strHolders[x];
+                StringHolder sh = MainUI.copiedValuesStrHolders[x];
                 listView1.Items.Add(sh.textIDFld + " - " + sh.displayTextFld);
 
             }
@@ -45,12 +45,12 @@ namespace TS4_STBL_Editor
                 {
                     if (addstr != null)
                     {
-                        addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+                        addstr.setFldsValues(MainUI.copiedValuesStrHolders[listView1.SelectedIndices[0]]);
                     }
                 }
                 else
                 {
-                    MainUI.strHolders.RemoveAt(listView1.SelectedIndices[0]);
+                    MainUI.copiedValuesStrHolders.RemoveAt(listView1.SelectedIndices[0]);
                     reloadListView();
                 }
             }
@@ -60,7 +60,7 @@ namespace TS4_STBL_Editor
         {
             if (addstr != null)
             {
-                addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+                addstr.setFldsValues(MainUI.copiedValuesStrHolders[listView1.SelectedIndices[0]]);
             }
 
             this.Close();

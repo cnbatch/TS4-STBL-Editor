@@ -167,15 +167,15 @@ namespace TS4_STBL_Editor
                 sh.textIDFld = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                 sh.displayTextFld = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
 
-                MainUI.strHolders.Add(sh);
+                MainUI.copiedValuesStrHolders.Add(sh);
             }
         }
 
         private void Paste_ALL_copied_values_Click(object sender, EventArgs e)
         {
-            for (int x = 0; x < MainUI.strHolders.Count; x++)
+            for (int x = 0; x < MainUI.copiedValuesStrHolders.Count; x++)
             {
-                StringHolder sh = MainUI.strHolders[x];
+                StringHolder sh = MainUI.copiedValuesStrHolders[x];
 
                 DataTable dt = (DataTable)dataGridView1.DataSource;
                 DataRow dr;
@@ -199,27 +199,27 @@ namespace TS4_STBL_Editor
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    //if (addstr != null)
-                    //{
-                    //    addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
-                    //}
-                }
-                else
-                {
-                    CopySelectedRows();
-                }
-            }
+            //if (dataGridView1.SelectedRows.Count > 0)
+            //{
+            //    if (e.Button == MouseButtons.Left)
+            //    {
+            //        //if (addstr != null)
+            //        //{
+            //        //    addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
+            //        //}
+            //    }
+            //    else
+            //    {
+            //        CopySelectedRows();
+            //    }
+            //}
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-            HowToCopyMultipleRows a = new HowToCopyMultipleRows();
-            a.ShowDialog();
-        }
+        //private void label3_Click(object sender, EventArgs e)
+        //{
+        //    HowToCopyMultipleRows a = new HowToCopyMultipleRows();
+        //    a.ShowDialog();
+        //}
 
         private void Copy_Values_By_IDs_Click(object sender, EventArgs e)
         {
@@ -300,7 +300,7 @@ namespace TS4_STBL_Editor
 
         private void Copy_selected_rows_Click(object sender, EventArgs e)
         {
-            CopySelectedRows();
+            //CopySelectedRows();
         }
 
         private void CopySelectedRows()
@@ -311,7 +311,7 @@ namespace TS4_STBL_Editor
                 sh.textIDFld = dataGridView1.SelectedRows[x].Cells[0].Value.ToString();
                 sh.displayTextFld = dataGridView1.SelectedRows[x].Cells[1].Value.ToString();
 
-                MainUI.strHolders.Add(sh);
+                MainUI.copiedValuesStrHolders.Add(sh);
             }
 
             MessageBox.Show(dataGridView1.SelectedRows.Count + " rows copied!");
@@ -337,8 +337,12 @@ namespace TS4_STBL_Editor
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            contextMenuStrip1.Tag = dataGridView1.CurrentCell;
-            contextMenuStrip1.Show(dataGridView1, e.Location);
+            if (e.Button == MouseButtons.Right)
+            {
+                dataGridView1.CurrentCell.OwningRow.Selected = true;
+                contextMenuStrip1.Tag = dataGridView1.CurrentCell;
+                contextMenuStrip1.Show(dataGridView1, e.Location);
+            }
 
         }
 
@@ -350,7 +354,7 @@ namespace TS4_STBL_Editor
             sh.textIDFld = row.Cells[0].Value.ToString();
             sh.displayTextFld = row.Cells[1].Value.ToString();
 
-            MainUI.strHolders.Add(sh);
+            MainUI.copiedValuesStrHolders.Add(sh);
         }
 
 
@@ -368,6 +372,11 @@ namespace TS4_STBL_Editor
                 }
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void copySelectedRowsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopySelectedRows();
         }
     }
 }

@@ -130,13 +130,13 @@
     <value>280, 9</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 19</value>
+    <value>184, 19</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Version 9.0 by ArtUrlWWW</value>
+    <value>Version 10.0 by ArtUrlWWW</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>

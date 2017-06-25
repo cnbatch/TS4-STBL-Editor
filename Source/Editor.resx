@@ -163,13 +163,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="OKBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 527</value>
+    <value>168, 604</value>
   </data>
   <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 29</value>
@@ -190,13 +190,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="CancelBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>267, 527</value>
+    <value>267, 604</value>
   </data>
   <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 29</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;CancelBtn.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -226,7 +226,7 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>668, 537</value>
+    <value>668, 614</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>354, 19</value>
@@ -247,13 +247,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="Add_New_String.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="Add_New_String.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 492</value>
+    <value>13, 542</value>
   </data>
   <data name="Add_New_String.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 29</value>
@@ -274,7 +274,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Add_New_String.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 495</value>
+    <value>681, 572</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>341, 19</value>
@@ -307,10 +307,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="Paste_ALL_copied_values.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 527</value>
+    <value>13, 492</value>
   </data>
   <data name="Paste_ALL_copied_values.Size" type="System.Drawing.Size, System.Drawing">
     <value>167, 29</value>
@@ -331,13 +331,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Paste_ALL_copied_values.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="Show_copied_values.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Show_copied_values.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 492</value>
+    <value>199, 492</value>
   </data>
   <data name="Show_copied_values.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 29</value>
@@ -358,7 +358,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Show_copied_values.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="label3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -370,7 +370,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>473, 514</value>
+    <value>473, 591</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>549, 19</value>
@@ -391,10 +391,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="Copy_Values_By_IDs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 527</value>
+    <value>566, 492</value>
   </data>
   <data name="Copy_Values_By_IDs.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 29</value>
@@ -415,10 +415,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Copy_Values_By_IDs.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="Copy_selected_rows.Location" type="System.Drawing.Point, System.Drawing">
-    <value>313, 492</value>
+    <value>390, 492</value>
   </data>
   <data name="Copy_selected_rows.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 29</value>
@@ -439,6 +439,87 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Copy_selected_rows.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 48</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="deleteThisElementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="deleteThisElementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Delete this element</value>
+  </data>
+  <data name="copyThisRowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 22</value>
+  </data>
+  <data name="copyThisRowToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy this row</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 548</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 19</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Press ESC to close Editro without save</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 572</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 19</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Press CTRL+S to apply changes and close Editor</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -448,7 +529,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1034, 562</value>
+    <value>1034, 639</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
@@ -3928,6 +4009,18 @@
   </data>
   <data name="&gt;&gt;Column3.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deleteThisElementToolStripMenuItem.Name" xml:space="preserve">
+    <value>deleteThisElementToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;deleteThisElementToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copyThisRowToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyThisRowToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;copyThisRowToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Editor</value>

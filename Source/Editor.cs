@@ -67,7 +67,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void OKBtn_Click(object sender, EventArgs e)
+        private void saveAndExit()
         {
             if (dataGridView1.Rows.Count != 0)
             {
@@ -86,6 +86,11 @@ namespace TS4_STBL_Editor
             }
             isTextChanged = true;
             Close();
+        }
+
+        private void OKBtn_Click(object sender, EventArgs e)
+        {
+            saveAndExit();
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -193,6 +198,7 @@ namespace TS4_STBL_Editor
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 if (e.Button == MouseButtons.Left)
@@ -309,6 +315,59 @@ namespace TS4_STBL_Editor
             }
 
             MessageBox.Show(dataGridView1.SelectedRows.Count + " rows copied!");
+        }
+
+        private void deleteThisElementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var cell = contextMenuStrip1.Tag as DataGridViewCell;
+
+            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
+                                     "Confirm Delete!!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                dataGridView1.Rows.RemoveAt(cell.OwningRow.Index);
+
+            }
+            else
+            {
+                // If 'No', do something here.
+            }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            contextMenuStrip1.Tag = dataGridView1.CurrentCell;
+            contextMenuStrip1.Show(dataGridView1, e.Location);
+
+        }
+
+        private void copyThisRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var cell = contextMenuStrip1.Tag as DataGridViewCell;
+            var row = cell.OwningRow;
+            StringHolder sh = new StringHolder();
+            sh.textIDFld = row.Cells[0].Value.ToString();
+            sh.displayTextFld = row.Cells[1].Value.ToString();
+
+            MainUI.strHolders.Add(sh);
+        }
+
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            } else
+            {
+                if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
+                {
+                    saveAndExit();
+                }
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

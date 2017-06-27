@@ -12,16 +12,24 @@ using System.Collections;
 using System.Xml;
 using System.Globalization;
 using System.Threading;
+using s4pi.WrapperDealer;
 
 namespace TS4_STBL_Editor
 {
     public partial class MainUI : Form
     {
-        public ArrayList ReadAndAnalyze(string stblFilePath)
+        public ArrayList ReadAndAnalyzeSTBLFile(string stblFilePath)
         {
+            FileStream stblStream = new FileStream(stblFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+
+            return ReadAndAnalyzeStream(stblStream);
+        }
+
+        public ArrayList ReadAndAnalyzeStream(Stream stblStream)
+        {
+
             ArrayList useForReturn = new ArrayList();
 
-            FileStream stblStream = new FileStream(stblFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             BinaryReader stblReader = new BinaryReader(stblStream);
 
             if ((char)stblReader.ReadByte() != 'S' || (char)stblReader.ReadByte() != 'T' || (char)stblReader.ReadByte() != 'B' || (char)stblReader.ReadByte() != 'L')
@@ -146,6 +154,13 @@ namespace TS4_STBL_Editor
 
         public string WriteSTBLFile(ArrayList mainArrayList, bool isSaveAs, string stblFilePath)
         {
+            FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+            return WriteSTBLStream(mainArrayList, isSaveAs, stblFilePath, stblStream);
+        }
+
+        public string WriteSTBLStream(ArrayList mainArrayList, bool isSaveAs, string stblFilePath, Stream stblStream)
+        {
             ArrayList textResourceID = (ArrayList)mainArrayList[0];
             ArrayList textString = (ArrayList)mainArrayList[1];
 
@@ -229,11 +244,24 @@ namespace TS4_STBL_Editor
                 }
             }
 
-            FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-            BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
-            stblFileWriter.Write(stblMemoryStream.ToArray());
-            stblStream.Dispose();
-            stblMemoryStream.Dispose();
+            byte[] stblData = stblMemoryStream.ToArray();
+
+            if (MainUI.openedFromSTBL_File)
+            {
+                BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
+
+                stblFileWriter.Write(stblData);
+                stblStream.Dispose();
+                stblMemoryStream.Dispose();
+            }
+            else
+            {
+                stblStream.Write(stblData, 0, stblData.Length);
+            }
+
+            //FileStream fs = new FileStream("c:/temp/qqqq.txt", FileMode.CreateNew, FileAccess.Write);
+            //fs.Write(stblData, 0, stblData.Length);
+            //fs.Close();
 
             return stblFilePath;
         }
@@ -333,7 +361,7 @@ namespace TS4_STBL_Editor
             return mainArrayList;
         }
 
-        public void SaveSTBLFile(bool isSaveAs)
+        public void SaveSTBL(bool isSaveAs, bool isFile)
         {
             if (dataGridView1.Rows.Count == 0) return;
 
@@ -355,8 +383,24 @@ namespace TS4_STBL_Editor
             tempList.Add(textResourceID);
             tempList.Add(textString);
 
-            publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
-            filenameLabel.Text = publicPath;
+            if (isFile)
+            {
+                publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
+            }
+            else
+            {
+                var el = lrie.Find(x =>
+                {
+                    return (x.Instance == MainUI.packageElId);
+                });
+
+                var res = WrapperDealer.GetResource(0, imppkg, el, true);
+                publicPath = WriteSTBLStream(tempList, false, publicPath, res.Stream);
+                MainUI.imppkg.ReplaceResource(el, res);
+                MainUI.imppkg.SavePackage();
+                //MainUI.imppkg.Dispose();
+            }
+            toolStripStatusLabel2.Text = publicPath;
             pathOpened = true;
         }
 

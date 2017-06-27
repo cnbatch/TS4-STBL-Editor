@@ -39,6 +39,7 @@
             this.multyInsertIntoFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openpackageFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.showLangCodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +81,8 @@
             this.saveAsToolStripMenuItem,
             this.multyInsertIntoFilesToolStripMenuItem,
             this.closeToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.openpackageFileToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
@@ -119,6 +121,12 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // openpackageFileToolStripMenuItem
+            // 
+            this.openpackageFileToolStripMenuItem.Name = "openpackageFileToolStripMenuItem";
+            resources.ApplyResources(this.openpackageFileToolStripMenuItem, "openpackageFileToolStripMenuItem");
+            this.openpackageFileToolStripMenuItem.Click += new System.EventHandler(this.openpackageFileToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -310,6 +318,7 @@
         private System.Windows.Forms.Label fileNameLbl;
         private System.Windows.Forms.Label LanguageLbl;
         private System.Windows.Forms.Label languageLable;
+        private System.Windows.Forms.ToolStripMenuItem openpackageFileToolStripMenuItem;
     }
 }
 

@@ -78,8 +78,101 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MTS_ArtUrlWWW_FNVHasherDLL.dll</HintPath>
     </Reference>
+    <Reference Include="s4pi.AnimationResources">
+      <HintPath>s4piDLLs\s4pi.AnimationResources.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.CASPartResource">
+      <HintPath>s4piDLLs\s4pi.CASPartResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.CatalogResource">
+      <HintPath>s4piDLLs\s4pi.CatalogResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Commons">
+      <HintPath>s4piDLLs\s4pi.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.ComplateResource">
+      <HintPath>s4piDLLs\s4pi.ComplateResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Controls">
+      <HintPath>s4piDLLs\s4pi.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.CustomForms">
+      <HintPath>s4piDLLs\s4pi.CustomForms.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.DataResource">
+      <HintPath>s4piDLLs\s4pi.DataResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.DefaultResource">
+      <HintPath>s4piDLLs\s4pi.DefaultResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Extensions">
+      <HintPath>s4piDLLs\s4pi.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Filetable">
+      <HintPath>s4piDLLs\s4pi.Filetable.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.GenericRCOLResource">
+      <HintPath>s4piDLLs\s4pi.GenericRCOLResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Helpers">
+      <HintPath>s4piDLLs\s4pi.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.ImageResource">
+      <HintPath>s4piDLLs\s4pi.ImageResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Interfaces">
+      <HintPath>s4piDLLs\s4pi.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.JazzResource">
+      <HintPath>s4piDLLs\s4pi.JazzResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.MeshChunks">
+      <HintPath>s4piDLLs\s4pi.MeshChunks.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.MiscellaneousResources">
+      <HintPath>s4piDLLs\s4pi.MiscellaneousResources.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.ModularResource">
+      <HintPath>s4piDLLs\s4pi.ModularResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.NameMapResource">
+      <HintPath>s4piDLLs\s4pi.NameMapResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.NGMPHashMapResource">
+      <HintPath>s4piDLLs\s4pi.NGMPHashMapResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Package">
+      <HintPath>s4piDLLs\s4pi.Package.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.RCOLChunks">
+      <HintPath>s4piDLLs\s4pi.RCOLChunks.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Resource.Commons">
+      <HintPath>s4piDLLs\s4pi.Resource.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.RigResource">
+      <HintPath>s4piDLLs\s4pi.RigResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Settings">
+      <HintPath>s4piDLLs\s4pi.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.StblResource">
+      <HintPath>s4piDLLs\s4pi.StblResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.TextResource">
+      <HintPath>s4piDLLs\s4pi.TextResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.TxtcResource">
+      <HintPath>s4piDLLs\s4pi.TxtcResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.WrapperDealer">
+      <HintPath>s4piDLLs\s4pi.WrapperDealer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Custom">
+      <HintPath>s4piDLLs\System.Custom.dll</HintPath>
+    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -108,6 +201,12 @@
     </Compile>
     <Compile Include="AboutEditorForm.Designer.cs">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectSTBLfileinPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectSTBLfileinPackage.Designer.cs">
+      <DependentUpon>SelectSTBLfileinPackage.cs</DependentUpon>
     </Compile>
     <Compile Include="HowToCopyMultipleRows.cs">
       <SubType>Form</SubType>
@@ -200,6 +299,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SelectSTBLfileinPackage.resx">
+      <DependentUpon>SelectSTBLfileinPackage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StringPicker.resx">
       <DependentUpon>StringPicker.cs</DependentUpon>
     </EmbeddedResource>

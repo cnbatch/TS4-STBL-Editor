@@ -30,7 +30,7 @@ namespace TS4_STBL_Editor
         #region s4pe
         public static bool openedFromSTBL_File = true;
         public static BigInteger packageElId = 0;
-        public static IPackage imppkg;
+        public static IPackage imppkg = null;
         public static List<IResourceIndexEntry> lrie;
         public static IResource res;
         #endregion
@@ -438,8 +438,13 @@ namespace TS4_STBL_Editor
 
             openedFromSTBL_File = true;
             packageElId = 0;
-            imppkg.Dispose();
-            lrie.Clear();
+            if (imppkg != null)
+            {
+                imppkg.Dispose();
+                imppkg = null;
+                lrie.Clear();
+            }
+
             res = null;
 
         }

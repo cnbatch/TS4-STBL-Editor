@@ -244,18 +244,24 @@ namespace TS4_STBL_Editor
                 }
             }
 
-           // BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
+            byte[] stblData = stblMemoryStream.ToArray();
 
-            byte[] stblData=stblMemoryStream.ToArray();
+            if (MainUI.openedFromSTBL_File)
+            {
+                BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
 
-            FileStream fs = new FileStream("c:/temp/qqqq.txt", FileMode.CreateNew, FileAccess.Write);
-            fs.Write(stblData, 0, stblData.Length);
-            fs.Close();
+                stblFileWriter.Write(stblData);
+                stblStream.Dispose();
+                stblMemoryStream.Dispose();
+            }
+            else
+            {
+                stblStream.Write(stblData, 0, stblData.Length);
+            }
 
-            //   stblFileWriter.Write(stblData);
-            stblStream.Write(stblData, 0, stblData.Length);
-        //    stblStream.Dispose();
-            stblMemoryStream.Dispose();
+            //FileStream fs = new FileStream("c:/temp/qqqq.txt", FileMode.CreateNew, FileAccess.Write);
+            //fs.Write(stblData, 0, stblData.Length);
+            //fs.Close();
 
             return stblFilePath;
         }

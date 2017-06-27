@@ -45,5 +45,11 @@ namespace TS4_STBL_Editor
             selectedElement = listBox1.SelectedItem.ToString();
             this.Close();
         }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            selectedElement = listBox1.SelectedItem.ToString();
+            this.Close();
+        }
     }
 }

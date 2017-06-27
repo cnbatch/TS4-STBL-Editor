@@ -27,6 +27,14 @@ namespace TS4_STBL_Editor
 
         public static List<StringHolder> copiedValuesStrHolders = new List<StringHolder>();
 
+        #region s4pe
+        public static bool openedFromSTBL_File = true;
+        public static BigInteger packageElId = 0;
+        public static IPackage imppkg;
+        public static List<IResourceIndexEntry> lrie;
+        public static IResource res;
+        #endregion
+
         public MainUI()
         {
             InitializeComponent();
@@ -427,6 +435,14 @@ namespace TS4_STBL_Editor
             pathOpened = false;
             canAlsoSave = false;
             isTextChanged = false;
+
+
+            openedFromSTBL_File = true;
+            packageElId = 0;
+            imppkg.Dispose();
+            lrie.Clear();
+            res = null;
+
         }
 
         private void MainUI_DragDrop(object sender, DragEventArgs e)
@@ -513,18 +529,16 @@ namespace TS4_STBL_Editor
                                 DataRow dr = drArr.First();
                                 dr[1] = copiedStrElement.displayTextFld;
                             }
-
-
                         }
 
                         //break;
-
 
                         closeAndSavePackage();
                     }
                     isTextChanged = false;
 
                 }
+                MessageBox.Show("Done!");
             }
             else
             {
@@ -546,11 +560,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        public static bool openedFromSTBL_File = true;
-        public static BigInteger packageElId = 0;
-        public static IPackage imppkg;
-        public static List<IResourceIndexEntry> lrie;
-        public static IResource res;
+
 
         private void openPackageFile(string pathToPackageFile)
         {

@@ -77,12 +77,12 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openPackageToolStripMenuItem,
+            this.openpackageFileToolStripMenuItem,
             this.savePackageToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.multyInsertIntoFilesToolStripMenuItem,
             this.closeToolStripMenuItem,
-            this.exitToolStripMenuItem,
-            this.openpackageFileToolStripMenuItem});
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
             // 

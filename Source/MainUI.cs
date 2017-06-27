@@ -122,15 +122,15 @@ namespace TS4_STBL_Editor
                 {
                     case "CHS":
                     case "ZHI":
-                        toolStripStatusLabel2.Text = "未打开任何文件。";
+                        filenameLabel.Text = "未打开任何文件。";
                         break;
                     case "CHT":
                     case "ZHH":
                     case "ZHM":
-                        toolStripStatusLabel2.Text = "未開啟任何檔案。";
+                        filenameLabel.Text = "未開啟任何檔案。";
                         break;
                     default:
-                        toolStripStatusLabel2.Text = "No file is opened.";
+                        filenameLabel.Text = "No file is opened.";
                         break;
                 }
                 pathOpened = false;
@@ -145,7 +145,7 @@ namespace TS4_STBL_Editor
             if (pathToFile != null)
             {
                 stblFilePath = pathToFile;
-                toolStripStatusLabel2.Text = stblFilePath;
+                filenameLabel.Text = stblFilePath;
                 publicPath = stblFilePath;
                 pathOpened = fileIsOpened = true;
             }
@@ -408,9 +408,6 @@ namespace TS4_STBL_Editor
                     SaveSTBL(true, openedFromSTBL_File);
             }
 
-            fileNameLbl.Text = "";
-            LanguageLbl.Text = "";
-
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Add("Column1", "");
             dataGridView1.Columns.Add("Column2", "");
@@ -420,17 +417,19 @@ namespace TS4_STBL_Editor
             {
                 case "CHS":
                 case "ZHI":
-                    toolStripStatusLabel2.Text = "未打开任何文件。";
+                    filenameLabel.Text = "未打开任何文件。";
                     break;
                 case "CHT":
                 case "ZHH":
                 case "ZHM":
-                    toolStripStatusLabel2.Text = "未開啟任何檔案。";
+                    filenameLabel.Text = "未開啟任何檔案。";
                     break;
                 default:
-                    toolStripStatusLabel2.Text = "No file is opened.";
+                    filenameLabel.Text = "No file is opened.";
                     break;
             }
+
+            languageLable.Text = string.Empty;
             publicPath = string.Empty;
             pathOpened = false;
             canAlsoSave = false;

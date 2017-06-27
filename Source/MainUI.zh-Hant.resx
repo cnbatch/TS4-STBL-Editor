@@ -166,8 +166,17 @@
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>離開(&amp;E)</value>
   </data>
+  <data name="aboutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 24</value>
+  </data>
   <data name="aboutToolStripMenuItem1.Text" xml:space="preserve">
     <value>關於(&amp;A)</value>
+  </data>
+  <data name="showLangCodesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 24</value>
+  </data>
+  <data name="showLangCodesToolStripMenuItem.Text" xml:space="preserve">
+    <value>顯示語言代碼(&amp;S)</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 17</value>
@@ -175,14 +184,8 @@
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value>STBL檔案：</value>
   </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
-    <value>未開啟任何檔案。</value>
-  </data>
   <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>986, 17</value>
+    <value>998, 17</value>
   </data>
   <data name="Column1.HeaderText" xml:space="preserve">
     <value>字串索引</value>

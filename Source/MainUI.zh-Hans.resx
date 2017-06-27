@@ -160,8 +160,17 @@
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>文件(&amp;F)</value>
   </data>
+  <data name="aboutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 24</value>
+  </data>
   <data name="aboutToolStripMenuItem1.Text" xml:space="preserve">
     <value>关于(&amp;A)</value>
+  </data>
+  <data name="showLangCodesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 24</value>
+  </data>
+  <data name="showLangCodesToolStripMenuItem.Text" xml:space="preserve">
+    <value>显示语言代码 (&amp;S)</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 23</value>
@@ -169,20 +178,20 @@
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助(&amp;H)</value>
   </data>
+  <data name="menuStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 17</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value>STBL文件：</value>
   </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
-    <value>未打开任何文件。</value>
-  </data>
   <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>986, 17</value>
+    <value>998, 17</value>
+  </data>
+  <data name="statusStrip1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="Column1.HeaderText" xml:space="preserve">
     <value>字串索引</value>
@@ -190,20 +199,38 @@
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>显示文字</value>
   </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="editBtn.Text" xml:space="preserve">
     <value>编辑 (&amp;E)</value>
+  </data>
+  <data name="editBtn.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="exportBtn.Text" xml:space="preserve">
     <value>导出 (&amp;X)</value>
   </data>
+  <data name="exportBtn.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="importBtn.Text" xml:space="preserve">
     <value>导入 (&amp;I)</value>
+  </data>
+  <data name="importBtn.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 19</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>语言类型:</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="languageLable.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3656,5 +3683,8 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>模拟市民4 STBL 编辑器</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

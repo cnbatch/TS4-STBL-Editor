@@ -34,12 +34,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openpackageFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.multyInsertIntoFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openpackageFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.showLangCodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +90,12 @@
             resources.ApplyResources(this.openPackageToolStripMenuItem, "openPackageToolStripMenuItem");
             this.openPackageToolStripMenuItem.Click += new System.EventHandler(this.openPackageToolStripMenuItem_Click);
             // 
+            // openpackageFileToolStripMenuItem
+            // 
+            this.openpackageFileToolStripMenuItem.Name = "openpackageFileToolStripMenuItem";
+            resources.ApplyResources(this.openpackageFileToolStripMenuItem, "openpackageFileToolStripMenuItem");
+            this.openpackageFileToolStripMenuItem.Click += new System.EventHandler(this.openpackageFileToolStripMenuItem_Click);
+            // 
             // savePackageToolStripMenuItem
             // 
             this.savePackageToolStripMenuItem.Name = "savePackageToolStripMenuItem";
@@ -119,12 +125,6 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             resources.ApplyResources(this.exitToolStripMenuItem, "exitToolStripMenuItem");
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // openpackageFileToolStripMenuItem
-            // 
-            this.openpackageFileToolStripMenuItem.Name = "openpackageFileToolStripMenuItem";
-            resources.ApplyResources(this.openpackageFileToolStripMenuItem, "openpackageFileToolStripMenuItem");
-            this.openpackageFileToolStripMenuItem.Click += new System.EventHandler(this.openpackageFileToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 

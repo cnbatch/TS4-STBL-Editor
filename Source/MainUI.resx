@@ -3953,6 +3953,12 @@
   <data name="&gt;&gt;openPackageToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>openpackageFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;savePackageToolStripMenuItem.Name" xml:space="preserve">
     <value>savePackageToolStripMenuItem</value>
   </data>
@@ -3981,12 +3987,6 @@
     <value>exitToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Name" xml:space="preserve">
-    <value>openpackageFileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">

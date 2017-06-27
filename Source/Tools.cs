@@ -400,7 +400,7 @@ namespace TS4_STBL_Editor
                 MainUI.imppkg.SavePackage();
                 //MainUI.imppkg.Dispose();
             }
-            toolStripStatusLabel2.Text = publicPath;
+            filenameLabel.Text = publicPath;
             pathOpened = true;
         }
 

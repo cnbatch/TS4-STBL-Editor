@@ -635,15 +635,15 @@ namespace TS4_STBL_Editor
                 {
                     case "CHS":
                     case "ZHI":
-                        toolStripStatusLabel2.Text = "未打开任何文件。";
+                        filenameLabel.Text = "未打开任何文件。";
                         break;
                     case "CHT":
                     case "ZHH":
                     case "ZHM":
-                        toolStripStatusLabel2.Text = "未開啟任何檔案。";
+                        filenameLabel.Text = "未開啟任何檔案。";
                         break;
                     default:
-                        toolStripStatusLabel2.Text = "No file is opened.";
+                        filenameLabel.Text = "No file is opened.";
                         break;
                 }
                 pathOpened = false;

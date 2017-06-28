@@ -129,16 +129,22 @@
     <value>Ctrl+O</value>
   </data>
   <data name="openPackageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
+    <value>323, 24</value>
   </data>
   <data name="openPackageToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open STBL File</value>
+  </data>
+  <data name="openpackageFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 24</value>
+  </data>
+  <data name="openpackageFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open .package File</value>
   </data>
   <data name="savePackageToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="savePackageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
+    <value>323, 24</value>
   </data>
   <data name="savePackageToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -147,22 +153,22 @@
     <value>Ctrl+D</value>
   </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
+    <value>323, 24</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save &amp;as...</value>
   </data>
   <data name="multyInsertIntoFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
+    <value>323, 24</value>
   </data>
   <data name="multyInsertIntoFilesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Mass insert of copied values</value>
+    <value>STBL Files - Mass insert of copied values</value>
   </data>
   <data name="closeToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+W</value>
   </data>
   <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
+    <value>323, 24</value>
   </data>
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -171,7 +177,7 @@
     <value>Alt+F4</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 24</value>
+    <value>323, 24</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Exit</value>
@@ -3945,6 +3951,12 @@
     <value>openPackageToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;openPackageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>openpackageFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;savePackageToolStripMenuItem.Name" xml:space="preserve">

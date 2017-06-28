@@ -277,7 +277,12 @@
     <EmbeddedResource Include="LangCodesHelp.resx">
       <DependentUpon>LangCodesHelp.cs</DependentUpon>
     </EmbeddedResource>
-    
+    <EmbeddedResource Include="LangCodesHelp.zh-Hans.resx">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangCodesHelp.zh-Hant.resx">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUI.en.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>

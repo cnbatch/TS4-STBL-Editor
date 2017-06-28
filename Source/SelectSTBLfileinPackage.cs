@@ -18,7 +18,7 @@ namespace TS4_STBL_Editor
         List<IResourceIndexEntry> lrie;
         IPackage imppkg;
 
-        public string selectedElement = "";
+        public string selectedElement = null;
 
         public SelectSTBLfileinPackage(List<IResourceIndexEntry> lrieInp, IPackage imppkgInp)
         {

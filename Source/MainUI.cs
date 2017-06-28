@@ -564,8 +564,6 @@ namespace TS4_STBL_Editor
             }
         }
 
-
-
         private void openPackageFile(string pathToPackageFile)
         {
             imppkg = Package.OpenPackage(0, pathToPackageFile, true);
@@ -578,25 +576,25 @@ namespace TS4_STBL_Editor
             SelectSTBLfileinPackage f = new SelectSTBLfileinPackage(lrie, imppkg);
             f.ShowDialog();
 
-            packageElId = BigInteger.Parse(f.selectedElement.Replace("0x", ""), NumberStyles.AllowHexSpecifier);
-
-            var el = lrie.Find(x =>
+            if (f.selectedElement != null)
             {
-                return (x.Instance == packageElId);
-            });
 
-            res = WrapperDealer.GetResource(0, imppkg, el, true);
+                packageElId = BigInteger.Parse(f.selectedElement.Replace("0x", ""), NumberStyles.AllowHexSpecifier);
 
-            openedFromSTBL_File = false;
+                var el = lrie.Find(x =>
+                {
+                    return (x.Instance == packageElId);
+                });
 
-            ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
-            STBLToDataGridView(tempList);
+                res = WrapperDealer.GetResource(0, imppkg, el, true);
 
-            pathOpened = true;
+                openedFromSTBL_File = false;
 
-            //MessageBox.Show(packageElId.ToString());
+                ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
+                STBLToDataGridView(tempList);
 
-            //imppkg.Dispose();
+                pathOpened = true;
+            }
         }
 
         private void openpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -627,12 +625,7 @@ namespace TS4_STBL_Editor
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // openPackage(openFileDialog1.FileName);
-
                 openPackageFile(openFileDialog1.FileName);
-
-                //ArrayList tempList = ReadAndAnalyze(openFileDialog1.FileName);
-                //STBLToDataGridView(tempList);
             }
             else
             {

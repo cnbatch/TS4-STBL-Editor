@@ -397,7 +397,7 @@ namespace TS4_STBL_Editor
                 var res = WrapperDealer.GetResource(0, imppkg, el, true);
                 publicPath = WriteSTBLStream(tempList, false, publicPath, res.Stream);
                 MainUI.imppkg.ReplaceResource(el, res);
-                MainUI.imppkg.SavePackage();
+                //MainUI.imppkg.SavePackage();
                 //MainUI.imppkg.Dispose();
             }
             filenameLabel.Text = publicPath;

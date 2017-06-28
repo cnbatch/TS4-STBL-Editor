@@ -321,17 +321,33 @@ namespace TS4_STBL_Editor
         {
             var cell = contextMenuStrip1.Tag as DataGridViewCell;
 
-            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
-                                     "Confirm Delete!!",
-                                     MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            foreach (DataGridViewCell c in dataGridView1.SelectedCells)
             {
-                dataGridView1.Rows.RemoveAt(cell.OwningRow.Index);
+                if (!rows.Contains(c.OwningRow))
+                {
+                    rows.Add(c.OwningRow);
+                }
 
             }
-            else
+
+            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
+                                        "Confirm Delete!!",
+                                        MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                // If 'No', do something here.
+                if (rows.Count() > 1)
+                {
+                    foreach (var r in rows)
+                    {
+                        //MessageBox.Show(r.Cells[0].Value.ToString());
+                        dataGridView1.Rows.RemoveAt(r.Index);
+                    }
+                }
+                else
+                {
+                    dataGridView1.Rows.RemoveAt(cell.OwningRow.Index);
+                }
             }
         }
 
@@ -364,7 +380,8 @@ namespace TS4_STBL_Editor
             {
                 this.Close();
                 return true;
-            } else
+            }
+            else
             {
                 if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
                 {

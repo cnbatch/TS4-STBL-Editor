@@ -58,6 +58,7 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.languageLable = new System.Windows.Forms.Label();
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,6 +80,7 @@
             this.savePackageToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.multyInsertIntoFilesToolStripMenuItem,
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem,
             this.closeToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -248,6 +250,12 @@
             resources.ApplyResources(this.languageLable, "languageLable");
             this.languageLable.Name = "languageLable";
             // 
+            // packageFilesMassInsertOfCopiedValuesToolStripMenuItem
+            // 
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Name = "packageFilesMassInsertOfCopiedValuesToolStripMenuItem";
+            resources.ApplyResources(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem, "packageFilesMassInsertOfCopiedValuesToolStripMenuItem");
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Click += new System.EventHandler(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem_Click);
+            // 
             // MainUI
             // 
             resources.ApplyResources(this, "$this");
@@ -303,6 +311,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label languageLable;
         private System.Windows.Forms.ToolStripMenuItem openpackageFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem packageFilesMassInsertOfCopiedValuesToolStripMenuItem;
     }
 }
 

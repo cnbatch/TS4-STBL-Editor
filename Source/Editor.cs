@@ -186,8 +186,6 @@ namespace TS4_STBL_Editor
                 dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
 
             }
-
-
         }
 
         private void Show_copied_values_Click(object sender, EventArgs e)
@@ -195,31 +193,6 @@ namespace TS4_STBL_Editor
             StringPicker sp = new StringPicker(null);
             sp.Show();
         }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-            //if (dataGridView1.SelectedRows.Count > 0)
-            //{
-            //    if (e.Button == MouseButtons.Left)
-            //    {
-            //        //if (addstr != null)
-            //        //{
-            //        //    addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
-            //        //}
-            //    }
-            //    else
-            //    {
-            //        CopySelectedRows();
-            //    }
-            //}
-        }
-
-        //private void label3_Click(object sender, EventArgs e)
-        //{
-        //    HowToCopyMultipleRows a = new HowToCopyMultipleRows();
-        //    a.ShowDialog();
-        //}
 
         private void Copy_Values_By_IDs_Click(object sender, EventArgs e)
         {
@@ -296,11 +269,6 @@ namespace TS4_STBL_Editor
             DialogResult result = inputBox.ShowDialog();
             input = textBox.Text;
             return result;
-        }
-
-        private void Copy_selected_rows_Click(object sender, EventArgs e)
-        {
-            //CopySelectedRows();
         }
 
         private void CopySelectedRows()

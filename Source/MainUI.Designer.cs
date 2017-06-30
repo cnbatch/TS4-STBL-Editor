@@ -38,6 +38,7 @@
             this.savePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.multyInsertIntoFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.languageLable = new System.Windows.Forms.Label();
-            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -115,6 +115,12 @@
             this.multyInsertIntoFilesToolStripMenuItem.Name = "multyInsertIntoFilesToolStripMenuItem";
             resources.ApplyResources(this.multyInsertIntoFilesToolStripMenuItem, "multyInsertIntoFilesToolStripMenuItem");
             this.multyInsertIntoFilesToolStripMenuItem.Click += new System.EventHandler(this.multyInsertIntoFilesToolStripMenuItem_Click);
+            // 
+            // packageFilesMassInsertOfCopiedValuesToolStripMenuItem
+            // 
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Name = "packageFilesMassInsertOfCopiedValuesToolStripMenuItem";
+            resources.ApplyResources(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem, "packageFilesMassInsertOfCopiedValuesToolStripMenuItem");
+            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Click += new System.EventHandler(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
@@ -249,12 +255,6 @@
             // 
             resources.ApplyResources(this.languageLable, "languageLable");
             this.languageLable.Name = "languageLable";
-            // 
-            // packageFilesMassInsertOfCopiedValuesToolStripMenuItem
-            // 
-            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Name = "packageFilesMassInsertOfCopiedValuesToolStripMenuItem";
-            resources.ApplyResources(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem, "packageFilesMassInsertOfCopiedValuesToolStripMenuItem");
-            this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Click += new System.EventHandler(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem_Click);
             // 
             // MainUI
             // 

@@ -3983,6 +3983,12 @@
   <data name="&gt;&gt;multyInsertIntoFilesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Name" xml:space="preserve">
+    <value>packageFilesMassInsertOfCopiedValuesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;closeToolStripMenuItem.Name" xml:space="preserve">
     <value>closeToolStripMenuItem</value>
   </data>
@@ -4060,12 +4066,6 @@
   </data>
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Name" xml:space="preserve">
-    <value>packageFilesMassInsertOfCopiedValuesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainUI</value>

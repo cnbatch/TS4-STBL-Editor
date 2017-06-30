@@ -14,14 +14,14 @@ using System.Windows.Forms;
 
 namespace TS4_STBL_Editor
 {
-    public partial class SelectSTBLfileinPackage : Form
+    public partial class SelectSTBLfileFromPackage : Form
     {
         List<IResourceIndexEntry> lrie;
         IPackage imppkg;
 
         public List<string> selectedSTBLObjects = new List<string>();
 
-        public SelectSTBLfileinPackage(List<IResourceIndexEntry> lrieInp, IPackage imppkgInp, bool allowMultiSelection)
+        public SelectSTBLfileFromPackage(List<IResourceIndexEntry> lrieInp, IPackage imppkgInp, bool allowMultiSelection)
         {
             InitializeComponent();
 
@@ -60,6 +60,26 @@ namespace TS4_STBL_Editor
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
             getSelectedItemsAndCloseForm();
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            else
+            {
+                if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.A) == Keys.A)  // Ctrl-A
+                {
+                    for (int x = 0; x < listBox1.Items.Count; x++)
+                    {
+                        listBox1.SetSelected(x, true);
+                    }
+                }
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

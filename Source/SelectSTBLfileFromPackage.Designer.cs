@@ -1,6 +1,6 @@
 ﻿namespace TS4_STBL_Editor
 {
-    partial class SelectSTBLfileinPackage
+    partial class SelectSTBLfileFromPackage
     {
         /// <summary>
         /// Required designer variable.

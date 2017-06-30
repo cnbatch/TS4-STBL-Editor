@@ -562,7 +562,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private SelectSTBLfileinPackage selectSTBLfileinPackage(string pathToPackageFile, bool allowMultiSelection)
+        private SelectSTBLfileFromPackage selectSTBLfileinPackage(string pathToPackageFile, bool allowMultiSelection)
         {
             if (imppkg != null)
             {
@@ -576,7 +576,7 @@ namespace TS4_STBL_Editor
                 return (x.ResourceType == 0x220557DA);
             });
 
-            SelectSTBLfileinPackage f = new SelectSTBLfileinPackage(lrie, imppkg, allowMultiSelection);
+            SelectSTBLfileFromPackage f = new SelectSTBLfileFromPackage(lrie, imppkg, allowMultiSelection);
             f.ShowDialog();
 
             return f;

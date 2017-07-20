@@ -47,9 +47,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteThisElementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyThisRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copySelectedRowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.copySelectedRowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -57,9 +57,9 @@
             // 
             // dataGridView1
             // 
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -154,24 +154,30 @@
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteThisElementToolStripMenuItem,
             this.copyThisRowToolStripMenuItem,
             this.copySelectedRowsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // deleteThisElementToolStripMenuItem
             // 
-            resources.ApplyResources(this.deleteThisElementToolStripMenuItem, "deleteThisElementToolStripMenuItem");
             this.deleteThisElementToolStripMenuItem.Name = "deleteThisElementToolStripMenuItem";
+            resources.ApplyResources(this.deleteThisElementToolStripMenuItem, "deleteThisElementToolStripMenuItem");
             this.deleteThisElementToolStripMenuItem.Click += new System.EventHandler(this.deleteThisElementToolStripMenuItem_Click);
             // 
             // copyThisRowToolStripMenuItem
             // 
-            resources.ApplyResources(this.copyThisRowToolStripMenuItem, "copyThisRowToolStripMenuItem");
             this.copyThisRowToolStripMenuItem.Name = "copyThisRowToolStripMenuItem";
+            resources.ApplyResources(this.copyThisRowToolStripMenuItem, "copyThisRowToolStripMenuItem");
             this.copyThisRowToolStripMenuItem.Click += new System.EventHandler(this.copyThisRowToolStripMenuItem_Click);
+            // 
+            // copySelectedRowsToolStripMenuItem
+            // 
+            this.copySelectedRowsToolStripMenuItem.Name = "copySelectedRowsToolStripMenuItem";
+            resources.ApplyResources(this.copySelectedRowsToolStripMenuItem, "copySelectedRowsToolStripMenuItem");
+            this.copySelectedRowsToolStripMenuItem.Click += new System.EventHandler(this.copySelectedRowsToolStripMenuItem_Click);
             // 
             // label4
             // 
@@ -182,12 +188,6 @@
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            // 
-            // copySelectedRowsToolStripMenuItem
-            // 
-            this.copySelectedRowsToolStripMenuItem.Name = "copySelectedRowsToolStripMenuItem";
-            resources.ApplyResources(this.copySelectedRowsToolStripMenuItem, "copySelectedRowsToolStripMenuItem");
-            this.copySelectedRowsToolStripMenuItem.Click += new System.EventHandler(this.copySelectedRowsToolStripMenuItem_Click);
             // 
             // label3
             // 

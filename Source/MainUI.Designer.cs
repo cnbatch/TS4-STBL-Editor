@@ -59,6 +59,8 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.languageLable = new System.Windows.Forms.Label();
+            this.officialPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.donatePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -138,6 +140,8 @@
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem1,
+            this.donatePageToolStripMenuItem,
+            this.officialPageToolStripMenuItem,
             this.showLangCodesToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
@@ -256,6 +260,18 @@
             resources.ApplyResources(this.languageLable, "languageLable");
             this.languageLable.Name = "languageLable";
             // 
+            // officialPageToolStripMenuItem
+            // 
+            this.officialPageToolStripMenuItem.Name = "officialPageToolStripMenuItem";
+            resources.ApplyResources(this.officialPageToolStripMenuItem, "officialPageToolStripMenuItem");
+            this.officialPageToolStripMenuItem.Click += new System.EventHandler(this.officialPageToolStripMenuItem_Click);
+            // 
+            // donatePageToolStripMenuItem
+            // 
+            this.donatePageToolStripMenuItem.Name = "donatePageToolStripMenuItem";
+            resources.ApplyResources(this.donatePageToolStripMenuItem, "donatePageToolStripMenuItem");
+            this.donatePageToolStripMenuItem.Click += new System.EventHandler(this.donatePageToolStripMenuItem_Click);
+            // 
             // MainUI
             // 
             resources.ApplyResources(this, "$this");
@@ -312,6 +328,8 @@
         private System.Windows.Forms.Label languageLable;
         private System.Windows.Forms.ToolStripMenuItem openpackageFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem packageFilesMassInsertOfCopiedValuesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem officialPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem donatePageToolStripMenuItem;
     }
 }
 

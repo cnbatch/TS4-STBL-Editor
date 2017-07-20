@@ -737,6 +737,7 @@ namespace TS4_STBL_Editor
                     closeAndSavePackage(true, false);
                 }
                 closeAndSavePackage(true, true);
+                MessageBox.Show("Done!");
 
             }
             else
@@ -758,7 +759,17 @@ namespace TS4_STBL_Editor
                 }
                 pathOpened = false;
             }
-            
+
+        }
+
+        private void officialPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://arturlwww.tumblr.com/post/162176967969/ts4-stbl-editor");
+        }
+
+        private void donatePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.patreon.com/pregnancymegamod");
         }
     }
 }

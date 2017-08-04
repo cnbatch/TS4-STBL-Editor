@@ -35,7 +35,9 @@ namespace TS4_STBL_Editor
         public static IResource res;
         #endregion
 
-        public MainUI()
+        string[] argsLocal;
+
+        public MainUI(string[] args)
         {
             InitializeComponent();
 
@@ -67,6 +69,10 @@ namespace TS4_STBL_Editor
 
             settings0.StoreSettings(dataGridView1, 0);
             settings1.StoreSettings(dataGridView1, 1);
+
+            argsLocal = args;
+
+            
         }
 
         private string publicPath = string.Empty;
@@ -114,6 +120,7 @@ namespace TS4_STBL_Editor
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                MessageBox.Show(openFileDialog1.FileName);
                 openSTBLfile(openFileDialog1.FileName);
             }
             else
@@ -770,6 +777,28 @@ namespace TS4_STBL_Editor
         private void donatePageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.patreon.com/pregnancymegamod");
+        }
+
+        private void MainUI_Load(object sender, EventArgs e)
+        {
+            if (argsLocal.Length > 0)
+            {
+                string fileToOpen = argsLocal[0];
+                if (fileToOpen != null)
+                {
+                    //MessageBox.Show(fileToOpen);
+                    if (fileToOpen.EndsWith(".stbl"))
+                    {
+                        openedFromSTBL_File = true;
+                        openSTBLfile(fileToOpen);
+                    }
+                    else if (fileToOpen.EndsWith(".package"))
+                    {
+                        openPackageFile(fileToOpen);
+                    }
+
+                }
+            }
         }
     }
 }

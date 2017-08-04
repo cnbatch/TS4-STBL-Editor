@@ -43,6 +43,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.donatePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.officialPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showLangCodesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -59,8 +61,6 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.languageLable = new System.Windows.Forms.Label();
-            this.officialPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.donatePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -151,6 +151,18 @@
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             resources.ApplyResources(this.aboutToolStripMenuItem1, "aboutToolStripMenuItem1");
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // donatePageToolStripMenuItem
+            // 
+            this.donatePageToolStripMenuItem.Name = "donatePageToolStripMenuItem";
+            resources.ApplyResources(this.donatePageToolStripMenuItem, "donatePageToolStripMenuItem");
+            this.donatePageToolStripMenuItem.Click += new System.EventHandler(this.donatePageToolStripMenuItem_Click);
+            // 
+            // officialPageToolStripMenuItem
+            // 
+            this.officialPageToolStripMenuItem.Name = "officialPageToolStripMenuItem";
+            resources.ApplyResources(this.officialPageToolStripMenuItem, "officialPageToolStripMenuItem");
+            this.officialPageToolStripMenuItem.Click += new System.EventHandler(this.officialPageToolStripMenuItem_Click);
             // 
             // showLangCodesToolStripMenuItem
             // 
@@ -260,18 +272,6 @@
             resources.ApplyResources(this.languageLable, "languageLable");
             this.languageLable.Name = "languageLable";
             // 
-            // officialPageToolStripMenuItem
-            // 
-            this.officialPageToolStripMenuItem.Name = "officialPageToolStripMenuItem";
-            resources.ApplyResources(this.officialPageToolStripMenuItem, "officialPageToolStripMenuItem");
-            this.officialPageToolStripMenuItem.Click += new System.EventHandler(this.officialPageToolStripMenuItem_Click);
-            // 
-            // donatePageToolStripMenuItem
-            // 
-            this.donatePageToolStripMenuItem.Name = "donatePageToolStripMenuItem";
-            resources.ApplyResources(this.donatePageToolStripMenuItem, "donatePageToolStripMenuItem");
-            this.donatePageToolStripMenuItem.Click += new System.EventHandler(this.donatePageToolStripMenuItem_Click);
-            // 
             // MainUI
             // 
             resources.ApplyResources(this, "$this");
@@ -286,6 +286,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainUI";
+            this.Load += new System.EventHandler(this.MainUI_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainUI_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainUI_DragEnter);
             this.menuStrip1.ResumeLayout(false);

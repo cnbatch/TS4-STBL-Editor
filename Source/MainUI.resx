@@ -4025,6 +4025,18 @@
   <data name="&gt;&gt;aboutToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;donatePageToolStripMenuItem.Name" xml:space="preserve">
+    <value>donatePageToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;donatePageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;officialPageToolStripMenuItem.Name" xml:space="preserve">
+    <value>officialPageToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;officialPageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;showLangCodesToolStripMenuItem.Name" xml:space="preserve">
     <value>showLangCodesToolStripMenuItem</value>
   </data>
@@ -4078,18 +4090,6 @@
   </data>
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;officialPageToolStripMenuItem.Name" xml:space="preserve">
-    <value>officialPageToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;officialPageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;donatePageToolStripMenuItem.Name" xml:space="preserve">
-    <value>donatePageToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;donatePageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainUI</value>

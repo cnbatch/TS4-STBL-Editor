@@ -84,6 +84,15 @@ namespace TS4_STBL_Editor
                 dataTable.Rows.Clear();
                 dataTable = tempDataTable.Copy();
             }
+            else
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                DataTable tempDataTable = dataTable.Clone();
+
+                dataTable.Rows.Clear();
+                dataTable = tempDataTable.Copy();
+            }
+
             isTextChanged = true;
             Close();
         }
@@ -299,8 +308,8 @@ namespace TS4_STBL_Editor
 
             }
 
-            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
-                                        "Confirm Delete!!",
+            var confirmResult = MessageBox.Show("Are you sure to delete selected items?",
+                                        "Confirm Delete!",
                                         MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
@@ -344,18 +353,20 @@ namespace TS4_STBL_Editor
 
         protected override bool ProcessDialogKey(Keys keyData)
         {
+            dataGridView1
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
                 this.Close();
                 return true;
             }
-            else
+            else if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
             {
-                if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
-                {
-                    saveAndExit();
-                }
+                saveAndExit();
+            } else if (Form.ModifierKeys == Keys.None && keyData == Keys.Delete)
+            {
+                deleteThisElementToolStripMenuItem_Click(null, null);
             }
+
             return base.ProcessDialogKey(keyData);
         }
 

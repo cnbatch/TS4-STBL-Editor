@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newSBTLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openpackageFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +62,8 @@
             this.importBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.languageLable = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -77,6 +80,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newSBTLFileToolStripMenuItem,
             this.openPackageToolStripMenuItem,
             this.openpackageFileToolStripMenuItem,
             this.savePackageToolStripMenuItem,
@@ -87,6 +91,12 @@
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            // 
+            // newSBTLFileToolStripMenuItem
+            // 
+            resources.ApplyResources(this.newSBTLFileToolStripMenuItem, "newSBTLFileToolStripMenuItem");
+            this.newSBTLFileToolStripMenuItem.Name = "newSBTLFileToolStripMenuItem";
+            this.newSBTLFileToolStripMenuItem.Click += new System.EventHandler(this.newSBTLFileToolStripMenuItem_Click);
             // 
             // openPackageToolStripMenuItem
             // 
@@ -272,10 +282,18 @@
             resources.ApplyResources(this.languageLable, "languageLable");
             this.languageLable.Name = "languageLable";
             // 
+            // linkLabel1
+            // 
+            resources.ApplyResources(this.linkLabel1, "linkLabel1");
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // MainUI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.languageLable);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.importBtn);
@@ -331,6 +349,9 @@
         private System.Windows.Forms.ToolStripMenuItem packageFilesMassInsertOfCopiedValuesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem officialPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem donatePageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newSBTLFileToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

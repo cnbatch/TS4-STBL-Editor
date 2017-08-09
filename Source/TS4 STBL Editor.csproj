@@ -190,6 +190,12 @@
     <Compile Include="AddString.Designer.cs">
       <DependentUpon>AddString.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateNewSTBLFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewSTBLFile.Designer.cs">
+      <DependentUpon>CreateNewSTBLFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddString.zh-Hant.resx">
       <DependentUpon>AddString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewSTBLFile.resx">
+      <DependentUpon>CreateNewSTBLFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor.resx">
       <DependentUpon>Editor.cs</DependentUpon>

@@ -33,6 +33,7 @@ namespace TS4_STBL_Editor
         public static IPackage imppkg = null;
         public static List<IResourceIndexEntry> lrie;
         public static IResource res;
+        public static String pathToOpenedPackageFile = "";
         #endregion
 
         string[] argsLocal;
@@ -72,7 +73,7 @@ namespace TS4_STBL_Editor
 
             argsLocal = args;
 
-            
+
         }
 
         private string publicPath = string.Empty;
@@ -87,6 +88,11 @@ namespace TS4_STBL_Editor
 
         private void openPackageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
             openPackageFromOpenFileDialog();
         }
 
@@ -120,7 +126,7 @@ namespace TS4_STBL_Editor
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(openFileDialog1.FileName);
+                // MessageBox.Show(openFileDialog1.FileName);
                 openSTBLfile(openFileDialog1.FileName);
             }
             else
@@ -266,7 +272,10 @@ namespace TS4_STBL_Editor
                     dataGridView1.Rows[k].HeaderCell.Value = (k + 1).ToString();
                 }
 
-                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                }
 
                 stblEditor.Dispose();
 
@@ -454,13 +463,34 @@ namespace TS4_STBL_Editor
                 lrie.Clear();
                 res = null;
             }
+
+            if (!openedFromSTBL_File)
+            {
+                linkLabel1.Visible = false;
+            }
         }
 
         private void MainUI_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (string file in files) Console.WriteLine(file);
-            openSTBLfile(files[0]);
+
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
+            string fileToOpen = files[0];
+
+            if (fileToOpen.EndsWith(".stbl"))
+            {
+                openedFromSTBL_File = true;
+                openSTBLfile(fileToOpen);
+            }
+            else if (fileToOpen.EndsWith(".package"))
+            {
+                openPackageFile(fileToOpen);
+            }
+
         }
 
         private void MainUI_DragEnter(object sender, DragEventArgs e)
@@ -475,11 +505,16 @@ namespace TS4_STBL_Editor
 
         private void multyInsertIntoFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
             if (MainUI.copiedValuesStrHolders.Count > 0)
             {
 
                 isTextChanged = false;
-                closeAndSavePackage(false, false);
+                //closeAndSavePackage(false, false);
 
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -593,6 +628,9 @@ namespace TS4_STBL_Editor
         {
             var f = selectSTBLfileinPackage(pathToPackageFile, false);
 
+            pathToOpenedPackageFile = pathToPackageFile;
+            linkLabel1.Visible = true;
+
             if (f.selectedSTBLObjects.Count() > 0)
             {
 
@@ -616,6 +654,11 @@ namespace TS4_STBL_Editor
 
         private void openpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
@@ -667,6 +710,11 @@ namespace TS4_STBL_Editor
 
         private void packageFilesMassInsertOfCopiedValuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
@@ -798,6 +846,23 @@ namespace TS4_STBL_Editor
                     }
 
                 }
+            }
+        }
+
+        private void newSBTLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateNewSTBLFile f = new CreateNewSTBLFile();
+            f.ShowDialog();
+
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, true);
+                openPackageFile(pathToOpenedPackageFile);
             }
         }
     }

@@ -17,6 +17,7 @@ namespace TS4_STBL_Editor
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainUI(args));
+            //Application.Run(new CreateNewSTBLFile());
         }
     }
 }

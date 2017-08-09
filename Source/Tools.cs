@@ -363,23 +363,28 @@ namespace TS4_STBL_Editor
 
         public void SaveSTBL(bool isSaveAs, bool isFile)
         {
-            if (dataGridView1.Rows.Count == 0) return;
-
             ArrayList textResourceID = new ArrayList();
             ArrayList textString = new ArrayList();
 
-            uint convert = 0;
-            string hexText;
+            ArrayList tempList = new ArrayList();
 
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            if (dataGridView1.Rows.Count > 0)
             {
-                hexText = ((string)dataGridView1.Rows[i].Cells[0].Value).Replace("0x", "");
-                convert = Convert.ToUInt32(hexText, 16);
-                textResourceID.Add(convert);
-                textString.Add(dataGridView1.Rows[i].Cells[1].Value);
+
+               
+
+                uint convert = 0;
+                string hexText;
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    hexText = ((string)dataGridView1.Rows[i].Cells[0].Value).Replace("0x", "");
+                    convert = Convert.ToUInt32(hexText, 16);
+                    textResourceID.Add(convert);
+                    textString.Add(dataGridView1.Rows[i].Cells[1].Value);
+                }
             }
 
-            ArrayList tempList = new ArrayList();
             tempList.Add(textResourceID);
             tempList.Add(textString);
 

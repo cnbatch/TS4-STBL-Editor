@@ -76,8 +76,8 @@ namespace TS4_STBL_Editor
 
         }
 
-        private string publicPath = string.Empty;
-        private bool pathOpened = false;
+        public string publicPath = string.Empty;
+        public bool pathOpened = false;
         private bool canAlsoSave = false;
         private bool isTextChanged = false;
 
@@ -150,7 +150,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void openSTBLfile(string pathToFile)
+        public void openSTBLfile(string pathToFile)
         {
             string stblFilePath = string.Empty;
             bool fileIsOpened = false;
@@ -414,7 +414,7 @@ namespace TS4_STBL_Editor
             closeAndSavePackage(true, true);
         }
 
-        private void closeAndSavePackage(bool save = true, bool clearPackageContainer = false)
+        public void closeAndSavePackage(bool save = true, bool clearPackageContainer = false)
         {
             if (save)
             {
@@ -851,7 +851,7 @@ namespace TS4_STBL_Editor
 
         private void newSBTLFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateNewSTBLFile f = new CreateNewSTBLFile();
+            CreateNewSTBLFile f = new CreateNewSTBLFile(this);
             f.ShowDialog();
 
 

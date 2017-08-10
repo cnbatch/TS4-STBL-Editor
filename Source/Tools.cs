@@ -361,7 +361,7 @@ namespace TS4_STBL_Editor
             return mainArrayList;
         }
 
-        public void SaveSTBL(bool isSaveAs, bool isFile)
+        public void SaveSTBL(bool isSaveAs, bool isSTBLFile)
         {
             ArrayList textResourceID = new ArrayList();
             ArrayList textString = new ArrayList();
@@ -370,9 +370,6 @@ namespace TS4_STBL_Editor
 
             if (dataGridView1.Rows.Count > 0)
             {
-
-               
-
                 uint convert = 0;
                 string hexText;
 
@@ -388,7 +385,7 @@ namespace TS4_STBL_Editor
             tempList.Add(textResourceID);
             tempList.Add(textString);
 
-            if (isFile)
+            if (isSTBLFile)
             {
                 publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
             }

@@ -124,10 +124,6 @@
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="newSBTLFileToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="newSBTLFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>344, 24</value>
   </data>
@@ -243,6 +239,7 @@
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1184, 29</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>

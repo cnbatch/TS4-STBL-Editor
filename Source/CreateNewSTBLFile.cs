@@ -14,9 +14,11 @@ namespace TS4_STBL_Editor
 {
     public partial class CreateNewSTBLFile : Form
     {
-        public CreateNewSTBLFile()
+        MainUI mainUI;
+        public CreateNewSTBLFile(MainUI mainUI)
         {
             InitializeComponent();
+            this.mainUI = mainUI;
         }
 
         private void calculatedHashOfNameFld_TextChanged(object sender, EventArgs e)
@@ -70,8 +72,17 @@ namespace TS4_STBL_Editor
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show(saveFileDialog1.FileName);
+                    //MessageBox.Show(saveFileDialog1.FileName);
 
+                    if (mainUI.pathOpened)
+                    {
+                        mainUI.closeAndSavePackage(true, !MainUI.openedFromSTBL_File);
+                    }
+
+                    mainUI.publicPath = saveFileDialog1.FileName;
+                    mainUI.SaveSTBL(false, true);
+                    mainUI.openSTBLfile(saveFileDialog1.FileName);
+                    this.Close();
                 }
             }
         }

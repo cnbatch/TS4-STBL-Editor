@@ -94,8 +94,8 @@
             // 
             // newSBTLFileToolStripMenuItem
             // 
-            resources.ApplyResources(this.newSBTLFileToolStripMenuItem, "newSBTLFileToolStripMenuItem");
             this.newSBTLFileToolStripMenuItem.Name = "newSBTLFileToolStripMenuItem";
+            resources.ApplyResources(this.newSBTLFileToolStripMenuItem, "newSBTLFileToolStripMenuItem");
             this.newSBTLFileToolStripMenuItem.Click += new System.EventHandler(this.newSBTLFileToolStripMenuItem_Click);
             // 
             // openPackageToolStripMenuItem

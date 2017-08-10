@@ -4,6 +4,7 @@
  - Now it's possible to drag and drop on the programm not only STBL files, but .PACKAGE files too.
  - Added a new Link Label on main form - it will be showed, when .package file was open. This Link Label will allow you to open another STBL element from opened .package file. 
  - In Editor you will be able to use Delete button on keyboard for deletion of the rows.
+ - Added a new functional "New SBTL File" in main menu of the MainUI - to create a new .stbl file
 
 **14** - Now it's possible to open STBL and PACKAGE files with TS4-STBL-Editor via Windows command "Open With ...".
 Fixed elements on Editor window.

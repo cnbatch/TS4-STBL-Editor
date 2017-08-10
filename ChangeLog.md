@@ -1,3 +1,10 @@
+**15** Changes:
+ - Fixed bug, when STBL with count of element = 0 was not saved.
+ - Now packages and STBL files are properly closed, when a new one opened in the same app session.
+ - Now it's possible to drag and drop on the programm not only STBL files, but .PACKAGE files too.
+ - Added a new Link Label on main form - it will be showed, when .package file was open. This Link Label will allow you to open another STBL element from opened .package file. 
+ - In Editor you will be able to use Delete button on keyboard for deletion of the rows.
+
 **14** - Now it's possible to open STBL and PACKAGE files with TS4-STBL-Editor via Windows command "Open With ...".
 Fixed elements on Editor window.
 Now it's possible to open STBL and PACKAGE files with TS4-STBL-Editor via Windows command "Open With ..."

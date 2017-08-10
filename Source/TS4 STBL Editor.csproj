@@ -208,6 +208,9 @@
     <Compile Include="AboutEditorForm.Designer.cs">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SelectSTBLfileFromPackage.cs">
       <SubType>Form</SubType>
     </Compile>

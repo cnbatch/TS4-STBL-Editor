@@ -65,6 +65,7 @@ namespace TS4_STBL_Editor
                 row.HeaderCell.Value = (row.Index + 1).ToString();
                 updateProgressBar((double)row.Index / (double)dataTable.Rows.Count);
             }
+            
         }
 
         private void saveAndExit()
@@ -114,12 +115,34 @@ namespace TS4_STBL_Editor
             if (addString.isOK)
             {
                 DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null)
+                {
+                    //dt = new DataTable();
+                    //dt.Columns.Add("Text ID", typeof(String));
+                    //dt.Columns.Add("Original", typeof(String));
+                    //dt.Columns.Add("Translation", typeof(String));
+
+                    dt = new DataTable();
+
+                    DataColumn dc;
+                    dc = new DataColumn(dataGridView1.Columns[0].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[1].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[2].HeaderText);
+                    dt.Columns.Add(dc);
+
+                    dataGridView1.DataSource = dt;
+
+                    dt = (DataTable)dataGridView1.DataSource;
+                }
                 DataRow dr;
                 dr = dt.NewRow();
                 dr[0] = addString.textID;
                 dr[2] = addString.dataGridText;
                 dt.Rows.Add(dr);
-                dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+                int cnt = dataGridView1.Rows.Count > 0 ? dataGridView1.Rows.Count - 1 : 0;
+                dataGridView1.Rows[cnt].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
             }
             addString.Dispose();
         }
@@ -313,7 +336,7 @@ namespace TS4_STBL_Editor
                                         MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                if (rows.Count() > 1)
+                if (rows.Count() > 0)
                 {
                     foreach (var r in rows)
                     {
@@ -353,7 +376,7 @@ namespace TS4_STBL_Editor
 
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            dataGridView1
+
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
                 this.Close();
@@ -362,11 +385,8 @@ namespace TS4_STBL_Editor
             else if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
             {
                 saveAndExit();
-            } else if (Form.ModifierKeys == Keys.None && keyData == Keys.Delete)
-            {
-                deleteThisElementToolStripMenuItem_Click(null, null);
             }
-
+           
             return base.ProcessDialogKey(keyData);
         }
 

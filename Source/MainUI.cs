@@ -496,24 +496,17 @@ namespace TS4_STBL_Editor
 
      
 
-        private SelectSTBLfileFromPackage selectSTBLfileinPackage(string pathToPackageFile, bool allowMultiSelection)
+        private SelectSTBLfileFromPackage selectSTBLfileinPackage(bool allowMultiSelection)
         {
-            if (imppkg != null)
-            {
-                imppkg.Dispose();
-            }
+          
 
-            imppkg = Package.OpenPackage(0, pathToPackageFile, true);
-
-
-            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             //                            TGIBlock newnmrk = new TGIBlock(0,
             //                null,
             //                0x0166038C,
             //                0,
             //                FNV64.GetHash(this.exportToPackageDialog.FileName + DateTime.Now));
-            /
             //.AddResource(newnmrk, null, true);
             
             lrie = imppkg.FindAll(x =>
@@ -527,12 +520,9 @@ namespace TS4_STBL_Editor
             return f;
         }
 
-        private void openPackageFile(string pathToPackageFile)
+        private void openedStblFileFromPackageToEditor()
         {
-            var f = selectSTBLfileinPackage(pathToPackageFile, false);
-
-            pathToOpenedPackageFile = pathToPackageFile;
-            linkLabel1.Visible = true;
+            var f = selectSTBLfileinPackage(false);
 
             if (f.selectedSTBLObjects.Count() > 0)
             {
@@ -555,8 +545,20 @@ namespace TS4_STBL_Editor
             }
         }
 
+        private void openPackageFile(string pathToPackageFile)
+        {
 
-       
+            if (imppkg != null)
+            {
+                imppkg.Dispose();
+            }
+
+            imppkg = Package.OpenPackage(0, pathToPackageFile, true);
+
+            pathToOpenedPackageFile = pathToPackageFile;
+            linkLabel1.Visible = true;
+
+        }
 
         private void officialPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -595,8 +597,10 @@ namespace TS4_STBL_Editor
         {
             if (pathOpened)
             {
-                closeAndSavePackage(true, true);
-                openPackageFile(pathToOpenedPackageFile);
+                // closeAndSavePackage(true, true);
+                //  openPackageFile(pathToOpenedPackageFile);
+                //                selectSTBLfileinPackage(false);
+                openedStblFileFromPackageToEditor();
             }
         }
 
@@ -650,6 +654,7 @@ namespace TS4_STBL_Editor
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 openPackageFile(openFileDialog1.FileName);
+                openedStblFileFromPackageToEditor();
             }
             else
             {
@@ -806,9 +811,9 @@ namespace TS4_STBL_Editor
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // openPackageFile(openFileDialog1.FileName);
+                openPackageFile(openFileDialog1.FileName);
 
-                var f = selectSTBLfileinPackage(openFileDialog1.FileName, true);
+                var f = selectSTBLfileinPackage(true);
 
                 openedFromSTBL_File = false;
                 foreach (string idStr in f.selectedSTBLObjects)

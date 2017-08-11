@@ -124,33 +124,12 @@
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>
   </data>
-  <data name="newSBTLFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
-  </data>
-  <data name="newSBTLFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>New SBTL File</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="openPackageToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+O</value>
-  </data>
-  <data name="openPackageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
-  </data>
-  <data name="openPackageToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Open STBL File</value>
-  </data>
-  <data name="openpackageFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
-  </data>
-  <data name="openpackageFileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open .package File</value>
-  </data>
   <data name="savePackageToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="savePackageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
+    <value>183, 24</value>
   </data>
   <data name="savePackageToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -159,28 +138,16 @@
     <value>Ctrl+D</value>
   </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
+    <value>183, 24</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save &amp;as...</value>
-  </data>
-  <data name="multyInsertIntoFilesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
-  </data>
-  <data name="multyInsertIntoFilesToolStripMenuItem.Text" xml:space="preserve">
-    <value>STBL Files - Mass insert of copied values</value>
-  </data>
-  <data name="packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
-  </data>
-  <data name="packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Package Files - Mass insert of copied values</value>
   </data>
   <data name="closeToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+W</value>
   </data>
   <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
+    <value>183, 24</value>
   </data>
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -189,7 +156,7 @@
     <value>Alt+F4</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
+    <value>183, 24</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Exit</value>
@@ -199,6 +166,54 @@
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
+  </data>
+  <data name="newSTBLFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 24</value>
+  </data>
+  <data name="newSTBLFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>New STBL File</value>
+  </data>
+  <data name="openSTBLFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 24</value>
+  </data>
+  <data name="openSTBLFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Open STBL File</value>
+  </data>
+  <data name="sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 24</value>
+  </data>
+  <data name="sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem.Text" xml:space="preserve">
+    <value>STBL Files - Mass insert of copied values</value>
+  </data>
+  <data name="sTBLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 23</value>
+  </data>
+  <data name="sTBLToolStripMenuItem.Text" xml:space="preserve">
+    <value>STBL</value>
+  </data>
+  <data name="openpackageFileToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 24</value>
+  </data>
+  <data name="openpackageFileToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Open .package File</value>
+  </data>
+  <data name="packageFilesMassInsertOfCopiedValuesToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 24</value>
+  </data>
+  <data name="packageFilesMassInsertOfCopiedValuesToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Package Files - Mass insert of copied values</value>
+  </data>
+  <data name="createANewSTBLFileInpackageFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 24</value>
+  </data>
+  <data name="createANewSTBLFileInpackageFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Create a new STBL file in .package file</value>
+  </data>
+  <data name="pACKAGEToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="pACKAGEToolStripMenuItem.Text" xml:space="preserve">
+    <value>PACKAGE</value>
   </data>
   <data name="aboutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
@@ -4004,24 +4019,6 @@
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;newSBTLFileToolStripMenuItem.Name" xml:space="preserve">
-    <value>newSBTLFileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;newSBTLFileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openPackageToolStripMenuItem.Name" xml:space="preserve">
-    <value>openPackageToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openPackageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Name" xml:space="preserve">
-    <value>openpackageFileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openpackageFileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;savePackageToolStripMenuItem.Name" xml:space="preserve">
     <value>savePackageToolStripMenuItem</value>
   </data>
@@ -4034,18 +4031,6 @@
   <data name="&gt;&gt;saveAsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;multyInsertIntoFilesToolStripMenuItem.Name" xml:space="preserve">
-    <value>multyInsertIntoFilesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;multyInsertIntoFilesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Name" xml:space="preserve">
-    <value>packageFilesMassInsertOfCopiedValuesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;closeToolStripMenuItem.Name" xml:space="preserve">
     <value>closeToolStripMenuItem</value>
   </data>
@@ -4056,6 +4041,48 @@
     <value>exitToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sTBLToolStripMenuItem.Name" xml:space="preserve">
+    <value>sTBLToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;sTBLToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;newSTBLFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>newSTBLFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;newSTBLFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openSTBLFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>openSTBLFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openSTBLFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem.Name" xml:space="preserve">
+    <value>sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pACKAGEToolStripMenuItem.Name" xml:space="preserve">
+    <value>pACKAGEToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pACKAGEToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openpackageFileToolStripMenuItem1.Name" xml:space="preserve">
+    <value>openpackageFileToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;openpackageFileToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem1.Name" xml:space="preserve">
+    <value>packageFilesMassInsertOfCopiedValuesToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;packageFilesMassInsertOfCopiedValuesToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
@@ -4141,6 +4168,12 @@
   </data>
   <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;createANewSTBLFileInpackageFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>createANewSTBLFileInpackageFileToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;createANewSTBLFileInpackageFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainUI</value>

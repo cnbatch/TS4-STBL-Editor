@@ -1,3 +1,6 @@
+**16** Changes:
+ - Reworked main menu 
+
 **15** Changes:
  - Fixed bug, when STBL with count of element = 0 was not saved.
  - Now packages and STBL files are properly closed, when a new one opened in the same app session.

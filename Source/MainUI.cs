@@ -86,16 +86,7 @@ namespace TS4_STBL_Editor
             Application.Exit();
         }
 
-        private void openPackageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pathOpened)
-            {
-                closeAndSavePackage(true, !openedFromSTBL_File);
-            }
-
-            openPackageFromOpenFileDialog();
-        }
-
+        
         private void openPackageFromOpenFileDialog()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -503,7 +494,185 @@ namespace TS4_STBL_Editor
             (new LangCodesHelp()).ShowDialog();
         }
 
-        private void multyInsertIntoFilesToolStripMenuItem_Click(object sender, EventArgs e)
+     
+
+        private SelectSTBLfileFromPackage selectSTBLfileinPackage(string pathToPackageFile, bool allowMultiSelection)
+        {
+            if (imppkg != null)
+            {
+                imppkg.Dispose();
+            }
+
+            imppkg = Package.OpenPackage(0, pathToPackageFile, true);
+
+
+            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            //                            TGIBlock newnmrk = new TGIBlock(0,
+            //                null,
+            //                0x0166038C,
+            //                0,
+            //                FNV64.GetHash(this.exportToPackageDialog.FileName + DateTime.Now));
+            /
+            //.AddResource(newnmrk, null, true);
+            
+            lrie = imppkg.FindAll(x =>
+            {
+                return (x.ResourceType == 0x220557DA);
+            });
+
+            SelectSTBLfileFromPackage f = new SelectSTBLfileFromPackage(lrie, imppkg, allowMultiSelection);
+            f.ShowDialog();
+
+            return f;
+        }
+
+        private void openPackageFile(string pathToPackageFile)
+        {
+            var f = selectSTBLfileinPackage(pathToPackageFile, false);
+
+            pathToOpenedPackageFile = pathToPackageFile;
+            linkLabel1.Visible = true;
+
+            if (f.selectedSTBLObjects.Count() > 0)
+            {
+
+                packageElId = BigInteger.Parse(f.selectedSTBLObjects[0].Replace("0x", ""), NumberStyles.AllowHexSpecifier);
+
+                var el = lrie.Find(x =>
+                {
+                    return (x.Instance == packageElId);
+                });
+
+                res = WrapperDealer.GetResource(0, imppkg, el, true);
+
+                openedFromSTBL_File = false;
+
+                ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
+                STBLToDataGridView(tempList);
+
+                pathOpened = true;
+            }
+        }
+
+
+       
+
+        private void officialPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://arturlwww.tumblr.com/post/162176967969/ts4-stbl-editor");
+        }
+
+        private void donatePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.patreon.com/pregnancymegamod");
+        }
+
+        private void MainUI_Load(object sender, EventArgs e)
+        {
+            if (argsLocal.Length > 0)
+            {
+                string fileToOpen = argsLocal[0];
+                if (fileToOpen != null)
+                {
+                    //MessageBox.Show(fileToOpen);
+                    if (fileToOpen.EndsWith(".stbl"))
+                    {
+                        openedFromSTBL_File = true;
+                        openSTBLfile(fileToOpen);
+                    }
+                    else if (fileToOpen.EndsWith(".package"))
+                    {
+                        openPackageFile(fileToOpen);
+                    }
+
+                }
+            }
+        }
+
+      
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, true);
+                openPackageFile(pathToOpenedPackageFile);
+            }
+        }
+
+        private void newSTBLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateNewSTBLFile f = new CreateNewSTBLFile(this);
+            f.ShowDialog();
+        }
+
+        private void openSTBLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
+            openPackageFromOpenFileDialog();
+        }
+
+        private void openpackageFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (pathOpened)
+            {
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+            {
+                case "CHS":
+                case "ZHI":
+                    openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "选择STBL文件";
+                    break;
+                case "CHT":
+                case "ZHH":
+                case "ZHM":
+                    openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "選取STBL檔案";
+                    break;
+                default:
+                    openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "Choose .package File";
+                    break;
+            }
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                openPackageFile(openFileDialog1.FileName);
+            }
+            else
+            {
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        filenameLabel.Text = "未打开任何文件。";
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        filenameLabel.Text = "未開啟任何檔案。";
+                        break;
+                    default:
+                        filenameLabel.Text = "No file is opened.";
+                        break;
+                }
+                pathOpened = false;
+            }
+        }
+
+        private void sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pathOpened)
             {
@@ -604,111 +773,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private SelectSTBLfileFromPackage selectSTBLfileinPackage(string pathToPackageFile, bool allowMultiSelection)
-        {
-            if (imppkg != null)
-            {
-                imppkg.Dispose();
-            }
-
-            imppkg = Package.OpenPackage(0, pathToPackageFile, true);
-
-            lrie = imppkg.FindAll(x =>
-            {
-                return (x.ResourceType == 0x220557DA);
-            });
-
-            SelectSTBLfileFromPackage f = new SelectSTBLfileFromPackage(lrie, imppkg, allowMultiSelection);
-            f.ShowDialog();
-
-            return f;
-        }
-
-        private void openPackageFile(string pathToPackageFile)
-        {
-            var f = selectSTBLfileinPackage(pathToPackageFile, false);
-
-            pathToOpenedPackageFile = pathToPackageFile;
-            linkLabel1.Visible = true;
-
-            if (f.selectedSTBLObjects.Count() > 0)
-            {
-
-                packageElId = BigInteger.Parse(f.selectedSTBLObjects[0].Replace("0x", ""), NumberStyles.AllowHexSpecifier);
-
-                var el = lrie.Find(x =>
-                {
-                    return (x.Instance == packageElId);
-                });
-
-                res = WrapperDealer.GetResource(0, imppkg, el, true);
-
-                openedFromSTBL_File = false;
-
-                ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
-                STBLToDataGridView(tempList);
-
-                pathOpened = true;
-            }
-        }
-
-        private void openpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pathOpened)
-            {
-                closeAndSavePackage(true, !openedFromSTBL_File);
-            }
-
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
-            {
-                case "CHS":
-                case "ZHI":
-                    openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
-                    openFileDialog1.FilterIndex = 1;
-                    openFileDialog1.Title = "选择STBL文件";
-                    break;
-                case "CHT":
-                case "ZHH":
-                case "ZHM":
-                    openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
-                    openFileDialog1.FilterIndex = 1;
-                    openFileDialog1.Title = "選取STBL檔案";
-                    break;
-                default:
-                    openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
-                    openFileDialog1.FilterIndex = 1;
-                    openFileDialog1.Title = "Choose .package File";
-                    break;
-            }
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                openPackageFile(openFileDialog1.FileName);
-            }
-            else
-            {
-                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
-                {
-                    case "CHS":
-                    case "ZHI":
-                        filenameLabel.Text = "未打开任何文件。";
-                        break;
-                    case "CHT":
-                    case "ZHH":
-                    case "ZHM":
-                        filenameLabel.Text = "未開啟任何檔案。";
-                        break;
-                    default:
-                        filenameLabel.Text = "No file is opened.";
-                        break;
-                }
-                pathOpened = false;
-            }
-        }
-
-        private void packageFilesMassInsertOfCopiedValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void packageFilesMassInsertOfCopiedValuesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (pathOpened)
             {
@@ -814,55 +879,61 @@ namespace TS4_STBL_Editor
                 }
                 pathOpened = false;
             }
-
         }
 
-        private void officialPageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("http://arturlwww.tumblr.com/post/162176967969/ts4-stbl-editor");
-        }
-
-        private void donatePageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.patreon.com/pregnancymegamod");
-        }
-
-        private void MainUI_Load(object sender, EventArgs e)
-        {
-            if (argsLocal.Length > 0)
-            {
-                string fileToOpen = argsLocal[0];
-                if (fileToOpen != null)
-                {
-                    //MessageBox.Show(fileToOpen);
-                    if (fileToOpen.EndsWith(".stbl"))
-                    {
-                        openedFromSTBL_File = true;
-                        openSTBLfile(fileToOpen);
-                    }
-                    else if (fileToOpen.EndsWith(".package"))
-                    {
-                        openPackageFile(fileToOpen);
-                    }
-
-                }
-            }
-        }
-
-        private void newSBTLFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateNewSTBLFile f = new CreateNewSTBLFile(this);
-            f.ShowDialog();
-
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void createANewSTBLFileInpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pathOpened)
             {
-                closeAndSavePackage(true, true);
-                openPackageFile(pathToOpenedPackageFile);
+                closeAndSavePackage(true, !openedFromSTBL_File);
+            }
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+            {
+                case "CHS":
+                case "ZHI":
+                    openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "选择STBL文件";
+                    break;
+                case "CHT":
+                case "ZHH":
+                case "ZHM":
+                    openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "選取STBL檔案";
+                    break;
+                default:
+                    openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "Choose .package File";
+                    break;
+            }
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                openPackageFile(openFileDialog1.FileName);
+            }
+            else
+            {
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        filenameLabel.Text = "未打开任何文件。";
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        filenameLabel.Text = "未開啟任何檔案。";
+                        break;
+                    default:
+                        filenameLabel.Text = "No file is opened.";
+                        break;
+                }
+                pathOpened = false;
             }
         }
     }

@@ -17,6 +17,7 @@ using s4pi.Package;
 using s4pi.Interfaces;
 using System.Numerics;
 using s4pi.WrapperDealer;
+using FNVHasherDLL;
 
 namespace TS4_STBL_Editor
 {
@@ -86,7 +87,7 @@ namespace TS4_STBL_Editor
             Application.Exit();
         }
 
-        
+
         private void openPackageFromOpenFileDialog()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -494,21 +495,13 @@ namespace TS4_STBL_Editor
             (new LangCodesHelp()).ShowDialog();
         }
 
-     
+
 
         private SelectSTBLfileFromPackage selectSTBLfileinPackage(bool allowMultiSelection)
         {
-          
 
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            //                            TGIBlock newnmrk = new TGIBlock(0,
-            //                null,
-            //                0x0166038C,
-            //                0,
-            //                FNV64.GetHash(this.exportToPackageDialog.FileName + DateTime.Now));
-            //.AddResource(newnmrk, null, true);
-            
+
             lrie = imppkg.FindAll(x =>
             {
                 return (x.ResourceType == 0x220557DA);
@@ -592,14 +585,11 @@ namespace TS4_STBL_Editor
             }
         }
 
-      
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (pathOpened)
             {
-                // closeAndSavePackage(true, true);
-                //  openPackageFile(pathToOpenedPackageFile);
-                //                selectSTBLfileinPackage(false);
                 openedStblFileFromPackageToEditor();
             }
         }
@@ -920,6 +910,23 @@ namespace TS4_STBL_Editor
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 openPackageFile(openFileDialog1.FileName);
+
+                ulong a = (ulong)FNVHasherStrFunctions.fnv64HighBit("qqqq");
+
+                TGIBlock newnmrk = new TGIBlock(0,
+    null,
+    0x220557DA,
+    0,
+    a
+   
+   );
+                var b = File.OpenRead(@"c:\Art\Projects\TheSims4\ArtUrlWWW_MegaMod\ArtUrlWWW_MegaMod_BaseMod\S4_220557DA_80000000_00DCBA186BAF920C_art%%+STBL.stbl");
+                imppkg.AddResource(newnmrk, b, true);
+                imppkg.SavePackage();
+                imppkg.Dispose();
+
+
+
             }
             else
             {

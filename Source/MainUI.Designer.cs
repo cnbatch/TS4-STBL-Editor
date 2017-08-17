@@ -44,6 +44,7 @@
             this.pACKAGEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openpackageFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.createANewSTBLFileInpackageFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.donatePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,6 @@
             this.languageLable = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.createANewSTBLFileInpackageFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -163,6 +163,12 @@
             this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem1.Name = "packageFilesMassInsertOfCopiedValuesToolStripMenuItem1";
             resources.ApplyResources(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem1, "packageFilesMassInsertOfCopiedValuesToolStripMenuItem1");
             this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem1.Click += new System.EventHandler(this.packageFilesMassInsertOfCopiedValuesToolStripMenuItem1_Click);
+            // 
+            // createANewSTBLFileInpackageFileToolStripMenuItem
+            // 
+            this.createANewSTBLFileInpackageFileToolStripMenuItem.Name = "createANewSTBLFileInpackageFileToolStripMenuItem";
+            resources.ApplyResources(this.createANewSTBLFileInpackageFileToolStripMenuItem, "createANewSTBLFileInpackageFileToolStripMenuItem");
+            this.createANewSTBLFileInpackageFileToolStripMenuItem.Click += new System.EventHandler(this.createANewSTBLFileInpackageFileToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -306,12 +312,6 @@
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // createANewSTBLFileInpackageFileToolStripMenuItem
-            // 
-            this.createANewSTBLFileInpackageFileToolStripMenuItem.Name = "createANewSTBLFileInpackageFileToolStripMenuItem";
-            resources.ApplyResources(this.createANewSTBLFileInpackageFileToolStripMenuItem, "createANewSTBLFileInpackageFileToolStripMenuItem");
-            this.createANewSTBLFileInpackageFileToolStripMenuItem.Click += new System.EventHandler(this.createANewSTBLFileInpackageFileToolStripMenuItem_Click);
             // 
             // MainUI
             // 

@@ -2,7 +2,7 @@
  - Reworked main menu 
  - Added test functional to add STBL objects into the .package file.
  - Reworked save functional to allow future changes for adding STBL into the packages.
- - Added a new functional "Create a new STBL file in .package file" in the main menu of the MainUI - to create a new STBL record in .[package file.
+ - Added a new functional "Create a new STBL file in .package file" in the main menu of the MainUI - to create a new STBL record in .package file.
 
 **15** Changes:
  - Fixed bug, when STBL with count of element = 0 was not saved.

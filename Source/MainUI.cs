@@ -918,8 +918,19 @@ namespace TS4_STBL_Editor
                     0x220557DA,
                     0,
                     a);
-                var b = File.OpenRead(@"c:\Art\Projects\TheSims4\ArtUrlWWW_MegaMod\ArtUrlWWW_MegaMod_BaseMod\S4_220557DA_80000000_00DCBA186BAF920C_art%%+STBL.stbl");
-                imppkg.AddResource(newnmrk, b, true);
+                //var b = File.OpenRead(@"c:\Art\Projects\TheSims4\ArtUrlWWW_MegaMod\ArtUrlWWW_MegaMod_BaseMod\S4_220557DA_80000000_00DCBA186BAF920C_art%%+STBL.stbl");
+                Stream s = new MemoryStream();
+
+                List<uint> textResourceID = new List<uint>();
+                List<string> textString = new List<string>();
+
+                ArrayList tempList = new ArrayList();
+
+                tempList.Add(textResourceID);
+                tempList.Add(textString);
+
+                WriteSTBLStream(tempList, s);
+                imppkg.AddResource(newnmrk, s, true);
                 imppkg.SavePackage();
                 imppkg.Dispose();
 

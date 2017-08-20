@@ -187,8 +187,8 @@ namespace TS4_STBL_Editor
                     stblFilePath = SaveFile.FileName;
 
                     FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-
                     WriteSTBLStream(mainArrayList, stblStream);
+                    stblStream.Dispose();
 
                     return stblFilePath;
                 }
@@ -200,9 +200,9 @@ namespace TS4_STBL_Editor
             else
             {
                 FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-
                 WriteSTBLStream(mainArrayList, stblStream);
-
+                stblStream.Dispose();
+                
                 return stblFilePath;
             }
 
@@ -263,7 +263,6 @@ namespace TS4_STBL_Editor
                 BinaryWriter stblFileWriter = new BinaryWriter(stblStream);
 
                 stblFileWriter.Write(stblData);
-                stblStream.Dispose();
                 stblMemoryStream.Dispose();
             }
             else
@@ -408,6 +407,7 @@ namespace TS4_STBL_Editor
 
                 var res = WrapperDealer.GetResource(0, imppkg, el, true);
                 WriteSTBLStream(tempList, res.Stream);
+
                 MainUI.imppkg.ReplaceResource(el, res);
             }
             filenameLabel.Text = publicPath;

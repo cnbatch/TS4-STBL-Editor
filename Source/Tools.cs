@@ -409,6 +409,8 @@ namespace TS4_STBL_Editor
                 WriteSTBLStream(tempList, res.Stream);
 
                 MainUI.imppkg.ReplaceResource(el, res);
+
+                MainUI.imppkg.SavePackage();
             }
             filenameLabel.Text = publicPath;
             pathOpened = true;

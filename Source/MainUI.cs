@@ -913,6 +913,8 @@ namespace TS4_STBL_Editor
 
                 CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
                 f.ShowDialog();
+
+                pathOpened = true;
             }
             else
             {

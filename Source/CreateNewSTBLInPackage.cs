@@ -75,16 +75,14 @@ namespace TS4_STBL_Editor
             {
                 string fn = calculatedHashOfNameFld.Text.Replace("0x", "");
 
-                uint fnU=0;
-
-                UInt64 fnU2 = Convert.ToUInt64(fn, 16);
+                UInt64 fnU = Convert.ToUInt64(fn, 16);
                 //ulong a = (ulong)FNVHasherStrFunctions.fnv64HighBit("qqqq");
 
                 TGIBlock newnmrk = new TGIBlock(0,
                     null,
                     0x220557DA,
                     0x80000000,
-                    fnU2);
+                    fnU);
                 Stream s = new MemoryStream();
 
                 List<uint> textResourceID = new List<uint>();
@@ -98,9 +96,9 @@ namespace TS4_STBL_Editor
                 mainUI.WriteSTBLStream(tempList, s);
                 MainUI.imppkg.AddResource(newnmrk, s, true);
                 MainUI.imppkg.SavePackage();
-                MainUI.imppkg.Dispose();
+                //MainUI.imppkg.Dispose();
 
-                this.Close();
+                //this.Close();
 
                 MessageBox.Show("Successfully done!");
 

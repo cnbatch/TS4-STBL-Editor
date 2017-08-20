@@ -2,6 +2,7 @@
  - Reworked main menu 
  - Added test functional to add STBL objects into the .package file.
  - Reworked save functional to allow future changes for adding STBL into the packages.
+ - Added a new functional "Create a new STBL file in .package file" in the main menu of the MainUI - to create a new STBL record in .[package file.
 
 **15** Changes:
  - Fixed bug, when STBL with count of element = 0 was not saved.
@@ -9,7 +10,7 @@
  - Now it's possible to drag and drop on the programm not only STBL files, but .PACKAGE files too.
  - Added a new Link Label on main form - it will be showed, when .package file was open. This Link Label will allow you to open another STBL element from opened .package file. 
  - In Editor you will be able to use Delete button on keyboard for deletion of the rows.
- - Added a new functional "New SBTL File" in main menu of the MainUI - to create a new .stbl file
+ - Added a new functional "New SBTL File" in the main menu of the MainUI - to create a new .stbl file
 
 **14** - Now it's possible to open STBL and PACKAGE files with TS4-STBL-Editor via Windows command "Open With ...".
 Fixed elements on Editor window.

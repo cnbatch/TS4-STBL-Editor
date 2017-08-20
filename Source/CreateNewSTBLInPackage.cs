@@ -1,8 +1,12 @@
-﻿using System;
+﻿using FNVHasherDLL;
+using s4pi.Interfaces;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,10 +16,10 @@ using System.Windows.Forms;
 
 namespace TS4_STBL_Editor
 {
-    public partial class CreateNewSTBLFile : Form
+    public partial class CreateNewSTBLInPackage : Form
     {
         MainUI mainUI;
-        public CreateNewSTBLFile(MainUI mainUI)
+        public CreateNewSTBLInPackage(MainUI mainUI)
         {
             InitializeComponent();
             this.mainUI = mainUI;
@@ -27,7 +31,7 @@ namespace TS4_STBL_Editor
 
         }
 
-        private void CreateNewSTBLFile_Load(object sender, EventArgs e)
+        private void CreateNewSTBLInPackage_Load(object sender, EventArgs e)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "TS4_STBL_Editor.LangCodesList.xml";
@@ -49,7 +53,16 @@ namespace TS4_STBL_Editor
         private void stblNameFld_TextChanged(object sender, EventArgs e)
         {
             var s = FNVHasherDLL.FNVHasherStrFunctions.fnv64HighBitHexString(stblNameFld.Text);
-            calculatedHashOfNameFld.Text = s;
+
+            string fn = s.Replace("0x", "");
+            fn = fn.Substring(2);
+
+            string langCode = comboBox1.SelectedValue.ToString();
+            langCode = langCode.Substring(2);
+
+            s = langCode + fn;
+
+            calculatedHashOfNameFld.Text = "0x" + s;
         }
 
         private void Save_Click(object sender, EventArgs e)
@@ -61,29 +74,36 @@ namespace TS4_STBL_Editor
             else
             {
                 string fn = calculatedHashOfNameFld.Text.Replace("0x", "");
-                fn = fn.Substring(2);
 
-                string langCode = comboBox1.SelectedValue.ToString();
-                langCode = langCode.Substring(2);
+                uint fnU=0;
 
-                fn = langCode + fn;
+                UInt64 fnU2 = Convert.ToUInt64(fn, 16);
+                //ulong a = (ulong)FNVHasherStrFunctions.fnv64HighBit("qqqq");
 
-                saveFileDialog1.FileName = "S4_220557DA_80000000_" + fn + "_" + stblNameFld.Text + "%%+STBL.stbl";
+                TGIBlock newnmrk = new TGIBlock(0,
+                    null,
+                    0x220557DA,
+                    0x80000000,
+                    fnU2);
+                Stream s = new MemoryStream();
 
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    //MessageBox.Show(saveFileDialog1.FileName);
+                List<uint> textResourceID = new List<uint>();
+                List<string> textString = new List<string>();
 
-                    if (mainUI.pathOpened)
-                    {
-                        mainUI.closeAndSavePackage(true, !MainUI.openedFromSTBL_File);
-                    }
+                ArrayList tempList = new ArrayList();
 
-                    mainUI.publicPath = saveFileDialog1.FileName;
-                    mainUI.SaveSTBL(false, true);
-                    mainUI.openSTBLfile(saveFileDialog1.FileName);
-                    this.Close();
-                }
+                tempList.Add(textResourceID);
+                tempList.Add(textString);
+
+                mainUI.WriteSTBLStream(tempList, s);
+                MainUI.imppkg.AddResource(newnmrk, s, true);
+                MainUI.imppkg.SavePackage();
+                MainUI.imppkg.Dispose();
+
+                this.Close();
+
+                MessageBox.Show("Successfully done!");
+
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace TS4_STBL_Editor
 {
-    partial class CreateNewSTBLFile
+    partial class CreateNewSTBLInPackage
     {
         /// <summary>
         /// Required designer variable.
@@ -107,7 +107,7 @@
             // 
             this.LangCodesDS.DataSetName = "LangCodesDS";
             // 
-            // CreateNewSTBLFile
+            // CreateNewSTBLInPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,9 +119,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CreateNewSTBLFile";
-            this.Text = "CreateNewSTBLFile";
-            this.Load += new System.EventHandler(this.CreateNewSTBLFile_Load);
+            this.Name = "CreateNewSTBLInPackage";
+            this.Text = "CreateNewSTBLInPackage";
+            this.Load += new System.EventHandler(this.CreateNewSTBLInPackage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LangCodesDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

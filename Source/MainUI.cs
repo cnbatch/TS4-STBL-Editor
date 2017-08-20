@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Globalization;
@@ -17,7 +13,6 @@ using s4pi.Package;
 using s4pi.Interfaces;
 using System.Numerics;
 using s4pi.WrapperDealer;
-using FNVHasherDLL;
 
 namespace TS4_STBL_Editor
 {

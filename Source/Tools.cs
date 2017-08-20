@@ -154,57 +154,6 @@ namespace TS4_STBL_Editor
 
         public string WriteSTBLFile(ArrayList mainArrayList, bool isSaveAs, string stblFilePath)
         {
-            FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
-
-            return WriteSTBLStream(mainArrayList, isSaveAs, stblFilePath, stblStream);
-        }
-
-        public string WriteSTBLStream(ArrayList mainArrayList, bool isSaveAs, string stblFilePath, Stream stblStream)
-        {
-            ArrayList textResourceID = (ArrayList)mainArrayList[0];
-            ArrayList textString = (ArrayList)mainArrayList[1];
-
-            byte[] stblLetter = new byte[5];
-            stblLetter[0] = 0x53;   // S
-            stblLetter[1] = 0x54;   // T
-            stblLetter[2] = 0x42;   // B
-            stblLetter[3] = 0x4C;   // L
-            stblLetter[4] = 5;   // Version 5
-
-            byte zero = 0;
-            ushort zeroZone = 0;
-            uint entrynTotal = (uint)textString.Count;
-
-            ushort[] countBytes = new ushort[entrynTotal];
-
-            uint entrySize = 0;
-
-            // count bytes
-            for (int i = 0; i < entrynTotal; i++)
-            {
-                countBytes[i] = (ushort)Encoding.UTF8.GetByteCount((string)textString[i]);
-                entrySize = countBytes[i] + entrySize + 1;
-            }
-
-            MemoryStream stblMemoryStream = new MemoryStream();
-            BinaryWriter binaryWriter = new BinaryWriter(stblMemoryStream);
-
-            binaryWriter.Write(stblLetter);
-
-            binaryWriter.Write(zeroZone);
-            binaryWriter.Write(entrynTotal);
-            binaryWriter.Write(zeroZone);
-            binaryWriter.Write(zeroZone);
-            binaryWriter.Write(zeroZone);
-            binaryWriter.Write(entrySize);
-
-            for (int i = 0; i < entrynTotal; i++)
-            {
-                binaryWriter.Write((uint)textResourceID[i]);
-                binaryWriter.Write(zero);
-                binaryWriter.Write(countBytes[i]);
-                binaryWriter.Write(((string)textString[i]).ToCharArray());
-            }
 
             if (isSaveAs || canAlsoSave)
             {
@@ -236,12 +185,75 @@ namespace TS4_STBL_Editor
                 if (SaveFile.ShowDialog() == DialogResult.OK)
                 {
                     stblFilePath = SaveFile.FileName;
+
+                    FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+                    WriteSTBLStream(mainArrayList, stblStream);
+
+                    return stblFilePath;
                 }
                 else
                 {
-                    stblMemoryStream.Dispose();
                     return stblFilePath;
                 }
+            }
+            else
+            {
+                FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+
+                WriteSTBLStream(mainArrayList, stblStream);
+
+                return stblFilePath;
+            }
+
+        }
+
+        public void WriteSTBLStream(ArrayList mainArrayList, Stream stblStream)
+        {
+
+            List<uint> textResourceID = (List<uint>)mainArrayList[0];
+            List<string> textString = (List<string>)mainArrayList[1];
+
+            byte[] stblLetter = new byte[5];
+            stblLetter[0] = 0x53;   // S
+            stblLetter[1] = 0x54;   // T
+            stblLetter[2] = 0x42;   // B
+            stblLetter[3] = 0x4C;   // L
+            stblLetter[4] = 5;   // Version 5
+
+            byte zero = 0;
+            ushort zeroZone = 0;
+            uint entrynTotal = (uint)textString.Count;
+
+            ushort[] countBytes = new ushort[entrynTotal];
+
+            uint entrySize = 0;
+
+            // count bytes
+            for (int i = 0; i < entrynTotal; i++)
+            {
+                countBytes[i] = (ushort)Encoding.UTF8.GetByteCount(textString[i]);
+                entrySize = countBytes[i] + entrySize + 1;
+            }
+
+            MemoryStream stblMemoryStream = new MemoryStream();
+            BinaryWriter binaryWriter = new BinaryWriter(stblMemoryStream);
+
+            binaryWriter.Write(stblLetter);
+
+            binaryWriter.Write(zeroZone);
+            binaryWriter.Write(entrynTotal);
+            binaryWriter.Write(zeroZone);
+            binaryWriter.Write(zeroZone);
+            binaryWriter.Write(zeroZone);
+            binaryWriter.Write(entrySize);
+
+            for (int i = 0; i < entrynTotal; i++)
+            {
+                binaryWriter.Write(textResourceID[i]);
+                binaryWriter.Write(zero);
+                binaryWriter.Write(countBytes[i]);
+                binaryWriter.Write(textString[i].ToCharArray());
             }
 
             byte[] stblData = stblMemoryStream.ToArray();
@@ -262,8 +274,6 @@ namespace TS4_STBL_Editor
             //FileStream fs = new FileStream("c:/temp/qqqq.txt", FileMode.CreateNew, FileAccess.Write);
             //fs.Write(stblData, 0, stblData.Length);
             //fs.Close();
-
-            return stblFilePath;
         }
 
         public void WriteXML(string xmlFilePath, ArrayList mainArrayList)
@@ -363,8 +373,8 @@ namespace TS4_STBL_Editor
 
         public void SaveSTBL(bool isSaveAs, bool isSTBLFile)
         {
-            ArrayList textResourceID = new ArrayList();
-            ArrayList textString = new ArrayList();
+            List<uint> textResourceID = new List<uint>();
+            List<string> textString = new List<string>();
 
             ArrayList tempList = new ArrayList();
 
@@ -378,7 +388,7 @@ namespace TS4_STBL_Editor
                     hexText = ((string)dataGridView1.Rows[i].Cells[0].Value).Replace("0x", "");
                     convert = Convert.ToUInt32(hexText, 16);
                     textResourceID.Add(convert);
-                    textString.Add(dataGridView1.Rows[i].Cells[1].Value);
+                    textString.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
                 }
             }
 
@@ -397,10 +407,8 @@ namespace TS4_STBL_Editor
                 });
 
                 var res = WrapperDealer.GetResource(0, imppkg, el, true);
-                publicPath = WriteSTBLStream(tempList, false, publicPath, res.Stream);
+                WriteSTBLStream(tempList, res.Stream);
                 MainUI.imppkg.ReplaceResource(el, res);
-                //MainUI.imppkg.SavePackage();
-                //MainUI.imppkg.Dispose();
             }
             filenameLabel.Text = publicPath;
             pathOpened = true;

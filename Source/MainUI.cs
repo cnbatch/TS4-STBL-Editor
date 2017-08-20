@@ -515,7 +515,7 @@ namespace TS4_STBL_Editor
 
         private void openedStblFileFromPackageToEditor()
         {
-            var f = selectSTBLfileinPackage(false);
+            SelectSTBLfileFromPackage f = selectSTBLfileinPackage(false);
 
             if (f.selectedSTBLObjects.Count() > 0)
             {
@@ -914,18 +914,14 @@ namespace TS4_STBL_Editor
                 ulong a = (ulong)FNVHasherStrFunctions.fnv64HighBit("qqqq");
 
                 TGIBlock newnmrk = new TGIBlock(0,
-    null,
-    0x220557DA,
-    0,
-    a
-   
-   );
+                    null,
+                    0x220557DA,
+                    0,
+                    a);
                 var b = File.OpenRead(@"c:\Art\Projects\TheSims4\ArtUrlWWW_MegaMod\ArtUrlWWW_MegaMod_BaseMod\S4_220557DA_80000000_00DCBA186BAF920C_art%%+STBL.stbl");
                 imppkg.AddResource(newnmrk, b, true);
                 imppkg.SavePackage();
                 imppkg.Dispose();
-
-
 
             }
             else

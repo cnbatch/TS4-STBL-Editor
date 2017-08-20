@@ -1,6 +1,7 @@
 **16** Changes:
  - Reworked main menu 
  - Added test functional to add STBL objects into the .package file.
+ - Reworked save functional to allow future changes for adding STBL into the packages.
 
 **15** Changes:
  - Fixed bug, when STBL with count of element = 0 was not saved.

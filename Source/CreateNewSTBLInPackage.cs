@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -15,12 +16,6 @@ namespace TS4_STBL_Editor
         {
             InitializeComponent();
             this.mainUI = mainUI;
-        }
-
-        private void calculatedHashOfNameFld_TextChanged(object sender, EventArgs e)
-        {
-
-
         }
 
         private void CreateNewSTBLInPackage_Load(object sender, EventArgs e)
@@ -86,9 +81,26 @@ namespace TS4_STBL_Editor
                 tempList.Add(textString);
 
                 mainUI.WriteSTBLStream(tempList, s);
-                MainUI.imppkg.AddResource(newnmrk, s, true);
+                var addedResIndexEntry = MainUI.imppkg.AddResource(newnmrk, s, true);
+                MainUI.lrie.Add(addedResIndexEntry);
+
+                BigInteger bi = BigInteger.Parse(addedResIndexEntry.Instance.ToString());
+                MainUI.packageElId = bi;
+
+                ArrayList textResourceID2 = new ArrayList();
+                ArrayList textString2 = new ArrayList();
+
+                tempList = new ArrayList();
+
+                tempList.Add(textResourceID2);
+                tempList.Add(textString2);
+
+                mainUI.STBLToDataGridView(tempList);
+
                 MainUI.imppkg.SavePackage();
-                //MainUI.imppkg.Dispose();
+                MainUI.imppkg.Dispose();
+
+                mainUI.openPackageFile(MainUI.pathToOpenedPackageFile);
 
                 //this.Close();
 

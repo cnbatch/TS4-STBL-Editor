@@ -9,6 +9,7 @@ using System.Collections;
 using System.Xml;
 using System.Threading;
 using s4pi.WrapperDealer;
+using s4pi.Interfaces;
 
 namespace TS4_STBL_Editor
 {
@@ -198,7 +199,7 @@ namespace TS4_STBL_Editor
                 FileStream stblStream = new FileStream(stblFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
                 WriteSTBLStream(mainArrayList, stblStream);
                 stblStream.Dispose();
-                
+
                 return stblFilePath;
             }
 
@@ -396,17 +397,24 @@ namespace TS4_STBL_Editor
             }
             else
             {
-                var el = lrie.Find(x =>
+                MainUI.lrie = MainUI.imppkg.FindAll(x =>
+                {
+                    return (x.ResourceType == 0x220557DA);
+                });
+
+                var el = MainUI.lrie.Find(x =>
                 {
                     return (x.Instance == MainUI.packageElId);
                 });
 
-                var res = WrapperDealer.GetResource(0, imppkg, el, true);
-                WriteSTBLStream(tempList, res.Stream);
+                if (el != null)
+                {
+                    var res = WrapperDealer.GetResource(0, imppkg, el, true);
+                    WriteSTBLStream(tempList, res.Stream);
 
-                MainUI.imppkg.ReplaceResource(el, res);
-
-                MainUI.imppkg.SavePackage();
+                    MainUI.imppkg.ReplaceResource(el, res);
+                    MainUI.imppkg.SavePackage();
+                }
             }
             filenameLabel.Text = publicPath;
             pathOpened = true;

@@ -1,3 +1,10 @@
+**17** Changes:
+ - Improved save process of newly added STBL element in the package file.
+ - Now newly added with "Create a new STBL file in .package file" STBL element is ready to edit - for adding new strings.
+ - Fixed error, when opened package file was uneditable with Edit button.
+ - After a new STBL element was added into the package file with "Create a new STBL file in .package file" functional, package file will not be closed and it will saty opened in the program.
+
+
 **16** Changes:
  - Reworked main menu 
  - Added test functional to add STBL objects into the .package file.

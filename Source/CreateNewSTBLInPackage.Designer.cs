@@ -73,7 +73,6 @@
             this.calculatedHashOfNameFld.ReadOnly = true;
             this.calculatedHashOfNameFld.Size = new System.Drawing.Size(260, 20);
             this.calculatedHashOfNameFld.TabIndex = 1;
-            this.calculatedHashOfNameFld.TextChanged += new System.EventHandler(this.calculatedHashOfNameFld_TextChanged);
             // 
             // Save
             // 

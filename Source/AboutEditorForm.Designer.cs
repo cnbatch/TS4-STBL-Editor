@@ -73,6 +73,7 @@
             this.MinimizeBox = false;
             this.Name = "AboutEditorForm";
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.AboutEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

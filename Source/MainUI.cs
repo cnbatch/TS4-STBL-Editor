@@ -82,8 +82,7 @@ namespace TS4_STBL_Editor
             Application.Exit();
         }
 
-
-        private void openPackageFromOpenFileDialog()
+        private void openSTBLFromOpenFileDialog()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -113,7 +112,6 @@ namespace TS4_STBL_Editor
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // MessageBox.Show(openFileDialog1.FileName);
                 openSTBLfile(openFileDialog1.FileName);
             }
             else
@@ -152,11 +150,8 @@ namespace TS4_STBL_Editor
 
             if (fileIsOpened)
             {
-                //fileNameLbl.Text = stblFilePath;
-
                 if (stblFilePath.IndexOf("220557DA") > 0)
                 {
-
                     var assembly = Assembly.GetExecutingAssembly();
                     var resourceName = "TS4_STBL_Editor.LangCodesList.xml";
 
@@ -205,6 +200,9 @@ namespace TS4_STBL_Editor
 
                 UseWaitCursor = false;
                 progressBar1.Visible = false;
+                pathOpened = true;
+                openedFromSTBL_File = true;
+
             }
         }
 
@@ -270,7 +268,7 @@ namespace TS4_STBL_Editor
             }
             else
             {
-                openPackageFromOpenFileDialog();
+                openSTBLFromOpenFileDialog();
             }
         }
 
@@ -470,7 +468,6 @@ namespace TS4_STBL_Editor
 
             if (fileToOpen.EndsWith(".stbl"))
             {
-                openedFromSTBL_File = true;
                 openSTBLfile(fileToOpen);
             }
             else if (fileToOpen.EndsWith(".package"))
@@ -494,8 +491,6 @@ namespace TS4_STBL_Editor
 
         private SelectSTBLfileFromPackage selectSTBLfileinPackage(bool allowMultiSelection)
         {
-
-
 
             lrie = imppkg.FindAll(x =>
             {
@@ -533,7 +528,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void openPackageFile(string pathToPackageFile)
+        public void openPackageFile(string pathToPackageFile)
         {
 
             if (imppkg != null)
@@ -545,6 +540,8 @@ namespace TS4_STBL_Editor
 
             pathToOpenedPackageFile = pathToPackageFile;
             linkLabel1.Visible = true;
+            pathOpened = true;
+            openedFromSTBL_File = false;
 
         }
 
@@ -602,14 +599,14 @@ namespace TS4_STBL_Editor
                 closeAndSavePackage(true, !openedFromSTBL_File);
             }
 
-            openPackageFromOpenFileDialog();
+            openSTBLFromOpenFileDialog();
         }
 
         private void openpackageFileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (pathOpened)
             {
-                closeAndSavePackage(true, !openedFromSTBL_File);
+                closeAndSavePackage(false, !openedFromSTBL_File);
             }
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -873,62 +870,66 @@ namespace TS4_STBL_Editor
 
         private void createANewSTBLFileInpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pathOpened)
+            if (!pathOpened)
             {
-                closeAndSavePackage(true, !openedFromSTBL_File);
-            }
 
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
-            {
-                case "CHS":
-                case "ZHI":
-                    openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
-                    openFileDialog1.FilterIndex = 1;
-                    openFileDialog1.Title = "选择STBL文件";
-                    break;
-                case "CHT":
-                case "ZHH":
-                case "ZHM":
-                    openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
-                    openFileDialog1.FilterIndex = 1;
-                    openFileDialog1.Title = "選取STBL檔案";
-                    break;
-                default:
-                    openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
-                    openFileDialog1.FilterIndex = 1;
-                    openFileDialog1.Title = "Choose .package File";
-                    break;
-            }
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                openPackageFile(openFileDialog1.FileName);
-
-                CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
-                f.ShowDialog();
-
-                pathOpened = true;
-            }
-            else
-            {
                 switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
                 {
                     case "CHS":
                     case "ZHI":
-                        filenameLabel.Text = "未打开任何文件。";
+                        openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "选择STBL文件";
                         break;
                     case "CHT":
                     case "ZHH":
                     case "ZHM":
-                        filenameLabel.Text = "未開啟任何檔案。";
+                        openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "選取STBL檔案";
                         break;
                     default:
-                        filenameLabel.Text = "No file is opened.";
+                        openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "Choose .package File";
                         break;
                 }
-                pathOpened = false;
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    openPackageFile(openFileDialog1.FileName);
+
+                    CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
+                    f.ShowDialog();
+
+                    pathOpened = true;
+                }
+                else
+                {
+                    switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                    {
+                        case "CHS":
+                        case "ZHI":
+                            filenameLabel.Text = "未打开任何文件。";
+                            break;
+                        case "CHT":
+                        case "ZHH":
+                        case "ZHM":
+                            filenameLabel.Text = "未開啟任何檔案。";
+                            break;
+                        default:
+                            filenameLabel.Text = "No file is opened.";
+                            break;
+                    }
+                    pathOpened = false;
+                }
+            }
+            else
+            {
+                CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
+                f.ShowDialog();
             }
         }
     }

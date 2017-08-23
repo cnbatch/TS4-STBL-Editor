@@ -1,5 +1,6 @@
 **18** Changes:
  - Programm will remember last entered STBL file name now. It's applicable for functional "Create a new STBL file in .package file" and "New STBL File".
+ - Into the "Create a new STBL file in .package file" added a new functional, that allows to Add All Langs At Once into the package file. After all langs STBL files will be added, program will close package and you should to open package file again, if needed.
 
 **17** Changes:
  - Improved save process of newly added STBL element in the package file.

@@ -445,7 +445,10 @@ namespace TS4_STBL_Editor
                 }
                 imppkg.Dispose();
                 imppkg = null;
-                lrie.Clear();
+                if (lrie != null)
+                {
+                    lrie.Clear();
+                }
                 res = null;
             }
 

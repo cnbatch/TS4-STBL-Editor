@@ -78,6 +78,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MTS_ArtUrlWWW_FNVHasherDLL.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="s4pi.AnimationResources">
       <HintPath>s4piDLLs\s4pi.AnimationResources.dll</HintPath>
     </Reference>
@@ -338,6 +341,7 @@
     <EmbeddedResource Include="StringPicker.zh-Hant.resx">
       <DependentUpon>StringPicker.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,3 +1,6 @@
+**18** Changes:
+ - Programm will remember last entered STBL file name now. It's applicable for functional "Create a new STBL file in .package file" and "New STBL File".
+
 **17** Changes:
  - Improved save process of newly added STBL element in the package file.
  - Now newly added with "Create a new STBL file in .package file" STBL element is ready to edit - for adding new strings.

@@ -1,10 +1,12 @@
-﻿using s4pi.Interfaces;
+﻿using Newtonsoft.Json;
+using s4pi.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 
 namespace TS4_STBL_Editor
@@ -35,6 +37,13 @@ namespace TS4_STBL_Editor
                 comboBox1.DisplayMember = "name";
                 comboBox1.ValueMember = "id";
             }
+
+            if (File.Exists("settings.json"))
+            {
+                string json = File.ReadAllText("settings.json", Encoding.UTF8);
+                Dictionary<string, string> settings = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                stblNameFld.Text = settings["stblFileName"];
+            }
         }
 
         private void stblNameFld_TextChanged(object sender, EventArgs e)
@@ -50,6 +59,14 @@ namespace TS4_STBL_Editor
             s = langCode + fn;
 
             calculatedHashOfNameFld.Text = "0x" + s;
+
+
+            Dictionary<string, string> settings = new Dictionary<string, string>();
+            settings.Add("stblFileName", stblNameFld.Text);
+
+            string json = JsonConvert.SerializeObject(settings, Formatting.Indented);
+
+            File.WriteAllText("settings.json", json, Encoding.UTF8);
         }
 
         private void Save_Click(object sender, EventArgs e)

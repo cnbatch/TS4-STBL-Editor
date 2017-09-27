@@ -842,6 +842,7 @@ namespace TS4_STBL_Editor
 
                     dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
 
+                    canAlsoSave = true;
                     isTextChanged = true;
                     pathOpened = true;
                     closeAndSavePackage(true, false);

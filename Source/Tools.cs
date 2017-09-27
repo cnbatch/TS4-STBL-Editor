@@ -413,7 +413,7 @@ namespace TS4_STBL_Editor
                     WriteSTBLStream(tempList, res.Stream);
 
                     MainUI.imppkg.ReplaceResource(el, res);
-                    MainUI.imppkg.SavePackage();
+                    //MainUI.imppkg.SavePackage();
                 }
             }
             filenameLabel.Text = publicPath;

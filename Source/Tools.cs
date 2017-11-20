@@ -367,7 +367,7 @@ namespace TS4_STBL_Editor
             return mainArrayList;
         }
 
-        public void SaveSTBL(bool isSaveAs, bool isSTBLFile)
+        public void SaveSTBL(bool isSaveAs, bool isSTBLFile, MainUI mainUI)
         {
             List<uint> textResourceID = new List<uint>();
             List<string> textString = new List<string>();
@@ -413,7 +413,11 @@ namespace TS4_STBL_Editor
                     WriteSTBLStream(tempList, res.Stream);
 
                     MainUI.imppkg.ReplaceResource(el, res);
-                    //MainUI.imppkg.SavePackage();
+
+                    MainUI.imppkg.SavePackage();
+                    MainUI.imppkg.Dispose();
+
+                    mainUI.openPackageFile(MainUI.pathToOpenedPackageFile);
                 }
             }
             filenameLabel.Text = publicPath;

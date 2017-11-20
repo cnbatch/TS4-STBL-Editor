@@ -210,18 +210,19 @@ namespace TS4_STBL_Editor
         {
             if (pathOpened)
             {
-                SaveSTBL(false, openedFromSTBL_File);
+                SaveSTBL(false, openedFromSTBL_File, this);
             }
             else if (canAlsoSave)
             {
-                SaveSTBL(true, openedFromSTBL_File);
+                SaveSTBL(true, openedFromSTBL_File, this);
             }
+
             isTextChanged = false;
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveSTBL(true, openedFromSTBL_File);
+            SaveSTBL(true, openedFromSTBL_File, this);
             isTextChanged = false;
         }
 
@@ -404,9 +405,9 @@ namespace TS4_STBL_Editor
             if (save)
             {
                 if (isTextChanged && pathOpened)
-                    SaveSTBL(false, openedFromSTBL_File);
+                    SaveSTBL(false, openedFromSTBL_File, this);
                 else if (isTextChanged && dataGridView1.Rows.Count > 0)
-                    SaveSTBL(true, openedFromSTBL_File);
+                    SaveSTBL(true, openedFromSTBL_File, this);
             }
 
             dataGridView1.DataSource = null;

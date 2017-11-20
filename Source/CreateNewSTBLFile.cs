@@ -100,7 +100,7 @@ namespace TS4_STBL_Editor
                     }
 
                     mainUI.publicPath = saveFileDialog1.FileName;
-                    mainUI.SaveSTBL(false, true);
+                    mainUI.SaveSTBL(false, true, mainUI);
                     mainUI.openSTBLfile(saveFileDialog1.FileName);
                     this.Close();
                 }

@@ -96,7 +96,7 @@
             // 
             this.savePackageToolStripMenuItem.Name = "savePackageToolStripMenuItem";
             resources.ApplyResources(this.savePackageToolStripMenuItem, "savePackageToolStripMenuItem");
-            this.savePackageToolStripMenuItem.Click += new System.EventHandler(this.savePackageToolStripMenuItem_Click);
+            this.savePackageToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 

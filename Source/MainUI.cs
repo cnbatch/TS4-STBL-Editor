@@ -206,15 +206,29 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void savePackageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pathOpened)
             {
-                SaveSTBL(false, openedFromSTBL_File, this);
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(false);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(false, this);
+                }
             }
             else if (canAlsoSave)
             {
-                SaveSTBL(true, openedFromSTBL_File, this);
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(true);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(true, this);
+                }
             }
 
             isTextChanged = false;
@@ -222,7 +236,14 @@ namespace TS4_STBL_Editor
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveSTBL(true, openedFromSTBL_File, this);
+            if (openedFromSTBL_File)
+            {
+                SaveSTBL_V2(true);
+            }
+            else
+            {
+                SaveSTBLObjectInPackage(true, this);
+            }
             isTextChanged = false;
         }
 
@@ -397,19 +418,41 @@ namespace TS4_STBL_Editor
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            closeAndSavePackage(true, true);
+            saveSTBL();
+            closeSTBL();
+            SavePackage();
+            closePackage();
         }
 
-        public void closeAndSavePackage(bool save = true, bool clearPackageContainer = false)
+        public void saveSTBL()
         {
-            if (save)
+            if (isTextChanged && pathOpened)
             {
-                if (isTextChanged && pathOpened)
-                    SaveSTBL(false, openedFromSTBL_File, this);
-                else if (isTextChanged && dataGridView1.Rows.Count > 0)
-                    SaveSTBL(true, openedFromSTBL_File, this);
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(false);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(false, this);
+                }
+            }
+            else if (isTextChanged && dataGridView1.Rows.Count > 0)
+            {
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(true);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(true, this);
+                }
             }
 
+        }
+
+        public void closeSTBL()
+        {
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Add("Column1", "");
             dataGridView1.Columns.Add("Column2", "");
@@ -436,14 +479,20 @@ namespace TS4_STBL_Editor
             pathOpened = false;
             canAlsoSave = false;
             isTextChanged = false;
+        }
+
+        public void SavePackage()
+        {
+            imppkg.SavePackage();
+        }
+
+        public void closePackage()
+        {
 
 
-            if (imppkg != null && clearPackageContainer)
+            if (imppkg != null)
             {
-                if (save)
-                {
-                    imppkg.SavePackage();
-                }
+
                 imppkg.Dispose();
                 imppkg = null;
                 if (lrie != null)
@@ -459,13 +508,20 @@ namespace TS4_STBL_Editor
             }
         }
 
+        public void closeAndSavePackage_Deprecated(bool save = true, bool clearPackageContainer = false)
+        {
+        }
+
         private void MainUI_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
             if (pathOpened)
             {
-                closeAndSavePackage(true, !openedFromSTBL_File);
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
             }
 
             string fileToOpen = files[0];
@@ -600,7 +656,10 @@ namespace TS4_STBL_Editor
         {
             if (pathOpened)
             {
-                closeAndSavePackage(true, !openedFromSTBL_File);
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
             }
 
             openSTBLFromOpenFileDialog();
@@ -610,7 +669,10 @@ namespace TS4_STBL_Editor
         {
             if (pathOpened)
             {
-                closeAndSavePackage(false, !openedFromSTBL_File);
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
             }
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -667,7 +729,10 @@ namespace TS4_STBL_Editor
         {
             if (pathOpened)
             {
-                closeAndSavePackage(true, !openedFromSTBL_File);
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
             }
 
             if (MainUI.copiedValuesStrHolders.Count > 0)
@@ -737,8 +802,11 @@ namespace TS4_STBL_Editor
                             }
                         }
 
-                        closeAndSavePackage();
+                        saveSTBL();
+                        closeSTBL();
                     }
+                    SavePackage();
+                    closePackage();
                     isTextChanged = false;
 
                 }
@@ -768,7 +836,10 @@ namespace TS4_STBL_Editor
         {
             if (pathOpened)
             {
-                closeAndSavePackage(true, !openedFromSTBL_File);
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
             }
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -846,9 +917,11 @@ namespace TS4_STBL_Editor
                     canAlsoSave = true;
                     isTextChanged = true;
                     pathOpened = true;
-                    closeAndSavePackage(true, false);
+                    saveSTBL();
+                    closeSTBL();
                 }
-                closeAndSavePackage(true, true);
+                SavePackage();
+                closePackage();
                 MessageBox.Show("Done!");
 
             }

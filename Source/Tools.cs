@@ -367,7 +367,7 @@ namespace TS4_STBL_Editor
             return mainArrayList;
         }
 
-        public void SaveSTBL(bool isSaveAs, bool isSTBLFile, MainUI mainUI)
+        public void SaveSTBLObjectInPackage(bool isSaveAs, MainUI mainUI)
         {
             List<uint> textResourceID = new List<uint>();
             List<string> textString = new List<string>();
@@ -391,35 +391,56 @@ namespace TS4_STBL_Editor
             tempList.Add(textResourceID);
             tempList.Add(textString);
 
-            if (isSTBLFile)
+            MainUI.lrie = MainUI.imppkg.FindAll(x =>
             {
-                publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
+                return (x.ResourceType == 0x220557DA);
+            });
+
+
+            var el = MainUI.lrie.Find(x =>
+            {
+                return (x.Instance == MainUI.packageElId);
+            });
+
+            if (el != null)
+            {
+                var res = WrapperDealer.GetResource(0, imppkg, el, true);
+                WriteSTBLStream(tempList, res.Stream);
+
+                MainUI.imppkg.ReplaceResource(el, res);
+
             }
-            else
+
+            filenameLabel.Text = publicPath;
+            pathOpened = true;
+        }
+
+        public void SaveSTBL_V2(bool isSaveAs)
+        {
+            List<uint> textResourceID = new List<uint>();
+            List<string> textString = new List<string>();
+
+            ArrayList tempList = new ArrayList();
+
+            if (dataGridView1.Rows.Count > 0)
             {
-                MainUI.lrie = MainUI.imppkg.FindAll(x =>
+                uint convert = 0;
+                string hexText;
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    return (x.ResourceType == 0x220557DA);
-                });
-
-                var el = MainUI.lrie.Find(x =>
-                {
-                    return (x.Instance == MainUI.packageElId);
-                });
-
-                if (el != null)
-                {
-                    var res = WrapperDealer.GetResource(0, imppkg, el, true);
-                    WriteSTBLStream(tempList, res.Stream);
-
-                    MainUI.imppkg.ReplaceResource(el, res);
-
-                    MainUI.imppkg.SavePackage();
-                    MainUI.imppkg.Dispose();
-
-                    mainUI.openPackageFile(MainUI.pathToOpenedPackageFile);
+                    hexText = ((string)dataGridView1.Rows[i].Cells[0].Value).Replace("0x", "");
+                    convert = Convert.ToUInt32(hexText, 16);
+                    textResourceID.Add(convert);
+                    textString.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
                 }
             }
+
+            tempList.Add(textResourceID);
+            tempList.Add(textString);
+
+            publicPath = WriteSTBLFile(tempList, isSaveAs, publicPath);
+
             filenameLabel.Text = publicPath;
             pathOpened = true;
         }

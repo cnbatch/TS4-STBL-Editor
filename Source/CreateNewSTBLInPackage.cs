@@ -131,8 +131,10 @@ namespace TS4_STBL_Editor
                             var addedResIndexEntry = MainUI.imppkg.AddResource(newnmrk, s, true);
                         }
                     }
-                    MainUI.imppkg.SavePackage();
-                    mainUI.closeAndSavePackage(true, true);
+                    mainUI.saveSTBL();
+                    mainUI.closeSTBL();
+                    mainUI.SavePackage();
+                    mainUI.closePackage();
                 }
                 else
                 {

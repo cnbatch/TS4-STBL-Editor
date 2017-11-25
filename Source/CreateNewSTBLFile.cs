@@ -96,11 +96,14 @@ namespace TS4_STBL_Editor
 
                     if (mainUI.pathOpened)
                     {
-                        mainUI.closeAndSavePackage(true, !MainUI.openedFromSTBL_File);
+                        mainUI.saveSTBL();
+                        mainUI.closeSTBL();
+                        mainUI.SavePackage();
+                        mainUI.closePackage();
                     }
 
                     mainUI.publicPath = saveFileDialog1.FileName;
-                    mainUI.SaveSTBL(false, true, mainUI);
+                    mainUI.SaveSTBL_V2(false);
                     mainUI.openSTBLfile(saveFileDialog1.FileName);
                     this.Close();
                 }

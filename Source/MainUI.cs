@@ -217,6 +217,9 @@ namespace TS4_STBL_Editor
                 else
                 {
                     SaveSTBLObjectInPackage(false, this);
+                    SavePackage();
+
+                    openPackageFile(pathToOpenedPackageFile);
                 }
             }
             else if (canAlsoSave)
@@ -547,15 +550,10 @@ namespace TS4_STBL_Editor
             (new LangCodesHelp()).ShowDialog();
         }
 
-
-
         private SelectSTBLfileFromPackage selectSTBLfileinPackage(bool allowMultiSelection)
         {
 
-            lrie = imppkg.FindAll(x =>
-            {
-                return (x.ResourceType == 0x220557DA);
-            });
+
 
             SelectSTBLfileFromPackage f = new SelectSTBLfileFromPackage(lrie, imppkg, allowMultiSelection);
             f.ShowDialog();
@@ -597,6 +595,11 @@ namespace TS4_STBL_Editor
             }
 
             imppkg = Package.OpenPackage(0, pathToPackageFile, true);
+
+            lrie = imppkg.FindAll(x =>
+            {
+                return (x.ResourceType == 0x220557DA);
+            });
 
             pathToOpenedPackageFile = pathToPackageFile;
             linkLabel1.Visible = true;

@@ -139,7 +139,7 @@
     <value>1</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Version 16.0 by ArtUrlWWW, cnbatch &amp; C major</value>
+    <value>Version 19.0 by ArtUrlWWW, cnbatch &amp; C major</value>
   </data>
   <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -202,7 +202,7 @@
     <value>2</value>
   </data>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>Copyright (c) 2017, ArtUrlWWW, cnbatch &amp; C major
+    <value>Copyright (c) 2019, ArtUrlWWW, cnbatch &amp; C major
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

@@ -67,6 +67,7 @@
             this.languageLable = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.parseS4PEstrings = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -313,10 +314,18 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // parseS4PEstrings
+            // 
+            resources.ApplyResources(this.parseS4PEstrings, "parseS4PEstrings");
+            this.parseS4PEstrings.Name = "parseS4PEstrings";
+            this.parseS4PEstrings.UseVisualStyleBackColor = true;
+            this.parseS4PEstrings.Click += new System.EventHandler(this.parseS4PEstrings_Click);
+            // 
             // MainUI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.parseS4PEstrings);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.languageLable);
             this.Controls.Add(this.label1);
@@ -364,7 +373,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.ToolStripMenuItem showLangCodesToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripProgressBar progressBar1;
+        public System.Windows.Forms.ToolStripProgressBar progressBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label languageLable;
         private System.Windows.Forms.ToolStripMenuItem officialPageToolStripMenuItem;
@@ -379,6 +388,7 @@
         private System.Windows.Forms.ToolStripMenuItem sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem packageFilesMassInsertOfCopiedValuesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem createANewSTBLFileInpackageFileToolStripMenuItem;
+        private System.Windows.Forms.Button parseS4PEstrings;
     }
 }
 

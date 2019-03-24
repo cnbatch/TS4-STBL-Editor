@@ -74,8 +74,8 @@ namespace TS4_STBL_Editor
 
         public string publicPath = string.Empty;
         public bool pathOpened = false;
-        private bool canAlsoSave = false;
-        private bool isTextChanged = false;
+        public bool canAlsoSave = false;
+        public bool isTextChanged = false;
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1012,6 +1012,13 @@ namespace TS4_STBL_Editor
                 CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
                 f.ShowDialog();
             }
+        }
+
+
+        private void parseS4PEstrings_Click(object sender, EventArgs e)
+        {
+            ParseS4PEstrings f = new ParseS4PEstrings();
+            f.Show();
         }
     }
 }

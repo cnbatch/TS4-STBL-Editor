@@ -8,6 +8,7 @@ namespace TS4_STBL_Editor
 {
     static class Program
     {
+        public static MainUI mainUI;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -16,7 +17,8 @@ namespace TS4_STBL_Editor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainUI(args));
+            mainUI = new MainUI(args);
+            Application.Run(mainUI);
             //Application.Run(new CreateNewSTBLFile());
         }
     }

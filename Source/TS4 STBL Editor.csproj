@@ -220,6 +220,12 @@
     <Compile Include="MyDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ParseS4PEstrings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParseS4PEstrings.Designer.cs">
+      <DependentUpon>ParseS4PEstrings.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectSTBLfileFromPackage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainUI.zh-Hant.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParseS4PEstrings.resx">
+      <DependentUpon>ParseS4PEstrings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -551,10 +551,7 @@ namespace TS4_STBL_Editor
         }
 
         private SelectSTBLfileFromPackage selectSTBLfileinPackage(bool allowMultiSelection)
-        {
-
-
-
+        {                       
             SelectSTBLfileFromPackage f = new SelectSTBLfileFromPackage(lrie, imppkg, allowMultiSelection);
             f.ShowDialog();
 

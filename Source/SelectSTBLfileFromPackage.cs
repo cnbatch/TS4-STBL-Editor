@@ -1,39 +1,37 @@
-﻿using s4pi.Interfaces;
-using s4pi.WrapperDealer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Windows.Forms;
+using s4pi.Interfaces;
+using s4pi.WrapperDealer;
 
 namespace TS4_STBL_Editor
 {
     public partial class SelectSTBLfileFromPackage : Form
     {
-        List<IResourceIndexEntry> lrie;
-        IPackage imppkg;
+        private readonly IPackage imppkg;
+        private readonly List<IResourceIndexEntry> lrie;
 
         public List<string> selectedSTBLObjects = new List<string>();
 
-        public SelectSTBLfileFromPackage(List<IResourceIndexEntry> lrieInp, IPackage imppkgInp, bool allowMultiSelection)
+        public SelectSTBLfileFromPackage(List<IResourceIndexEntry> lrieInp, IPackage imppkgInp,
+            bool allowMultiSelection)
         {
             InitializeComponent();
 
-            if (allowMultiSelection)
+            if (allowMultiSelection) listBox1.SelectionMode = SelectionMode.MultiExtended;
+
+            lrie = lrieInp;
+            imppkg = imppkgInp;
+
+            foreach (var rie in lrie)
             {
-                listBox1.SelectionMode = SelectionMode.MultiExtended;
-            }
+                var res = WrapperDealer.GetResource(0, imppkg, rie, true);
+                var bi = BigInteger.Parse(rie.Instance.ToString());
 
-            this.lrie = lrieInp;
-            this.imppkg = imppkgInp;
+                var fileName = "0x" + (bi.ToString("X").Length < 16 ? "0" + bi.ToString("X") : bi.ToString("X"));
 
-            foreach (IResourceIndexEntry rie in lrie)
-            {
-                IResource res = WrapperDealer.GetResource(0, imppkg, rie, true);
-                BigInteger bi = BigInteger.Parse(rie.Instance.ToString());
-
-                String fileName = "0x" + (bi.ToString("X").Length < 16 ? "0" + bi.ToString("X") : bi.ToString("X"));
-
-                String fileNameLang = fileName.Substring(0, 4);
+                var fileNameLang = fileName.Substring(0, 4);
                 switch (fileNameLang)
                 {
                     case "0x00":
@@ -88,18 +86,22 @@ namespace TS4_STBL_Editor
                         fileName = "SWE_SE " + fileName;
                         break;
                 }
+
                 listBox1.Items.Add(fileName);
             }
+
+            for (var i = 0; i < listBox1.Items.Count; i++) listBox1.SetSelected(i, true);
         }
 
         private void getSelectedItemsAndCloseForm()
         {
             foreach (string a in listBox1.SelectedItems)
             {
-                String a1 = a.Substring(7);
+                var a1 = a.Substring(7);
                 selectedSTBLObjects.Add(a1);
             }
-            this.Close();
+
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -114,21 +116,15 @@ namespace TS4_STBL_Editor
 
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            if (ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
-                this.Close();
+                Close();
                 return true;
             }
-            else
-            {
-                if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.A) == Keys.A)  // Ctrl-A
-                {
-                    for (int x = 0; x < listBox1.Items.Count; x++)
-                    {
-                        listBox1.SetSelected(x, true);
-                    }
-                }
-            }
+
+            if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.A) == Keys.A) // Ctrl-A
+                for (var x = 0; x < listBox1.Items.Count; x++)
+                    listBox1.SetSelected(x, true);
             return base.ProcessDialogKey(keyData);
         }
     }

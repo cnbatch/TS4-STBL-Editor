@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8DB258C2-72B6-4A6F-ADCD-5B0ECFA78764}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TS4_STBL_Editor</RootNamespace>
+    <AssemblyName>TS4 STBL Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TS4Editor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E1DA7DF63505931BA6AE4EFC7982AEA9DD1972C5</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TS4 STBL Editor_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MTS_ArtUrlWWW_FNVHasherDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MTS_ArtUrlWWW_FNVHasherDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.AnimationResources">
+      <HintPath>s4piDLLs\s4pi.AnimationResources.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.CASPartResource">
+      <HintPath>s4piDLLs\s4pi.CASPartResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.CatalogResource">
+      <HintPath>s4piDLLs\s4pi.CatalogResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Commons">
+      <HintPath>s4piDLLs\s4pi.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.ComplateResource">
+      <HintPath>s4piDLLs\s4pi.ComplateResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Controls">
+      <HintPath>s4piDLLs\s4pi.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.CustomForms">
+      <HintPath>s4piDLLs\s4pi.CustomForms.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.DataResource">
+      <HintPath>s4piDLLs\s4pi.DataResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.DefaultResource">
+      <HintPath>s4piDLLs\s4pi.DefaultResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Extensions">
+      <HintPath>s4piDLLs\s4pi.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Filetable">
+      <HintPath>s4piDLLs\s4pi.Filetable.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.GenericRCOLResource">
+      <HintPath>s4piDLLs\s4pi.GenericRCOLResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Helpers">
+      <HintPath>s4piDLLs\s4pi.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.ImageResource">
+      <HintPath>s4piDLLs\s4pi.ImageResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Interfaces">
+      <HintPath>s4piDLLs\s4pi.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.JazzResource">
+      <HintPath>s4piDLLs\s4pi.JazzResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.MeshChunks">
+      <HintPath>s4piDLLs\s4pi.MeshChunks.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.MiscellaneousResources">
+      <HintPath>s4piDLLs\s4pi.MiscellaneousResources.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.ModularResource">
+      <HintPath>s4piDLLs\s4pi.ModularResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.NameMapResource">
+      <HintPath>s4piDLLs\s4pi.NameMapResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.NGMPHashMapResource">
+      <HintPath>s4piDLLs\s4pi.NGMPHashMapResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Package">
+      <HintPath>s4piDLLs\s4pi.Package.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.RCOLChunks">
+      <HintPath>s4piDLLs\s4pi.RCOLChunks.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Resource.Commons">
+      <HintPath>s4piDLLs\s4pi.Resource.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.RigResource">
+      <HintPath>s4piDLLs\s4pi.RigResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.Settings">
+      <HintPath>s4piDLLs\s4pi.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.StblResource">
+      <HintPath>s4piDLLs\s4pi.StblResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.TextResource">
+      <HintPath>s4piDLLs\s4pi.TextResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.TxtcResource">
+      <HintPath>s4piDLLs\s4pi.TxtcResource.dll</HintPath>
+    </Reference>
+    <Reference Include="s4pi.WrapperDealer">
+      <HintPath>s4piDLLs\s4pi.WrapperDealer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Custom">
+      <HintPath>s4piDLLs\System.Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddMultipleStrings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMultipleStrings.Designer.cs">
+      <DependentUpon>AddMultipleStrings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddString.Designer.cs">
+      <DependentUpon>AddString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewSTBLInPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewSTBLInPackage.Designer.cs">
+      <DependentUpon>CreateNewSTBLInPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewSTBLFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewSTBLFile.Designer.cs">
+      <DependentUpon>CreateNewSTBLFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor.Designer.cs">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AboutEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutEditorForm.Designer.cs">
+      <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ParseS4PEstrings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParseS4PEstrings.Designer.cs">
+      <DependentUpon>ParseS4PEstrings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectSTBLfileFromPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectSTBLfileFromPackage.Designer.cs">
+      <DependentUpon>SelectSTBLfileFromPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HowToCopyMultipleRows.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HowToCopyMultipleRows.Designer.cs">
+      <DependentUpon>HowToCopyMultipleRows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LangCodesHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LangCodesHelp.Designer.cs">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StringHolder.cs" />
+    <Compile Include="StringPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StringPicker.Designer.cs">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainUI.Designer.cs">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutEditorForm.en.resx">
+      <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutEditorForm.zh-Hans.resx">
+      <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutEditorForm.zh-Hant.resx">
+      <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddMultipleStrings.resx">
+      <DependentUpon>AddMultipleStrings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddString.en.resx">
+      <DependentUpon>AddString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddString.resx">
+      <DependentUpon>AddString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddString.zh-Hans.resx">
+      <DependentUpon>AddString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddString.zh-Hant.resx">
+      <DependentUpon>AddString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewSTBLInPackage.resx">
+      <DependentUpon>CreateNewSTBLInPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewSTBLFile.resx">
+      <DependentUpon>CreateNewSTBLFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutEditorForm.resx">
+      <DependentUpon>AboutEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.zh-Hans.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.zh-Hant.resx">
+      <DependentUpon>Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HowToCopyMultipleRows.resx">
+      <DependentUpon>HowToCopyMultipleRows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangCodesHelp.resx">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangCodesHelp.zh-Hans.resx">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LangCodesHelp.zh-Hant.resx">
+      <DependentUpon>LangCodesHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUI.en.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUI.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUI.zh-Hans.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUI.zh-Hant.resx">
+      <DependentUpon>MainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParseS4PEstrings.resx">
+      <DependentUpon>ParseS4PEstrings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SelectSTBLfileFromPackage.resx">
+      <DependentUpon>SelectSTBLfileFromPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringPicker.resx">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringPicker.zh-Hans.resx">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringPicker.zh-Hant.resx">
+      <DependentUpon>StringPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="TS4 STBL Editor_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Imgs\howToCopyMultipleRows.gif" />
+    <EmbeddedResource Include="LangCodesList.xml" />
+    <Content Include="TS4Editor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

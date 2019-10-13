@@ -58,7 +58,7 @@ namespace TS4_STBL_Editor
                 row.HeaderCell.Value = (row.Index + 1).ToString();
                 updateProgressBar((double)row.Index / (double)dataTable.Rows.Count);
             }
-            
+
         }
 
         private void saveAndExit()
@@ -379,13 +379,52 @@ namespace TS4_STBL_Editor
             {
                 saveAndExit();
             }
-           
+
             return base.ProcessDialogKey(keyData);
         }
 
         private void copySelectedRowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopySelectedRows();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddMultipleStrings addMultipleStrings = new AddMultipleStrings();
+            addMultipleStrings.ShowDialog();
+            if (addMultipleStrings.isOK)
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null)
+                {
+                    dt = new DataTable();
+
+                    DataColumn dc;
+                    dc = new DataColumn(dataGridView1.Columns[0].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[1].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[2].HeaderText);
+                    dt.Columns.Add(dc);
+
+                    dataGridView1.DataSource = dt;
+
+                    dt = (DataTable)dataGridView1.DataSource;
+                }
+
+                foreach(var hash in addMultipleStrings.translations.Keys)
+                {
+                    DataRow dr;
+                    dr = dt.NewRow();
+                    dr[0] = hash;
+                    dr[2] = addMultipleStrings.translations[hash];
+                    dt.Rows.Add(dr);
+
+                    int cnt = dataGridView1.Rows.Count > 0 ? dataGridView1.Rows.Count - 1 : 0;
+                    dataGridView1.Rows[cnt].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+                }
+                
+            }
         }
     }
 }

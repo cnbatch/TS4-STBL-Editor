@@ -142,7 +142,7 @@ namespace TS4_STBL_Editor
 
             MainUI.copiedValuesStrHolders.Add(sh);
 
-            Clipboard.SetText("0x" + textIDFld.Text + " #" + displayTextFld.Text);
+            Clipboard.SetText("0x" + textIDFld.Text + " # " + displayTextFld.Text);
         }
 
         private void pasteStrFldsValues_Click(object sender, EventArgs e)

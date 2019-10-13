@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Globalization;
@@ -33,9 +29,12 @@ namespace TS4_STBL_Editor
         public static IPackage imppkg = null;
         public static List<IResourceIndexEntry> lrie;
         public static IResource res;
+        public static String pathToOpenedPackageFile = "";
         #endregion
 
-        public MainUI()
+        string[] argsLocal;
+
+        public MainUI(string[] args)
         {
             InitializeComponent();
 
@@ -67,24 +66,23 @@ namespace TS4_STBL_Editor
 
             settings0.StoreSettings(dataGridView1, 0);
             settings1.StoreSettings(dataGridView1, 1);
+
+            argsLocal = args;
+
+
         }
 
-        private string publicPath = string.Empty;
-        private bool pathOpened = false;
-        private bool canAlsoSave = false;
-        private bool isTextChanged = false;
+        public string publicPath = string.Empty;
+        public bool pathOpened = false;
+        public bool canAlsoSave = false;
+        public bool isTextChanged = false;
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void openPackageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openPackageFromOpenFileDialog();
-        }
-
-        private void openPackageFromOpenFileDialog()
+        private void openSTBLFromOpenFileDialog()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -137,7 +135,7 @@ namespace TS4_STBL_Editor
             }
         }
 
-        private void openSTBLfile(string pathToFile)
+        public void openSTBLfile(string pathToFile)
         {
             string stblFilePath = string.Empty;
             bool fileIsOpened = false;
@@ -152,11 +150,8 @@ namespace TS4_STBL_Editor
 
             if (fileIsOpened)
             {
-                //fileNameLbl.Text = stblFilePath;
-
                 if (stblFilePath.IndexOf("220557DA") > 0)
                 {
-
                     var assembly = Assembly.GetExecutingAssembly();
                     var resourceName = "TS4_STBL_Editor.LangCodesList.xml";
 
@@ -205,25 +200,53 @@ namespace TS4_STBL_Editor
 
                 UseWaitCursor = false;
                 progressBar1.Visible = false;
+                pathOpened = true;
+                openedFromSTBL_File = true;
+
             }
         }
 
-        private void savePackageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pathOpened)
             {
-                SaveSTBL(false, openedFromSTBL_File);
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(false);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(false, this);
+                    SavePackage();
+
+                    openPackageFile(pathToOpenedPackageFile);
+                }
             }
             else if (canAlsoSave)
             {
-                SaveSTBL(true, openedFromSTBL_File);
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(true);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(true, this);
+                }
             }
+
             isTextChanged = false;
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveSTBL(true, openedFromSTBL_File);
+            if (openedFromSTBL_File)
+            {
+                SaveSTBL_V2(true);
+            }
+            else
+            {
+                SaveSTBLObjectInPackage(true, this);
+            }
             isTextChanged = false;
         }
 
@@ -259,7 +282,10 @@ namespace TS4_STBL_Editor
                     dataGridView1.Rows[k].HeaderCell.Value = (k + 1).ToString();
                 }
 
-                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.Rows.Count - 1;
+                }
 
                 stblEditor.Dispose();
 
@@ -267,7 +293,7 @@ namespace TS4_STBL_Editor
             }
             else
             {
-                openPackageFromOpenFileDialog();
+                openSTBLFromOpenFileDialog();
             }
         }
 
@@ -395,19 +421,41 @@ namespace TS4_STBL_Editor
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            closeAndSavePackage();
+            saveSTBL();
+            closeSTBL();
+            SavePackage();
+            closePackage();
         }
 
-        private void closeAndSavePackage(bool save = true)
+        public void saveSTBL()
         {
-            if (save)
+            if (isTextChanged && pathOpened)
             {
-                if (isTextChanged && pathOpened)
-                    SaveSTBL(false, openedFromSTBL_File);
-                else if (isTextChanged && dataGridView1.Rows.Count > 0)
-                    SaveSTBL(true, openedFromSTBL_File);
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(false);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(false, this);
+                }
+            }
+            else if (isTextChanged && dataGridView1.Rows.Count > 0)
+            {
+                if (openedFromSTBL_File)
+                {
+                    SaveSTBL_V2(true);
+                }
+                else
+                {
+                    SaveSTBLObjectInPackage(true, this);
+                }
             }
 
+        }
+
+        public void closeSTBL()
+        {
             dataGridView1.DataSource = null;
             dataGridView1.Columns.Add("Column1", "");
             dataGridView1.Columns.Add("Column2", "");
@@ -434,26 +482,62 @@ namespace TS4_STBL_Editor
             pathOpened = false;
             canAlsoSave = false;
             isTextChanged = false;
+        }
+
+        public void SavePackage()
+        {
+            imppkg.SavePackage();
+        }
+
+        public void closePackage()
+        {
 
 
-            openedFromSTBL_File = true;
-            packageElId = 0;
             if (imppkg != null)
             {
+
                 imppkg.Dispose();
                 imppkg = null;
-                lrie.Clear();
+                if (lrie != null)
+                {
+                    lrie.Clear();
+                }
+                res = null;
             }
 
-            res = null;
+            if (!openedFromSTBL_File)
+            {
+                linkLabel1.Visible = false;
+            }
+        }
 
+        public void closeAndSavePackage_Deprecated(bool save = true, bool clearPackageContainer = false)
+        {
         }
 
         private void MainUI_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (string file in files) Console.WriteLine(file);
-            openSTBLfile(files[0]);
+
+            if (pathOpened)
+            {
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
+            }
+
+            string fileToOpen = files[0];
+
+            if (fileToOpen.EndsWith(".stbl"))
+            {
+                openSTBLfile(fileToOpen);
+            }
+            else if (fileToOpen.EndsWith(".package"))
+            {
+                openPackageFile(fileToOpen);
+            }
+
         }
 
         private void MainUI_DragEnter(object sender, DragEventArgs e)
@@ -466,13 +550,196 @@ namespace TS4_STBL_Editor
             (new LangCodesHelp()).ShowDialog();
         }
 
-        private void multyInsertIntoFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        private SelectSTBLfileFromPackage selectSTBLfileinPackage(bool allowMultiSelection)
+        {                       
+            SelectSTBLfileFromPackage f = new SelectSTBLfileFromPackage(lrie, imppkg, allowMultiSelection);
+            f.ShowDialog();
+
+            return f;
+        }
+
+        private void openedStblFileFromPackageToEditor()
         {
+            SelectSTBLfileFromPackage f = selectSTBLfileinPackage(false);
+
+            if (f.selectedSTBLObjects.Count() > 0)
+            {
+
+                packageElId = BigInteger.Parse(f.selectedSTBLObjects[0].Replace("0x", ""), NumberStyles.AllowHexSpecifier);
+
+                var el = lrie.Find(x =>
+                {
+                    return (x.Instance == packageElId);
+                });
+
+                res = WrapperDealer.GetResource(0, imppkg, el, true);
+
+                openedFromSTBL_File = false;
+
+                ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
+                STBLToDataGridView(tempList);
+
+                pathOpened = true;
+            }
+        }
+
+        public void openPackageFile(string pathToPackageFile)
+        {
+
+            if (imppkg != null)
+            {
+                imppkg.Dispose();
+            }
+
+            imppkg = Package.OpenPackage(0, pathToPackageFile, true);
+
+            lrie = imppkg.FindAll(x =>
+            {
+                return (x.ResourceType == 0x220557DA);
+            });
+
+            pathToOpenedPackageFile = pathToPackageFile;
+            linkLabel1.Visible = true;
+            pathOpened = true;
+            openedFromSTBL_File = false;
+
+        }
+
+        private void officialPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://arturlwww.tumblr.com/post/162176967969/ts4-stbl-editor");
+        }
+
+        private void donatePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.patreon.com/pregnancymegamod");
+        }
+
+        private void MainUI_Load(object sender, EventArgs e)
+        {
+            if (argsLocal.Length > 0)
+            {
+                string fileToOpen = argsLocal[0];
+                if (fileToOpen != null)
+                {
+                    //MessageBox.Show(fileToOpen);
+                    if (fileToOpen.EndsWith(".stbl"))
+                    {
+                        openedFromSTBL_File = true;
+                        openSTBLfile(fileToOpen);
+                    }
+                    else if (fileToOpen.EndsWith(".package"))
+                    {
+                        openPackageFile(fileToOpen);
+                    }
+
+                }
+            }
+        }
+
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (pathOpened)
+            {
+                openedStblFileFromPackageToEditor();
+            }
+        }
+
+        private void newSTBLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateNewSTBLFile f = new CreateNewSTBLFile(this);
+            f.ShowDialog();
+        }
+
+        private void openSTBLFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pathOpened)
+            {
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
+            }
+
+            openSTBLFromOpenFileDialog();
+        }
+
+        private void openpackageFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (pathOpened)
+            {
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
+            }
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+            {
+                case "CHS":
+                case "ZHI":
+                    openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "选择STBL文件";
+                    break;
+                case "CHT":
+                case "ZHH":
+                case "ZHM":
+                    openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "選取STBL檔案";
+                    break;
+                default:
+                    openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
+                    openFileDialog1.FilterIndex = 1;
+                    openFileDialog1.Title = "Choose .package File";
+                    break;
+            }
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                openPackageFile(openFileDialog1.FileName);
+                openedStblFileFromPackageToEditor();
+            }
+            else
+            {
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        filenameLabel.Text = "未打开任何文件。";
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        filenameLabel.Text = "未開啟任何檔案。";
+                        break;
+                    default:
+                        filenameLabel.Text = "No file is opened.";
+                        break;
+                }
+                pathOpened = false;
+            }
+        }
+
+        private void sTBLFilesMassInsertOfCopiedValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pathOpened)
+            {
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
+            }
+
             if (MainUI.copiedValuesStrHolders.Count > 0)
             {
 
                 isTextChanged = false;
-                closeAndSavePackage(false);
+                //closeAndSavePackage(false, false);
 
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -535,10 +802,11 @@ namespace TS4_STBL_Editor
                             }
                         }
 
-                        //break;
-
-                        closeAndSavePackage();
+                        saveSTBL();
+                        closeSTBL();
                     }
+                    SavePackage();
+                    closePackage();
                     isTextChanged = false;
 
                 }
@@ -564,43 +832,16 @@ namespace TS4_STBL_Editor
             }
         }
 
-
-
-        private void openPackageFile(string pathToPackageFile)
+        private void packageFilesMassInsertOfCopiedValuesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            imppkg = Package.OpenPackage(0, pathToPackageFile, true);
-
-            lrie = imppkg.FindAll(x =>
+            if (pathOpened)
             {
-                return (x.ResourceType == 0x220557DA);
-            });
+                saveSTBL();
+                closeSTBL();
+                SavePackage();
+                closePackage();
+            }
 
-            SelectSTBLfileinPackage f = new SelectSTBLfileinPackage(lrie, imppkg);
-            f.ShowDialog();
-
-            packageElId = BigInteger.Parse(f.selectedElement.Replace("0x", ""), NumberStyles.AllowHexSpecifier);
-
-            var el = lrie.Find(x =>
-            {
-                return (x.Instance == packageElId);
-            });
-
-            res = WrapperDealer.GetResource(0, imppkg, el, true);
-
-            openedFromSTBL_File = false;
-
-            ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
-            STBLToDataGridView(tempList);
-
-            pathOpened = true;
-
-            //MessageBox.Show(packageElId.ToString());
-
-            //imppkg.Dispose();
-        }
-
-        private void openpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
@@ -627,12 +868,62 @@ namespace TS4_STBL_Editor
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // openPackage(openFileDialog1.FileName);
-
                 openPackageFile(openFileDialog1.FileName);
 
-                //ArrayList tempList = ReadAndAnalyze(openFileDialog1.FileName);
-                //STBLToDataGridView(tempList);
+                var f = selectSTBLfileinPackage(true);
+
+                openedFromSTBL_File = false;
+                foreach (string idStr in f.selectedSTBLObjects)
+                {
+                    packageElId = BigInteger.Parse(idStr.Replace("0x", ""), NumberStyles.AllowHexSpecifier);
+
+                    var el = lrie.Find(x =>
+                    {
+                        return (x.Instance == packageElId);
+                    });
+
+                    res = WrapperDealer.GetResource(0, imppkg, el, true);
+                    ArrayList tempList = ReadAndAnalyzeStream(res.Stream);
+                    STBLToDataGridView(tempList);
+
+                    for (int x = 0; x < MainUI.copiedValuesStrHolders.Count; x++)
+                    {
+                        StringHolder copiedStrElement = MainUI.copiedValuesStrHolders[x];
+
+                        DataTable dt = (DataTable)dataGridView1.DataSource;
+
+                        var drArr = (from rowEl in dt.AsEnumerable()
+                                     where rowEl.Field<string>(0) == copiedStrElement.textIDFld
+                                     select rowEl);
+
+                        if (drArr.Count() == 0)
+                        {
+                            DataRow dr = dt.NewRow();
+                            dr[0] = copiedStrElement.textIDFld;
+                            dr[1] = copiedStrElement.displayTextFld;
+                            dt.Rows.Add(dr);
+                            dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+
+                        }
+                        else
+                        {
+                            DataRow dr = drArr.First();
+                            dr[1] = copiedStrElement.displayTextFld;
+                        }
+                    }
+
+                    dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
+
+                    canAlsoSave = true;
+                    isTextChanged = true;
+                    pathOpened = true;
+                    saveSTBL();
+                    closeSTBL();
+                }
+                SavePackage();
+                closePackage();
+                MessageBox.Show("Done!");
+
             }
             else
             {
@@ -653,6 +944,78 @@ namespace TS4_STBL_Editor
                 }
                 pathOpened = false;
             }
+        }
+
+        private void createANewSTBLFileInpackageFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!pathOpened)
+            {
+
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                {
+                    case "CHS":
+                    case "ZHI":
+                        openFileDialog1.Filter = "STBL文件 (*.package)|*.package|所有文件 (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "选择STBL文件";
+                        break;
+                    case "CHT":
+                    case "ZHH":
+                    case "ZHM":
+                        openFileDialog1.Filter = "STBL檔案 (*.package)|*.package|所有檔案 (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "選取STBL檔案";
+                        break;
+                    default:
+                        openFileDialog1.Filter = "STBL Files (*.package)|*.package|All Files (*.*)|*.*";
+                        openFileDialog1.FilterIndex = 1;
+                        openFileDialog1.Title = "Choose .package File";
+                        break;
+                }
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    openPackageFile(openFileDialog1.FileName);
+
+                    CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
+                    f.ShowDialog();
+
+                    pathOpened = true;
+                }
+                else
+                {
+                    switch (Thread.CurrentThread.CurrentUICulture.ThreeLetterWindowsLanguageName)
+                    {
+                        case "CHS":
+                        case "ZHI":
+                            filenameLabel.Text = "未打开任何文件。";
+                            break;
+                        case "CHT":
+                        case "ZHH":
+                        case "ZHM":
+                            filenameLabel.Text = "未開啟任何檔案。";
+                            break;
+                        default:
+                            filenameLabel.Text = "No file is opened.";
+                            break;
+                    }
+                    pathOpened = false;
+                }
+            }
+            else
+            {
+                CreateNewSTBLInPackage f = new CreateNewSTBLInPackage(this);
+                f.ShowDialog();
+            }
+        }
+
+
+        private void parseS4PEstrings_Click(object sender, EventArgs e)
+        {
+            ParseS4PEstrings f = new ParseS4PEstrings();
+            f.Show();
         }
     }
 }

@@ -35,7 +35,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -77,6 +77,9 @@
     <Reference Include="MTS_ArtUrlWWW_FNVHasherDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MTS_ArtUrlWWW_FNVHasherDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="s4pi.AnimationResources">
       <HintPath>s4piDLLs\s4pi.AnimationResources.dll</HintPath>
@@ -184,11 +187,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMultipleStrings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMultipleStrings.Designer.cs">
+      <DependentUpon>AddMultipleStrings.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddString.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddString.Designer.cs">
       <DependentUpon>AddString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewSTBLInPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewSTBLInPackage.Designer.cs">
+      <DependentUpon>CreateNewSTBLInPackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewSTBLFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateNewSTBLFile.Designer.cs">
+      <DependentUpon>CreateNewSTBLFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
@@ -202,11 +223,20 @@
     <Compile Include="AboutEditorForm.Designer.cs">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectSTBLfileinPackage.cs">
+    <Compile Include="MyDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ParseS4PEstrings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectSTBLfileinPackage.Designer.cs">
-      <DependentUpon>SelectSTBLfileinPackage.cs</DependentUpon>
+    <Compile Include="ParseS4PEstrings.Designer.cs">
+      <DependentUpon>ParseS4PEstrings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectSTBLfileFromPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectSTBLfileFromPackage.Designer.cs">
+      <DependentUpon>SelectSTBLfileFromPackage.cs</DependentUpon>
     </Compile>
     <Compile Include="HowToCopyMultipleRows.cs">
       <SubType>Form</SubType>
@@ -247,6 +277,9 @@
     <EmbeddedResource Include="AboutEditorForm.zh-Hant.resx">
       <DependentUpon>AboutEditorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddMultipleStrings.resx">
+      <DependentUpon>AddMultipleStrings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddString.en.resx">
       <DependentUpon>AddString.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +291,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddString.zh-Hant.resx">
       <DependentUpon>AddString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewSTBLInPackage.resx">
+      <DependentUpon>CreateNewSTBLInPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewSTBLFile.resx">
+      <DependentUpon>CreateNewSTBLFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editor.resx">
       <DependentUpon>Editor.cs</DependentUpon>
@@ -295,6 +334,9 @@
     <EmbeddedResource Include="MainUI.zh-Hant.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ParseS4PEstrings.resx">
+      <DependentUpon>ParseS4PEstrings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -305,8 +347,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SelectSTBLfileinPackage.resx">
-      <DependentUpon>SelectSTBLfileinPackage.cs</DependentUpon>
+    <EmbeddedResource Include="SelectSTBLfileFromPackage.resx">
+      <DependentUpon>SelectSTBLfileFromPackage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StringPicker.resx">
       <DependentUpon>StringPicker.cs</DependentUpon>
@@ -317,6 +359,7 @@
     <EmbeddedResource Include="StringPicker.zh-Hant.resx">
       <DependentUpon>StringPicker.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

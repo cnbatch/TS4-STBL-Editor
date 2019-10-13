@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
-using System.Threading;
 using FNVHasherDLL;
-using System.Numerics;
 
 namespace TS4_STBL_Editor
 {
@@ -65,6 +58,7 @@ namespace TS4_STBL_Editor
                 row.HeaderCell.Value = (row.Index + 1).ToString();
                 updateProgressBar((double)row.Index / (double)dataTable.Rows.Count);
             }
+
         }
 
         private void saveAndExit()
@@ -84,6 +78,15 @@ namespace TS4_STBL_Editor
                 dataTable.Rows.Clear();
                 dataTable = tempDataTable.Copy();
             }
+            else
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                DataTable tempDataTable = dataTable.Clone();
+
+                dataTable.Rows.Clear();
+                dataTable = tempDataTable.Copy();
+            }
+
             isTextChanged = true;
             Close();
         }
@@ -105,12 +108,34 @@ namespace TS4_STBL_Editor
             if (addString.isOK)
             {
                 DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null)
+                {
+                    //dt = new DataTable();
+                    //dt.Columns.Add("Text ID", typeof(String));
+                    //dt.Columns.Add("Original", typeof(String));
+                    //dt.Columns.Add("Translation", typeof(String));
+
+                    dt = new DataTable();
+
+                    DataColumn dc;
+                    dc = new DataColumn(dataGridView1.Columns[0].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[1].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[2].HeaderText);
+                    dt.Columns.Add(dc);
+
+                    dataGridView1.DataSource = dt;
+
+                    dt = (DataTable)dataGridView1.DataSource;
+                }
                 DataRow dr;
                 dr = dt.NewRow();
                 dr[0] = addString.textID;
                 dr[2] = addString.dataGridText;
                 dt.Rows.Add(dr);
-                dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+                int cnt = dataGridView1.Rows.Count > 0 ? dataGridView1.Rows.Count - 1 : 0;
+                dataGridView1.Rows[cnt].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
             }
             addString.Dispose();
         }
@@ -186,8 +211,6 @@ namespace TS4_STBL_Editor
                 dataGridView1.Rows[dataGridView1.Rows.Count - 1].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
 
             }
-
-
         }
 
         private void Show_copied_values_Click(object sender, EventArgs e)
@@ -195,31 +218,6 @@ namespace TS4_STBL_Editor
             StringPicker sp = new StringPicker(null);
             sp.Show();
         }
-
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-            //if (dataGridView1.SelectedRows.Count > 0)
-            //{
-            //    if (e.Button == MouseButtons.Left)
-            //    {
-            //        //if (addstr != null)
-            //        //{
-            //        //    addstr.setFldsValues(MainUI.strHolders[listView1.SelectedIndices[0]]);
-            //        //}
-            //    }
-            //    else
-            //    {
-            //        CopySelectedRows();
-            //    }
-            //}
-        }
-
-        //private void label3_Click(object sender, EventArgs e)
-        //{
-        //    HowToCopyMultipleRows a = new HowToCopyMultipleRows();
-        //    a.ShowDialog();
-        //}
 
         private void Copy_Values_By_IDs_Click(object sender, EventArgs e)
         {
@@ -298,11 +296,6 @@ namespace TS4_STBL_Editor
             return result;
         }
 
-        private void Copy_selected_rows_Click(object sender, EventArgs e)
-        {
-            //CopySelectedRows();
-        }
-
         private void CopySelectedRows()
         {
             for (int x = 0; x < dataGridView1.SelectedRows.Count; x++)
@@ -321,17 +314,33 @@ namespace TS4_STBL_Editor
         {
             var cell = contextMenuStrip1.Tag as DataGridViewCell;
 
-            var confirmResult = MessageBox.Show("Are you sure to delete this item ??",
-                                     "Confirm Delete!!",
-                                     MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            foreach (DataGridViewCell c in dataGridView1.SelectedCells)
             {
-                dataGridView1.Rows.RemoveAt(cell.OwningRow.Index);
+                if (!rows.Contains(c.OwningRow))
+                {
+                    rows.Add(c.OwningRow);
+                }
 
             }
-            else
+
+            var confirmResult = MessageBox.Show("Are you sure to delete selected items?",
+                                        "Confirm Delete!",
+                                        MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                // If 'No', do something here.
+                if (rows.Count() > 0)
+                {
+                    foreach (var r in rows)
+                    {
+                        //MessageBox.Show(r.Cells[0].Value.ToString());
+                        dataGridView1.Rows.RemoveAt(r.Index);
+                    }
+                }
+                else
+                {
+                    dataGridView1.Rows.RemoveAt(cell.OwningRow.Index);
+                }
             }
         }
 
@@ -360,23 +369,62 @@ namespace TS4_STBL_Editor
 
         protected override bool ProcessDialogKey(Keys keyData)
         {
+
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
                 this.Close();
                 return true;
-            } else
-            {
-                if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
-                {
-                    saveAndExit();
-                }
             }
+            else if ((keyData & Keys.Control) == Keys.Control && (keyData & Keys.S) == Keys.S)  // Ctrl-S Save
+            {
+                saveAndExit();
+            }
+
             return base.ProcessDialogKey(keyData);
         }
 
         private void copySelectedRowsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CopySelectedRows();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddMultipleStrings addMultipleStrings = new AddMultipleStrings();
+            addMultipleStrings.ShowDialog();
+            if (addMultipleStrings.isOK)
+            {
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+                if (dt == null)
+                {
+                    dt = new DataTable();
+
+                    DataColumn dc;
+                    dc = new DataColumn(dataGridView1.Columns[0].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[1].HeaderText);
+                    dt.Columns.Add(dc);
+                    dc = new DataColumn(dataGridView1.Columns[2].HeaderText);
+                    dt.Columns.Add(dc);
+
+                    dataGridView1.DataSource = dt;
+
+                    dt = (DataTable)dataGridView1.DataSource;
+                }
+
+                foreach(var hash in addMultipleStrings.translations.Keys)
+                {
+                    DataRow dr;
+                    dr = dt.NewRow();
+                    dr[0] = hash;
+                    dr[2] = addMultipleStrings.translations[hash];
+                    dt.Rows.Add(dr);
+
+                    int cnt = dataGridView1.Rows.Count > 0 ? dataGridView1.Rows.Count - 1 : 0;
+                    dataGridView1.Rows[cnt].HeaderCell.Value = (dataGridView1.Rows.Count).ToString();
+                }
+                
+            }
         }
     }
 }
